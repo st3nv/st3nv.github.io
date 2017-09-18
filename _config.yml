@@ -23,16 +23,16 @@ description: Quantitative marine ecology and fisheries science
 
 # List of links in the navigation bar
 navbar-links:
-  About Me: "aboutme"
   Research:
-    - Beautiful Jekyll: "http://deanattali.com/beautiful-jekyll/"
-    - Learn markdown: "http://www.markdowntutorial.com/"
-    - GitHub Pages: "https://pages.github.com/"
-  Publications: "http://deanattali.com"
+    - Mixing models / Estimating diet: "mixingmodels"
+    - Spatial bycatch prediction: "spatialbycatch"
+    - Length-based assessment: "lengthassess"
+    - Recruitment processes: "recruitment"
   Workshops:
-    - Mixing models: "mixingmodels"
-    - Intro to R: "introR"
-  Software: "https://github.com/brianstock/MixSIAR"    
+    - Mixing models: "work-mixingmodels"
+    - Intro to R: "work-introR"
+  Software: 
+    - Mixing models: "mixsiar"    
   CV: "cv"
 
 # Image to show in the navigation bar - image must be a square (width = height)
