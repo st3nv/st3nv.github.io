@@ -24,7 +24,7 @@ description: Quantitative marine ecology and fisheries science
 # List of links in the navigation bar
 navbar-links:
   Research:
-    - Mixing models / Estimating diet: "mixingmodels"
+    - Mixing models to estimate diet: "mixingmodels"
     - Spatial bycatch prediction: "spatialbycatch"
     - Length-based assessment: "lengthassess"
     - Recruitment processes: "recruitment"
