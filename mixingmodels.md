@@ -17,3 +17,8 @@ In the course of developing MixSIAR, Brice Semmens and I realized that the ecolo
 
 **Stock BC** and Semmens BX. Unifying error structures in commonly used biotracer mixing models. *Ecology* 97(10): 2562-2569. [pdf](/pdf/Stock_Semmens_2016_unifying_error_structures.pdf)
 
+### "Smasher" mantis shrimp: generalist diet despite specialized morphology
+
+Smashing mantis shrimp have a hammer-like club (modified mouthparts) that delivers one of the fastest and most powerful strikes in the animal kingdom. This specialized morphology allows them to break open hard-shelled prey like clams and snails. Through feeding trials and stable isotope mixing models, we found that smashing mantis shrimp eat a generalist diet including fish--despite being physically specialized for consuming hard-shelled prey. One neat aspect of this study is that we showed that this result was robust across several alternative priors in the Bayesian mixing model (i.e. alternative a priori expectations).
+
+deVries MS, **Stock BC**, Christy JH, Goldsmith GR, and Dawson TE. Specialized morphology corresponds to a generalist diet: linking form and function in smashing mantis shrimp crustaceans. *Oecologia* 128(2): 429–442. [pdf](/pdf/deVries_2016_mantis_shrimp.pdf)
