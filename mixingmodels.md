@@ -3,7 +3,6 @@ layout: page
 bigimg:
   - "/img/big-img/mixing_models.jpg"
 ---
-### Bayesian mixing models
 
 Mixing models are statistical tools that use biotracers to estimate contributions of sources to a mixture, for example:
   - Diet in ecology (sources = prey, mixture = consumers)
