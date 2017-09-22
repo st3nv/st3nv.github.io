@@ -1,11 +1,12 @@
 ---
 layout: page
-title: Bayesian mixing models
-subtitle: Estimating diet
+bigimg:
+  - "/img/big-img/mixing_models.jpg"
 ---
+### Bayesian mixing models
 
 Mixing models are statistical tools that use biotracers to estimate contributions of sources to a mixture, for example:
-  - Diet in ecology (sources = prey, mixture = consumers, biotracers = stable isotopes, fatty acids)
+  - Diet in ecology (sources = prey, mixture = consumers)
   - Movement in ecology (sources = regions, mixture = animals that can move between regions)
   - Sediments in river systems (sources = upstream land uses, mixture = downstream sediment)
 
