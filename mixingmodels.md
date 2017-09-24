@@ -33,16 +33,20 @@ deVries MS, **Stock BC**, Christy JH, Goldsmith GR, and Dawson TE. 2016. Special
     - TDF uncertainty
   - Why use MixSIAR?
     - consumer variability (hierarchical covariate effects)
+
 [The guts of MixSIAR](/pdf/MixSIAR_guts_BrianStock_NWFSC_Aug_29_2014.pdf) - NWFSC - Aug 2014
   - Technical details for ecologists
+
 [Use and abuse of mixing models](/pdf/Brian_Stock_MixSIAR_ESA_2015.pdf) - ESA - Aug 2015
   - Bayesian mixing models are not biased, they have priors
   - Constructing informative priors
   - Application to biotracers besides stable isotopes
   - Error structures in MixSIR vs. SIAR vs. MixSIAR
+
 [What do mantis shrimp eat?](/pdf/mantis_shrimp_diet.pdf) - Birch Aquarium + local dive shop - Dec 2015
   - How stable isotopes work (general public audience)
   - Mantis shrimp study results (deVries et al. 2016)
+
 [Bayesian (stable isotope) mixing models: MixSIAR](/pdf/mixsiar_sioSIgroup_052217.pdf) - Scripps Institution of Oceanography - May 2017
   - MixSIAR advances:
     1. Consumer variability via covariate effects (i.e. allow consumers to not all have the same diet)
