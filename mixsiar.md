@@ -21,4 +21,4 @@ These [presentation slides](/pdf/mixsiar_sioSIgroup_052217.pdf) illustrate the a
 
 ### Questions about how to use MixSIAR?
 
-Before contacting me, please see the [Issues tab](https://brianstock.github.io/mixsiar/issues) on the GitHub page - you may find your question/answer already posted! If not, submit a new issue.
+Before contacting me, please see the [Issues tab](https://github.com/brianstock/MixSIAR/issues) on the GitHub page - you may find your question/answer already posted! If not, submit a new issue.
