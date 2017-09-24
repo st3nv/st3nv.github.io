@@ -45,9 +45,8 @@ deVries MS, **Stock BC**, Christy JH, Goldsmith GR, and Dawson TE. 2016. Special
   - Mantis shrimp study results (deVries et al. 2016)
 
 [Bayesian (stable isotope) mixing models: MixSIAR](/pdf/mixsiar_sioSIgroup_052217.pdf) - Scripps Institution of Oceanography - May 2017
-MixSIAR advances:
     1. Consumer variability via covariate effects (i.e. allow consumers to not all have the same diet)
     2. Source uncertainty (fits source data within model, i.e. admit the *sample mean* is not the truth)
-    3. Better error structures (see [Stock and Semmens 2016](/pdf/Stock_Semmens_2016_unifying_error_structures.pdf))
+    3. Better error structures ([Stock and Semmens 2016](/pdf/Stock_Semmens_2016_unifying_error_structures.pdf))
     4. Construct informative priors
     5. Graphical User Interface (GUI) and script versions
