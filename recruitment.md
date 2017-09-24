@@ -2,7 +2,7 @@
 layout: page
 title: Recruitment processes
 bigimg:
-  - "/img/big-img/laser_on_fish.png"
+  - "/img/big-img/eggs.png"
 ---
 
 Much of the tremendous fluctuation in fish population sizes is due to variable conditions experienced by their tiny eggs and larvae--currents, food, and predator distributions. Fine-scale (1-10m) patchiness is likely important to egg and larval survival, but is impossible to resolve using traditional net sampling techniques. Thus, developing new tools capable of observing fish egg distributions at fine scales is important to our mechanistic understanding of why fish populations decline and recover.
