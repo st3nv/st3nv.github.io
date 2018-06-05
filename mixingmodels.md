@@ -15,7 +15,7 @@ In addition to developing open-source software to construct and run mixing model
 ### MixSIAR model description
 
 In this paper we provide guidance to mixing model users and describe the main improvements of MixSIAR over previously existing software (MixSIR, SIAR):
-  1. Better error structures ([Stock and Semmens 2016](/pdf/Stock_Semmens_2016_unifying_error_structures.pdf))
+  1. Better error structures
   2. Constructing informative priors
   3. Options for incorporating source uncertainty (fit source data within model, i.e. admit the *sample mean* is not the truth)
   4. Options for incorporating consumer diet variability via covariate effects, calculate relative support for multiple models via WAIC or LOOic
@@ -42,7 +42,7 @@ Upadhayay HR, Bodé S, Griepentrog M, Huygens D, Bajracharya RM, Blake WH, Derco
 
 ### Presentations
 
-[Bayesian (stable isotope) mixing models: MixSIAR](/pdf/mixsiar_sioSIgroup_052217.pdf) - Scripps Institution of Oceanography - May 2017
+[Bayesian (stable isotope) mixing models: MixSIAR](/pdf/mixsiar_sioSIgroup_052217.pdf) - May 2017
   1. Consumer variability via covariate effects (i.e. allow consumers to not all have the same diet)
   2. Source uncertainty (fits source data within model, i.e. admit the *sample mean* is not the truth)
   3. Better error structures ([Stock and Semmens 2016](/pdf/Stock_Semmens_2016_unifying_error_structures.pdf))

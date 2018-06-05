@@ -13,7 +13,7 @@ Bycatch is an important concern in many fisheries. "Dynamic management" is a rec
 
 This work is still in progress, but I have presented preliminary findings at:
 
-[Can we use random forests for spatiotemporal CPUE modeling?](/pdf/Stock_randomforests_030118_final_small.pdf) - [CAPAM Spatiotemporal Modeling workshop](http://www.capamresearch.org/Spatio-Temporal-Modelling-Mini-Workshop) - Feb 2018
+[Can we use random forests for spatiotemporal CPUE modeling?](/pdf/Stock_randomforests_030118_final_small.pdf) - CAPAM Spatiotemporal Modeling workshop - Feb 2018
 
 [What spatial statistical model is best for predicting fisheries bycatch risk?](/pdf/Stock_bycatch_091117.pdf) - Applied math seminar - Claremont Colleges - Sept 2017
 

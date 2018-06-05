@@ -7,7 +7,7 @@ bigimg:
 
 MixSIAR is an open-source R package ([CRAN](https://cran.r-project.org/package=MixSIAR), [GitHub](https://github.com/brianstock/MixSIAR)) that helps you create and run Bayesian mixing models to analyze biotracer data (i.e. stable isotopes, fatty acids), following the MixSIAR model framework.
 
-MixSIAR represents a collaborative coding project between the investigators behind MixSIR and SIAR: Brice Semmens, Brian Stock, Andrew Jackson, Eric Ward, Andrew Parnell, Donald Phillips, Richard Inger, and Stuart Bearhop.
+MixSIAR represents a collaborative coding project between the investigators behind MixSIR and SIAR: Brice Semmens, Brian Stock, Andrew Jackson, Eric Ward, Andrew Parnell, and Donald Phillips.
 
 ### Why use MixSIAR?
 
@@ -18,6 +18,10 @@ MixSIAR represents a collaborative coding project between the investigators behi
 5. Graphical User Interface (**GUI**) and **script** versions
 
 These [presentation slides](/pdf/mixsiar_sioSIgroup_052217.pdf) illustrate the above points with examples.
+
+### MixSIAR model description
+
+**Stock BC**, Jackson AL, Ward EJ, Parnell AC, Phillips DL, and Semmens BX. 2018. Analyzing mixing systems using a new generation of Bayesian tracer mixing models. *PeerJ Preprints* 6:e26884v1 [https://doi.org/10.7287/peerj.preprints.26884v1](https://doi.org/10.7287/peerj.preprints.26884v1)
 
 ### Questions about how to use MixSIAR?
 
