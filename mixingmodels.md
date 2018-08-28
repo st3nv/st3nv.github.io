@@ -20,7 +20,7 @@ In this paper we provide guidance to mixing model users and describe the main im
   3. Options for incorporating source uncertainty (fit source data within model, i.e. admit the *sample mean* is not the truth)
   4. Options for incorporating consumer diet variability via covariate effects, calculate relative support for multiple models via WAIC or LOOic
 
-**Stock BC**, Jackson AL, Ward EJ, Parnell AC, Phillips DL, and Semmens BX. 2018. Analyzing mixing systems using a new generation of Bayesian tracer mixing models. *PeerJ Preprints* 6:e26884v1 [https://doi.org/10.7287/peerj.preprints.26884v1](https://doi.org/10.7287/peerj.preprints.26884v1)
+**Stock BC**, Jackson AL, Ward EJ, Parnell AC, Phillips DL, and Semmens BX. 2018. Analyzing mixing systems using a new generation of Bayesian tracer mixing models. *PeerJ* 6:e5096. [https://doi.org/10.7717/peerj.5096](https://doi.org/10.7717/peerj.5096)
 
 ### An improved mixing model error structure
 

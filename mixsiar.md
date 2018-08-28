@@ -21,7 +21,7 @@ These [presentation slides](/pdf/mixsiar_sioSIgroup_052217.pdf) illustrate the a
 
 ### MixSIAR model description
 
-**Stock BC**, Jackson AL, Ward EJ, Parnell AC, Phillips DL, and Semmens BX. 2018. Analyzing mixing systems using a new generation of Bayesian tracer mixing models. *PeerJ Preprints* 6:e26884v1 [https://doi.org/10.7287/peerj.preprints.26884v1](https://doi.org/10.7287/peerj.preprints.26884v1)
+**Stock BC**, Jackson AL, Ward EJ, Parnell AC, Phillips DL, and Semmens BX. 2018. Analyzing mixing systems using a new generation of Bayesian tracer mixing models. *PeerJ* 6:e5096. [https://doi.org/10.7717/peerj.5096](https://doi.org/10.7717/peerj.5096)
 
 ### Questions about how to use MixSIAR?
 
