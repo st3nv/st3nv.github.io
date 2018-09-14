@@ -33,7 +33,7 @@ navbar-links:
     - Intro to R: "work-introR"
   Software: 
     - MixSIAR: "mixsiar"    
-  CV: "https://brianstock.github.io/pdf/BrianStock_CV_082818.pdf"
+  CV: "https://brianstock.github.io/pdf/BrianStock_CV_091418.pdf"
 
 # Image to show in the navigation bar - image must be a square (width = height)
 # Remove this parameter if you don't want an image in the navbar
