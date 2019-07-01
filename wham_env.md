@@ -2,7 +2,7 @@
 layout: page
 title: Environmental effects in stock assessments
 bigimg:
-  - "/img/big-img/seakeeper_wide.png"
+  - "/img/big-img/seakeeper_wide.jpg"
 ---
 
 Stock assessment models use data from biological studies, surveys, and fisheries to estimate fish population
