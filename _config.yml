@@ -24,17 +24,18 @@ description: Quantitative marine ecology and fisheries science
 # List of links in the navigation bar
 navbar-links:
   Research:
-    - Mixing models to estimate diet: "mixingmodels"
-    - Spatial bycatch prediction: "spatialbycatch"
-    - Length-based stock assessment: "lengthassess"
+    - State-space stock assessment: "statespace"    
+    - Length-based assessment: "lengthassess"
     - Recruitment processes: "recruitment"
-    - Environmental effects in stock assessments: "wham_env"
+    - Spatial bycatch prediction: "spatialbycatch"    
+    - Mixing models to estimate diet: "mixingmodels"    
   Workshops:
-    - Mixing models: "work-mixingmodels"
+    # - Mixing models: "work-mixingmodels"
     - Intro to R: "work-introR"
   Software: 
+    - WHAM: "wham"
     - MixSIAR: "mixsiar"    
-  CV: "https://brianstock.github.io/pdf/BrianStock_CV_063019.pdf"
+  CV: "https://brianstock.github.io/pdf/BrianStock_CV_110420.pdf"
 
 # Image to show in the navigation bar - image must be a square (width = height)
 # Remove this parameter if you don't want an image in the navbar

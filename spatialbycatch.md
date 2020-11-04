@@ -5,7 +5,7 @@ bigimg:
   - "/img/big-img/DBRK_byyear_lowres.png"
 ---
 
-Catch of non-targeted species (bycatch) is a significant concern in many fisheries, and the first step in evaluating these impacts is to estimate how much bycatch occurs. Together with researchers at the NWFSC (Eric Ward, Jim Thorson, Jason Jannot) and SWFSC (Tomo Eguchi), I have been testing how well different "species distribution models" predict bycatch:
+Catch of non-targeted species (bycatch) is a significant concern in many fisheries, and the first step in evaluating these impacts is to estimate how much bycatch occurs. Together with researchers at the NWFSC (Eric Ward, Jim Thorson, Jason Jannot) and SWFSC (Tomo Eguchi), I compared how well different spatiotemporal model frameworks predict bycatch:
   - GLM
   - GAM 
   - GMRF (INLA-SPDE)
@@ -21,12 +21,8 @@ Quantifying effects of fishing on non-targeted (bycatch) species is an important
 
 "Dynamic management" is a recently proposed approach to reduce bycatch, where maps of bycatch risk hotspots are updated at high frequency (real-time, daily, weekly, etc.). However, which spatiotemporal model framework to use for generating these predictions is unclear. We evaluated several "species distribution models" ability to predict bycatch of six species with a broad range of movement patterns and bycatch rates. Random forests had the best interpolation performance but were more sensitive when predicting data at the edge of the fishery (i.e. spatial extrapolation). Using random forests to identify and remove the 5% highest bycatch risk fishing events reduced the bycatch-to-target species catch ratio by 34% on average. All models considerably reduced the bycatch-to-target ratio, demonstrating the clear potential of species distribution models to support spatial fishery management.
 
-**Stock BC**, Ward EJ, Eguchi T, Jannot JE, Thorson JT, Feist BE, and Semmens BX. In press. Comparing predictions of fisheries bycatch using multiple spatiotemporal species distribution model frameworks. Canadian Journal of Fisheries and Aquatic Sciences. [CJFAS](https://www.nrcresearchpress.com/doi/abs/10.1139/cjfas-2018-0281), [author's copy](/pdf/Stock-2019-comparing-SDMs-spatial-bycatch.pdf)
+**Stock BC**, Ward EJ, Eguchi T, Jannot JE, Thorson JT, Feist BE, and Semmens BX. 2020. Comparing predictions of fisheries bycatch using multiple spatiotemporal species distribution model frameworks. Canadian Journal of Fisheries and Aquatic Sciences. [CJFAS](https://www.nrcresearchpress.com/doi/abs/10.1139/cjfas-2018-0281), [author's copy](/pdf/Stock-2019-comparing-SDMs-spatial-bycatch.pdf)
 
-Preliminary findings and related work were presented at:
+We presented an overview and additional related work at:
 
-[Can we use random forests for spatiotemporal CPUE modeling?](/pdf/Stock_randomforests_030118_final_small.pdf) - CAPAM Spatiotemporal Modeling workshop - Feb 2018
-
-[What spatial statistical model is best for predicting fisheries bycatch risk?](/pdf/Stock_bycatch_091117.pdf) - Applied math seminar - Claremont Colleges - Sept 2017
-
-[Predicting fisheries bycatch risk for dynamic spatial management](/pdf/PSAW_011917_SpatialBycatch_Stock.pdf) - National Protected Species Assessment Workshop - AFSC - Jan 2017
+[Can we use random forests for spatiotemporal CPUE modeling?](/pdf/Stock_randomforests_030118_final_small.pdf) Stock BC, Ward EJ, and Semmens BX. CAPAM Spatiotemporal Modeling workshop, La Jolla, CA, Feb 2018.
