@@ -12,7 +12,5 @@ Dr. Tim Miller and I are developing the Woods Hole Assessment Model ([WHAM](http
 
 Miller TJ and **Stock BC**. The Woods Hole Assessment Model (WHAM), version 1.0. [https://timjmiller.github.io/wham](https://timjmiller.github.io/wham/).
 
-Many marine ecosystems that support fisheries are rapidly changing, and this poses a challenge to stock assessment and management that typically assumes productivity is constant in time. In single-species assessments, two main approaches have been used to account for productivity changes: allowing biological parameters to vary stochastically over time (empirical), or explicitly linking population processes such as recruitment or natural mortality to environmental covariates (mechanistic). 
-
-WHAM combines these two approaches and can estimate time- and age-varying random effects on annual transitions in numbers at age, natural mortality, and selectivity, as well as fit environmental time-series with process and observation errors, missing data, and nonlinear links to recruitment and natural mortality. WHAM can also be configured as a traditional statistical catch-at-age model in order to easily bridge from status quo models and test them against models with state-space and environmental effects, all within a single framework.
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/o8vJvbIaOdE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
