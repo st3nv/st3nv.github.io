@@ -15,6 +15,6 @@ Together with [Jules Jaffe's Lab](http://jaffeweb.ucsd.edu/), we are investigati
 
 This work is still in progress.
 
-3-dimensional advection, diffusion, and mortality of eggs and larvae dispersing from a Nassau Grouper (Epinephelus striatus) spawning aggregation observed with a novel plankton imaging system. **Stock BC**, Mullen AD, Jaffee JS, Candelmo A, Heppell SA, Pattengill-Semmens CV, McCoy CM, Johnson B, and Semmens BX. Larval Fish Conference, Palma de Mallorca, Spain, May 2019. [Slides](https://brianstock.github.io/pdf/BrianStock_NassauGrouper_recruitment_short.pdf)
+**Stock BC**, Mullen AD, Jaffee JS, Candelmo A, Heppell SA, Pattengill-Semmens CV, McCoy CM, Johnson B, and Semmens BX. 3-dimensional advection, diffusion, and mortality of eggs and larvae dispersing from a Nassau Grouper (Epinephelus striatus) spawning aggregation observed with a novel plankton imaging system. Larval Fish Conference, Palma de Mallorca, Spain, May 2019. [Slides](https://brianstock.github.io/pdf/BrianStock_NassauGrouper_recruitment_short.pdf)
 
-Fine-scale dispersal of eggs from a Nassau Grouper spawning aggregation. **Stock BC**, Mullen A, Roberts P, Jaffe JS, Waterhouse L, Pattengill-Semmens C, McCoy C, and Semmens BX. Gulf and Caribbean Fisheries Institute, Grand Cayman, Cayman Islands, Nov 2016. [Abstract](http://proceedings.gcfi.org/wp-content/uploads/2018/10/GCFI_69_97.pdf)
+**Stock BC**, Mullen A, Roberts P, Jaffe JS, Waterhouse L, Pattengill-Semmens C, McCoy C, and Semmens BX. Fine-scale dispersal of eggs from a Nassau Grouper spawning aggregation. Gulf and Caribbean Fisheries Institute, Grand Cayman, Cayman Islands, Nov 2016. [Abstract](http://proceedings.gcfi.org/wp-content/uploads/2018/10/GCFI_69_97.pdf)

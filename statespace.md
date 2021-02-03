@@ -20,6 +20,6 @@ Dr. Tim Miller and I are developing the Woods Hole Assessment Model (WHAM) frame
 
 State-space assessment models can estimate stochastic deviations in survival, which represent variability in some ambiguous combination of natural mortality (*M*), fishing mortality (*F*), and migration. These survival deviations are generally treated as independent by age and year, even though many population processes can be autocorrelated and not accounting for autocorrelation can result in notable bias. We incorporated two-dimensional (2D, age and year) first-order autocorrelation in survival and *M* into the assessment for Southern New England-Mid Atlantic yellowtail flounder. Models with 2D autocorrelation fit the data better and had reduced retrospective pattern than models without autocorrelation.
 
-**Stock BC**, Xu H, Miller TJ, Thorson JT, and Nye JA. Implementing two-dimensional autocorrelation in either survival or natural mortality improves a state-space assessment model for Southern New England-Mid Atlantic yellowtail flounder. In press.
+**Stock BC**, Xu H, Miller TJ, Thorson JT, and Nye JA. 2021. Implementing two-dimensional autocorrelation in either survival or natural mortality improves a state-space assessment model for Southern New England-Mid Atlantic yellowtail flounder. *Fisheries Research*. [https://doi.org/10.1016/j.fishres.2021.105873](https://authors.elsevier.com/a/1cRwJbiU1rjjB)
 
 
