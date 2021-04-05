@@ -12,7 +12,7 @@ Many marine ecosystems that support fisheries are rapidly changing, and this pos
 
 Dr. Tim Miller and I are developing the Woods Hole Assessment Model (WHAM) framework and [software package](https://timjmiller.github.io/wham/), which combines these two approaches. WHAM can estimate time- and age-varying random effects on annual transitions in numbers at age, natural mortality, and selectivity, as well as fit environmental time-series with process and observation errors, missing data, and nonlinear links to recruitment and natural mortality. WHAM can also be configured as a traditional statistical catch-at-age model in order to easily bridge from status quo models and test them against models with state-space and environmental effects, all within a single framework.
 
-**Stock BC** and Miller TJ. The Woods Hole Assessment Model (WHAM): a general state-space assessment framework that incorporates time- and age-varying processes via random effects and links to environmental covariates. In revision. [preprint](https://github.com/brianstock-NOAA/wham-sim/blob/master/paper/wham-sim-paper.pdf)
+**Stock BC** and Miller TJ. The Woods Hole Assessment Model (WHAM): a general state-space assessment framework that incorporates time- and age-varying processes via random effects and links to environmental covariates. *Fisheries Research*. In press. [preprint](https://github.com/brianstock-NOAA/wham-sim/blob/master/paper/wham-sim-paper.pdf)
 
 <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/o8vJvbIaOdE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
