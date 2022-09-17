@@ -14,10 +14,10 @@ baseurl: ""
 # Of course don't forget to change the username and projectname to YOUR username and project
 
 # Name of website
-title: Brian Stock
+title: Tengyu Song
 
 # Short description of your site
-description: Quantitative marine ecology and fisheries science
+description: Data Scientist
 
 # --- Navigation bar options --- #
 
@@ -62,10 +62,10 @@ navbar-links:
 # Change all these values or delete the ones you don't want.
 # Important: you must keep the "name" parameter, everything else you can remove
 author:
-  name: Brian Stock
-  email: "brian.stock@noaa.gov"
+  name: Tengyu Song
+  email: "ts3464@columbia.edu"
   #facebook: yourname  # eg. daattali
-  github: brianstock    # eg. daattali
+  github: st3nv    # eg. daattali
   #twitter: yourname   # eg. daattali
   #reddit: yourname    # eg. daattali
   #google-plus: +yourname   # eg. +DeanAttali or 109424658772469020925
