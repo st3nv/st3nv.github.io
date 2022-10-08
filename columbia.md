@@ -1,10 +1,13 @@
 ---
 layout: page
-title: State-space stock assessment
+title: Me in 
 bigimg:
-  - "/img/big-img/seakeeper_wide.jpg"
+  - "/img/big-img/IMG_7440.png"
 ---
 
 I'm currently studying statistics at Columbia University. Although it's quite empty right now. This page is mainly to share some of my experiences.
 
 ![High Walk](img/big-img/highwalk.png)
+<p align = "center">
+The High Line
+</p>
