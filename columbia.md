@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Me in 
+title: Me in Columbia
 bigimg:
   - "/img/big-img/IMG_7440.png"
 ---
