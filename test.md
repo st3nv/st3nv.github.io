@@ -19,9 +19,3 @@ Here's a useless table:
 | Ten | Eleven | Nine |
 | Seven | Eight | Six |
 | Two | Three | One |
-
-{% slider %}
-  ![alt text 1](img/big-img/WechatIMG65.jpeg)
-  ![alt text 2](img/big-img/WechatIMG66.jpeg)
-  ![alt text 3](img/big-img/WechatIMG68.jpeg)
-{% endslider %}
