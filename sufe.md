@@ -11,7 +11,7 @@ I earned my bachelor degree from Shanghai University of Finance and Economics.
 <p align = "center">
 Me and my roommates</p>
 
-### Projects
+### Research and Projects
 <hr>
 
 #### Defect Detection of PV Cell Panels
