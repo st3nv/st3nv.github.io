@@ -5,9 +5,9 @@ bigimg:
   - "/img/big-img/IMG_7440.png"
 ---
 
-I'm currently studying statistics at Columbia University. Although it's quite empty right now. This page is mainly to share some of my experiences.
+I'm currently studying statistics at Columbia University. This page is mainly to share some of my experiences.
 
 ![High Walk](img/big-img/highwalk.png)
 <p align = "center">
-The High Line
+View from the High Line
 </p>
