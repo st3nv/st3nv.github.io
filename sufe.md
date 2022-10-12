@@ -7,6 +7,6 @@ bigimg:
 
 I earned my bachelor degree from Shanghai University of Finance and Economics.
 
-![Friends](img/big-img/meandmyfriend.jpeg)
+![Friends](img/big-img/meandfriend.jpeg)
 <p align = "center">
 Me and my friends</p>
