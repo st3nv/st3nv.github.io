@@ -11,6 +11,8 @@ I earned my bachelor degree from Shanghai University of Finance and Economics.
 <p align = "center">
 Me and my roommates</p>
 
+<br>
+
 ### Research and Projects
 
 <hr>
