@@ -16,26 +16,21 @@ Me and my roommates</p>
 <hr>
 
 #### Defect Detection of PV Cell Panels
-
-<span style="font-size: 12px;">08/2021 – 12/2021</span>
-
+<span style="font-size: 14px;">08/2021 – 12/2021</span>
 
 -	Utilized Mask-RCNN model in TensorFlow to perform multi-category instance detection on photographed images of PV cell appearance. Achieved 90% recognition accuracy on the testing set.
 -	Designed a fast-and-precise PV cell image cropping algorithm using OpenCV to enhance the model performance. Significantly reduced the difficulty of identification (Increased AP50 value by 0.1).
-<br>
+
 
 #### How to Effectively Stop False Rumor on Microblog    
-
-<span style="font-size: 12px;">05/2020 – 02/2021</span>
+<span style="font-size: 14px;">05/2020 – 02/2021</span>
 
 -	Introduced a propagation model to simulate the confrontation propagation process of false rumors and official fact-checking and debunking.
 -	Crawled over 10,000 tweets related to false rumor and official debunking using python to test how well the propagation model fits the real-world data.
 -	Developed a machine learning model to predict the impact of false rumor tweets with/without official statements using algorithms such as Random Forest and XGBoost.
-<br>
 
 #### Arable Land Area Identification by Satellite Telemetry Images
-
-<span style="font-size: 12px;">01/2021 – 02/2021</span>
+<span style="font-size: 14px;">01/2021 – 02/2021</span>
 
 - Led a team of 3 that applied data enhancement algorithms to ensure that the model could accurately identify and calculate the percentage of cultivated areas in satellite images, based on a U-Net deep learning model.
 - Addressed the small sample size issue using data enhancement algorithms, based on OpenCV and various Image Segmentation algorithms.
