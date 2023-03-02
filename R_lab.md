@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: minimal
 title: R lab
 permalink: /Rlab.html
 ---
@@ -16,6 +16,8 @@ school2 = scan("http://www2.stat.duke.edu/~pdh10/FCBS/Exercises/school2.dat")
 school3 = scan("http://www2.stat.duke.edu/~pdh10/FCBS/Exercises/school3.dat")
 ```
 
-<div>
-<iframe width='400' height='440' src='https://rdrr.io/snippets/embed/' frameborder='0'></iframe>
+Now try it yourself!
+
+<div align="center">
+<iframe width='100%' height='300' src='https://rdrr.io/snippets/embed/?code=print(%22Hello%2C%20world!%22)' frameborder='0'></iframe>
 </div>
