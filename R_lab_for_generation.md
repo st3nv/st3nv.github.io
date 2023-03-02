@@ -17,7 +17,6 @@ Table of Contents
 ### 1.1. Hello World!
 
 ```{r}
-```{r}
 print("Hello World!")
 5 + 5
 ```
@@ -90,7 +89,7 @@ x <- read_excel(xlsx_example)
 Now try it yourself! Just copy and paste
 
 <div align="center">
-<iframe width='100%' height='368' src='https://rdrr.io/snippets/embed/?code=print(%22Hello%2C%20world!%22)' frameborder='0'></iframe>
+<iframe width='100%' height='368' src='https://rdrr.io/snippets/embed/?code=' frameborder='0'></iframe>
 </div>
 
 
