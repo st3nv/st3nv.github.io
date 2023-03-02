@@ -16,7 +16,7 @@ school2 = scan("http://www2.stat.duke.edu/~pdh10/FCBS/Exercises/school2.dat")
 school3 = scan("http://www2.stat.duke.edu/~pdh10/FCBS/Exercises/school3.dat")
 ```
 
-Now try it yourself!
+Now try it yourself! Just copy and paste
 
 <div align="center">
 <iframe width='100%' height='300' src='https://rdrr.io/snippets/embed/?code=print(%22Hello%2C%20world!%22)' frameborder='0'></iframe>
