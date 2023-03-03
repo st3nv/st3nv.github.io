@@ -72,8 +72,50 @@ boxplot(x, range=0)
 <h3 id="36-line-plots">3.5. Line Plots</h3>
 <pre><code class="language-{r}">x &lt;- c(1, 2, 3, 4, 5)
 y &lt;- c(1, 4, 9, 16, 25)
-plot(x, y)
+plot(x, y, type = "p")
 </code></pre>
+
+<p>Notice that we specify the type of plot we want to plot. The default type is "p" which means points. Other Possible types are
+</p>
+<ul>
+    <li>"l" for lines</li>
+    <li>"p" for points </li>
+    <li>"b" for both </li>
+    <li>"c" for the lines part alone of "b"</li>
+    <li>"o" for both "overplotted"</li>
+    <li>"h" for "histogram" like (or "high-density") vertical lines</li>
+    <li>"s" for stair steps</li>
+    <li>"S" for other steps, see "Details" below</li>
+    <li>"n" for no plotting</li>
+
+</ul>
+
+<p>Typically the first three are used the most.</p>
+
+<h3 id="37-more-ele">3.5. Add more elements into our plot</h3>
+<p>Now we want to add more elements into our plot. For example, we want to add a title, x and y labels, and change the color of the points, etc. Some exmaples are</p>
+<ul>
+    <li>main: title</li>
+    <li>xlab: x label</li>
+    <li>ylab: y label</li>
+    <li>col: color</li>
+    <li>lwd: line width</li>
+    <li>lty: line type</li>
+    <li>pch: point type</li>
+    <li>cex: point size</li>
+    <li>font: font family</li>
+    <li>xlim: x axis limits</li>
+    <li>ylim: y axis limits</li>
+    <li>log: log scale</li>
+</ul>
+
+<pre><code class="language-{r}">plot(iris$Sepal.Length, iris$Sepal.Width, main = "Sepal Length vs Width", 
+    xlab = "Sepal Length", ylab = "Sepal Width", col = "red")
+</code></pre>
+
+<p><code>plot</code> is the most basic tool for visualization. There are many other great packages in R like <code>ggplot2</code> which are more powerful and good-looking. Maybe we'll have the chance to introduce them.</p>
+
+
 <h2>Now try it yourself! </h2>
 
 <p>You can use Rstudio on your own computer or the online compiler below.</p>
