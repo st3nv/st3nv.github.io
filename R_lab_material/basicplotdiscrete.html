@@ -30,7 +30,7 @@
 
 <h2 id="3-basic-plots">3. Basic Plots for categorical variables</h2>
 
-<h3 id="34-bar-plots">3.4. Bar Plots</h3>
+<h3 id="34-bar-plots">3.4. Bar Chart</h3>
 <pre><code class="language-{r}"># Ignore this at this moment
 avg &lt;- aggregate(iris$Sepal.Length, by = list(iris$Species), FUN = mean)
 colnames(avg) &lt;- c(&quot;Species&quot;, &quot;value&quot;)
@@ -45,6 +45,20 @@ barplot(Sepal.Length ~ Species, data = iris, col = &quot;red&quot;)
 <h2>Now try it yourself! </h2>
 
 <p>You can use Rstudio on your own computer or the online compiler below.</p>
+
+<h3 id="34-bar-plots">3.4. Stacked Bar Charts </h3>
+
+<p>We first have a contingency table</p>
+<pre><code class="language-{r}">table1 <- table(mtcars$cyl, mtcars$gear, dnn=c("Cylinders", "Gears")) # Creates a contingency table
+addmargins(table1) #Displays the table (Not necessary)
+</code></pre>
+
+<p>Then we can plot it using a stacked bar chart. We need to specify <code>beside = FALSE</code></p>
+
+<pre><code class="language-{r}">barplot(table1, ylab="Frequency", xlab="Gears",beside =FALSE)
+</code></pre>
+
+<h2>Now try it yourself! </h2>
 
 <div align="center">
 <iframe width="100%" height="500" src="https://rdrr.io/snippets/embed/?code=" frameborder="0"></iframe>

@@ -45,7 +45,7 @@ median(iris$Sepal.Length)
 # Standard Deviation
 sd(iris$Sepal.Length)
 
-# Variance
+# Variance(Sample Variance by default)
 var(iris$Sepal.Length)
 
 # Range
@@ -75,6 +75,10 @@ prop.table(table(iris$Species))
 df &lt;- data.frame(sport=c('Baseball', 'Baseball', 'Basketball', 'Football', 'Football','Baseball', 'Basketball'),
                     gender=c('Male', 'Female', 'Male', 'Male', 'Female', 'Male', 'Male'))
 table(df$sport, df$gender)
+
+# Or use addmargins (It will add the total row and column to the table)
+
+addmargins(table(df$sport, df$gender))
 
 # Two-way Tables with Relative Frequency
 prop.table(table(df$sport, df$gender))
