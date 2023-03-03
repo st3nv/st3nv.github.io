@@ -28,16 +28,16 @@
 <article class="markdown-body">
 <h1 id="this-is-the-r-playground-for-the-r_lab"><a href="../R_lab.html" style="color: black;text-decoration:none">This is the R playground for the R_lab</a></h1>
 
-<h2 id="3-basic-plots">3. Basic Plots for continous variables</h2>
+<h2 id="3-basic-plots">4. Basic Plots for continous variables</h2>
 
-<h3 id="31-stem-and-leaf-plots">3.1. Stem and Leaf Plots</h3>
+<h3 id="31-stem-and-leaf-plots">4.1. Stem and Leaf Plots</h3>
 <pre><code class="language-{r}">score &lt;- c(100, 100, 95, 93, 92, 80, 81, 89, 99, 88, 82, 90)
 stem(score, scale = 0.5)
 stem(score, scale = 1)
 
 # What's the difference?
 </code></pre>
-<h3 id="32-histograms">3.2. Histograms</h3>
+<h3 id="32-histograms">4.2. Histograms</h3>
 <pre><code class="language-{r}">data(iris)
 
 # 3 rows, 1 column subplots
@@ -50,7 +50,7 @@ hist(iris$Sepal.Length, breaks = 10)
 # freq = FALSE plots the relative frequency
 hist(iris$Sepal.Length, breaks = 5, freq = FALSE)
 </code></pre>
-<h3 id="33-boxplots">3.3. Boxplots</h3>
+<h3 id="33-boxplots">4.3. Boxplots</h3>
 <pre><code class="language-{r}">x = c(1,2,3,4,5,4,3,2,1,4,2,3,10)
 
 boxplot(x)
@@ -66,10 +66,10 @@ boxplot(x, range=0)
 </code></pre>
 
 
-<h3 id="35-scatterplots">3.4. Scatterplots</h3>
+<h3 id="35-scatterplots">4.4. Scatterplots</h3>
 <pre><code class="language-{r}">plot(iris$Sepal.Length, iris$Sepal.Width)
 </code></pre>
-<h3 id="36-line-plots">3.5. Line Plots</h3>
+<h3 id="36-line-plots">4.5. Line Plots</h3>
 <pre><code class="language-{r}">x &lt;- c(1, 2, 3, 4, 5)
 y &lt;- c(1, 4, 9, 16, 25)
 plot(x, y, type = "p")
@@ -92,7 +92,7 @@ plot(x, y, type = "p")
 
 <p>Typically the first three are used the most.</p>
 
-<h3 id="37-more-ele">3.5. Add more elements into our plot</h3>
+<h3 id="37-more-ele">4.6. Add more elements into our plot</h3>
 <p>Now we want to add more elements into our plot. For example, we want to add a title, x and y labels, and change the color of the points, etc. Some exmaples are</p>
 <ul>
     <li>main: title</li>
