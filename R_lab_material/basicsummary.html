@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../github-markdown-light.css">
+  <style>
+      .markdown-body {
+          box-sizing: border-box;
+          min-width: 200px;
+          max-width: 980px;
+          margin: 0 auto;
+          padding: 45px;
+      }
+  
+      @media (max-width: 767px) {
+          .markdown-body {
+              padding: 15px;
+          }
+      }
+  </style>
+  
+  <title>R lab</title>
+</head>
+
+<article class="markdown-body">
+<h1 id="this-is-the-r-playground-for-the-r_lab"><a href="../R_lab.html" style="color: black;text-decoration:none">This is the R playground for the R_lab</a></h1>
+
+<h2 id="descriptive-data-analysis">Descriptive Data Analysis</h2>
+<h3 id="11-summary-statistics">1.1. Summary Statistics</h3>
+
+<p>As you have learnt in class, here we show how to calculate them in R.</p>
+
+<pre><code class="language-{r}">data(iris)
+summary(iris$Sepal.Length)
+
+# Mean
+mean(iris$Sepal.Length)
+
+# Median
+median(iris$Sepal.Length)
+
+# Standard Deviation
+sd(iris$Sepal.Length)
+
+# Variance
+var(iris$Sepal.Length)
+
+# Range
+range(iris$Sepal.Length)
+
+# Quantiles(Quartiles and Median in our example)
+quantile(iris$Sepal.Length, probs = c(0.25, 0.5, 0.75)
+
+# Interquartile Range
+IQR(iris$Sepal.Length)
+
+# Correlation
+cor(iris$Sepal.Length, iris$Sepal.Width)
+
+# Covariance
+cov(iris$Sepal.Length, iris$Sepal.Width)
+</code></pre>
+<h3 id="12-frequency-tables-and">1.2. Frequency Tables and distributions</h3>
+<p>Many of your homework tasks are to calculate the contingency table or marginal or conditional distributions. Here we show how to calculate them.</p>
+
+<pre><code class="language-{r}">table(iris$Species)
+
+# Relative Frequency
+prop.table(table(iris$Species))
+
+# Two-way Frequency Tables
+df &lt;- data.frame(sport=c('Baseball', 'Baseball', 'Basketball', 'Football', 'Football','Baseball', 'Basketball'),
+                    gender=c('Male', 'Female', 'Male', 'Male', 'Female', 'Male', 'Male'))
+table(df$sport, df$gender)
+
+# Two-way Tables with Relative Frequency
+prop.table(table(df$sport, df$gender))
+
+# Marginal distribution
+# 1 = row, 2 = column, make sure to specify 
+margin.table(table(df$sport, df$gender), 2)
+margin.table(table(df$sport, df$gender), 1)
+
+# Conditional distribution
+prop.table(table(df$sport, df$gender), 2)
+prop.table(table(df$sport, df$gender), 1)
+</code></pre>
+
+<h2>Now try it yourself! </h2>
+
+<p>You can use Rstudio on your own computer or the online compiler below.</p>
+
+<div align="center">
+<iframe width="100%" height="500" src="https://rdrr.io/snippets/embed/?code=" frameborder="0"></iframe>
+</div>
+
+</article>
+
+</html>

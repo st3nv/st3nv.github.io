@@ -26,7 +26,7 @@
 </head>
 
 <article class="markdown-body">
-<h1 id="this-is-the-r-playground-for-the-r_lab">This is the R playground for the R_lab</h1>
+<h1 id="this-is-the-r-playground-for-the-r_lab"><a href="../R_lab.html" style="color: black;text-decoration:none">This is the R playground for the R_lab</a></h1>
 
 <h2 id="1-basic-r-">1. Basic R <a name="basic"></a></h2>
 <p>Let's write our first R code!</p>
@@ -41,7 +41,12 @@ y = 6
 x + y
 
 text &lt;- &quot;Hello World!&quot;
-paste(text, x)</code></pre>
+
+# paste() and paste0() function can be used to concatenate strings and variables, 
+# run the following and see what happens
+
+print(paste(text, x))
+print(paste0(text, x))</code></pre>
 <h3 id="13-vectors">1.3. Vectors</h3>
 <p>Vectors are the most basic data type in R. They can be numeric, character, or logical.
 </p>
@@ -53,6 +58,7 @@ x + y
 
 # It can also be a character vector
 x &lt;- c('1', '2', '3', '4', '5')
+
 # or logical
 x &lt;- c(TRUE, FALSE, TRUE, FALSE, TRUE)</code></pre>
 <h3 id="14-matrices">1.4. Matrices</h3>
@@ -80,16 +86,23 @@ x$age</code></pre>
 <p>There are many ways to create a data frame. One of the most common ways is to read a data file into R. We will learn how to do that in the next section.
 </p>
 
-<p>There are also many other datatype in R, such as lists, arrays, factors, and data tables. You probably won't use them in this course.
-</p>
+<h3 id="14-matrices">1.6. factors</h3>
+<p>Factors are used to represent categorical variables with limited number of unique values. Like &quot; Male&quot; or &quot;Female&quot; </p> 
+
+<pre><code>x &lt;- factor(c(&quot;Male&quot;, &quot;Female&quot;, &quot;Male&quot;, &quot;Female&quot;, &quot;Male&quot;))
+</code></pre>
+
+<br>
+<p>There are also many other datatype in R, such as lists, arrays, and data tables. You can explore them on your own.</p>
 
 
 
 
 <h2>Now try it yourself!</h2>
+<p>You can use Rstudio on your own computer or the online compiler below.</p>
 
 <div align="center">
-<iframe width="100%" height="368" src="https://rdrr.io/snippets/embed/?code=" frameborder="0"></iframe>
+<iframe width="100%" height="500" src="https://rdrr.io/snippets/embed/?code=" frameborder="0"></iframe>
 </div>
 
 </article>

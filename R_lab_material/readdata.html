@@ -26,24 +26,62 @@
 </head>
 
 <article class="markdown-body">
-<h1 id="this-is-the-r-playground-for-the-r_lab">This is the R playground for the R_lab</h1>
+<h1 id="this-is-the-r-playground-for-the-r_lab"><a href="../R_lab.html" style="color: black;text-decoration:none">This is the R playground for the R_lab</a></h1>
 
-<h2 id="1-basic-r">1. Basic R</h2>
-<h3> </h3>
+<h2 id="2-reading-data-">2. Reading Data <a name="readdata"></a></h2>
 
-<pre><code class="language-{r}">set.seed(31)
-library(invgamma)
+<p>There are many ways to read data in R. Here we show how to read data from a CSV file, an Excel file, and a Dat file.</p>
+<p> You will need to use the path to the file on your computer, or on the Internet.</p>
+<p>If you don't know how to get the path to the file...</p>
+<ol>
+    <li>For windows users, just click the top bar of your file explorer and copy it.</li>
+    <li>For Mac users, right click on the file and select &quot;Get Info&quot;. Right click &quot;Where&quot; and copy as pathname. Or you can press <code>Option</code>+<code>Command</code>+<code>P</code> to show the path bar, then right click and select &quot;Copy ... as pathname&quot;</li>
+</ol>
 
-school1 = scan("http://www2.stat.duke.edu/~pdh10/FCBS/Exercises/school1.dat")
-school2 = scan("http://www2.stat.duke.edu/~pdh10/FCBS/Exercises/school2.dat")
-school3 = scan("http://www2.stat.duke.edu/~pdh10/FCBS/Exercises/school3.dat")
+<h3 id="21-csv-files">2.1 CSV files</h3>
+<pre><code class="language-{r}">URL = &quot;https://gist.githubusercontent.com/netj/8836201/raw/6f9306ad21398ea43cba4f7d537619d0e07d5ae3/iris.csv&quot;
+x &lt;- read.csv(URL)
+
+# or
+
+x &lt;- read.table(URL, sep = &quot;,&quot;, header = TRUE)
+head(x)
+</code></pre>
+<h3 id="22-excel-files">2.2 Excel files</h3>
+<pre><code class="language-{r}">install.packages(&quot;readxl&quot;)
+library(readxl)
+xlsx_example &lt;- readxl_example(&quot;datasets.xlsx&quot;)
+x &lt;- read_excel(xlsx_example)
+head(x)
 </code></pre>
 
-<p>Now try it yourself!</p>
+<h3 id="23-dat-files">2.3 Dat files</h3>
+<pre><code>read.table(&quot;http://www.nilu.no/projects/ccc/onlinedata/ozone/CZ03_2009.dat&quot;, header=TRUE, skip=3)
+</code></pre>
+
+<h3>If you want...</h3>
+<p>You can use <code>file.choose()</code> instead of path to file to select your file with a GUI. But you have to do it everytime you run the code.</p> 
+
+<pre><code class="language-{r}">x &lt;- read.csv(file.choose())
+</code></pre>
+
+<h3>A little tip</h3>
+
+<p>You can set the work directory to a folder to avoid typing long pathnames</p>
+<pre><code class="language-{r}">setwd(&quot;C:/Users/username/Documents/R_lab_material&quot;)
+</code></pre>
+
+<p>You can also read data from a database, a web page, or a text file. <a href="https://www.rdocumentation.org/packages/utils/versions/3.6.2/topics/read.table">Read more here</a>.
+</p>
+
+<h2>Now try it yourself! </h2>
+
+<p>You can use Rstudio on your own computer or the online compiler below.</p>
 
 <div align="center">
-<iframe width="100%" height="368" src="https://rdrr.io/snippets/embed/?code=" frameborder="0"></iframe>
+<iframe width="100%" height="500" src="https://rdrr.io/snippets/embed/?code=" frameborder="0"></iframe>
 </div>
+
 </article>
 
 </html>

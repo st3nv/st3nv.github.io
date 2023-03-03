@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../github-markdown-light.css">
+  <style>
+      .markdown-body {
+          box-sizing: border-box;
+          min-width: 200px;
+          max-width: 980px;
+          margin: 0 auto;
+          padding: 45px;
+      }
+  
+      @media (max-width: 767px) {
+          .markdown-body {
+              padding: 15px;
+          }
+      }
+  </style>
+  
+  <title>R lab</title>
+</head>
+
+<article class="markdown-body">
+<h1 id="this-is-the-r-playground-for-the-r_lab"><a href="../R_lab.html" style="color: black;text-decoration:none">This is the R playground for the R_lab</a></h1>
+
+<h2 id="3-basic-plots">3. Basic Plots for continous variables</h2>
+
+<h3 id="31-stem-and-leaf-plots">3.1. Stem and Leaf Plots</h3>
+<pre><code class="language-{r}">score &lt;- c(100, 100, 95, 93, 92, 80, 81, 89, 99, 88, 82, 90)
+stem(score, scale = 0.5)
+stem(score, scale = 1)
+
+# What's the difference?
+</code></pre>
+<h3 id="32-histograms">3.2. Histograms</h3>
+<pre><code class="language-{r}">data(iris)
+
+# 3 rows, 1 column subplots
+par(mfrow = c(3, 1))
+
+# breaks controls the number of bins
+hist(iris$Sepal.Length, breaks = 5)
+hist(iris$Sepal.Length, breaks = 10)
+
+# freq = FALSE plots the relative frequency
+hist(iris$Sepal.Length, breaks = 5, freq = FALSE)
+</code></pre>
+<h3 id="33-boxplots">3.3. Boxplots</h3>
+<pre><code class="language-{r}">x = c(1,2,3,4,5,4,3,2,1,4,2,3,10)
+
+boxplot(x)
+# range controls the whiskers, if range = 0, whiskers are extended to the data extremes
+boxplot(x, range=0)
+</code></pre>
+
+<p>We can also plot boxplot against a categorical variable. Here we use a so called formula method</p>
+<p>In formula method we use <code>~</code> to separate the variables. The left hand side is the dependent variable and the right hand side is the independent variable.
+</p>
+
+<pre><code class="language-{r}">boxplot(Sepal.Length ~ Species, data = iris)
+</code></pre>
+
+
+<h3 id="35-scatterplots">3.4. Scatterplots</h3>
+<pre><code class="language-{r}">plot(iris$Sepal.Length, iris$Sepal.Width)
+</code></pre>
+<h3 id="36-line-plots">3.5. Line Plots</h3>
+<pre><code class="language-{r}">x &lt;- c(1, 2, 3, 4, 5)
+y &lt;- c(1, 4, 9, 16, 25)
+plot(x, y)
+</code></pre>
+<h2>Now try it yourself! </h2>
+
+<p>You can use Rstudio on your own computer or the online compiler below.</p>
+
+<div align="center">
+<iframe width="100%" height="500" src="https://rdrr.io/snippets/embed/?code=" frameborder="0"></iframe>
+</div>
+
+</article>
+
+</html>
