@@ -30,6 +30,17 @@
 
 <h2 id="3-basic-plots">5. Basic Plots for categorical variables</h2>
 
+<h3 id="34-bar-plots">5.1 Basic Bar Chart</h3>
+<p>Let's plot the counts of a categorical variable</p>
+<pre><code class="language-{r}"># Load the mtcars dataset
+data(mtcars)
+# Create a table with the counts of the variable cyl
+table1 <- table(mtcars$cyl)
+# Plot the bar chart
+barplot(table1, ylab="Frequency", xlab="Cylinders", main="Bar Chart", col="turquoise4")
+</code></pre>
+
+
 <h3 id="34-bar-plots">5.1 Grouped Bar Chart</h3>
 <p>We first need a contingency table</p>
 <pre><code class="language-{r}"># Creates a contingency table, dnn is the names of the rows and columns
