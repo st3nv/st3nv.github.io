@@ -74,6 +74,7 @@ mtcars$cyl <- factor(mtcars$cyl) # Create categorical variable
 p <- ggplot(data = mtcars, aes(x=gear, fill=cyl) ) + geom_bar() # Creates stacked bar chart
 p <- p + xlab("Gears") + ggtitle("Cylinders by Gears") # Adds title and labels
 p</code></pre>
+
 <h3 id="34-bar-plots">5.4. Percent stacked barchart</h3>
 
 <p>First we need to create a contingency table with percentages</p>

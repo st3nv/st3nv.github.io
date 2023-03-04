@@ -67,12 +67,7 @@ boxplot(x, range=0)
 
 
 <h3 id="35-scatterplots">4.4. Scatterplots</h3>
-<pre><code class="language-{r}">plot(iris$Sepal.Length, iris$Sepal.Width)
-</code></pre>
-<h3 id="36-line-plots">4.5. Line Plots</h3>
-<pre><code class="language-{r}">x &lt;- c(1, 2, 3, 4, 5)
-y &lt;- c(1, 4, 9, 16, 25)
-plot(x, y, type = "p")
+<pre><code class="language-{r}">plot(iris$Sepal.Length, iris$Sepal.Width, type = "p")
 </code></pre>
 
 <p>Notice that we specify the type of plot we want to plot. The default type is "p" which means points. Other Possible types are
@@ -92,7 +87,13 @@ plot(x, y, type = "p")
 
 <p>Typically the first three are used the most.</p>
 
-<h3 id="37-more-ele">4.6. Add more elements into our plot</h3>
+<h3 id="36-line-plots">4.5. Line Plots</h3>
+<pre><code class="language-{r}">x &lt;- c(1, 2, 3, 4, 5)
+y &lt;- c(1, 4, 9, 16, 25)
+plot(x, y, type = "l")
+</code></pre>
+
+<h3 id="37-more-ele">4.6. Add/Change elements of our plot</h3>
 <p>Now we want to add more elements into our plot. For example, we want to add a title, x and y labels, and change the color of the points, etc. Some exmaples are</p>
 <ul>
     <li>main: title</li>
