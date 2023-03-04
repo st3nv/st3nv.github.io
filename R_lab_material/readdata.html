@@ -55,6 +55,14 @@ x &lt;- read_excel(xlsx_example)
 head(x)
 </code></pre>
 
+<h3 id="22-inspect">2.3 Inspect your data</h3>
+<p>There are many ways to take look at your data. The easiest way is to click on the dataframe in Environment. It will show a table in a new tab.</p>
+<p>Another way is to use <code>head()</code> and <code>tail()</code> to show the first and last 6 rows of the data.</p>
+<pre><code class="language-{r}"># You can control how many rows you want to show by changing the n argument
+head(df, n = 10)
+tail(df, n = 10)
+</code></pre>
+
 <h3>If you want...</h3>
 <p>You can use <code>file.choose()</code> instead of path to file to select your file with a GUI. But you have to do it everytime you run the code.</p> 
 
