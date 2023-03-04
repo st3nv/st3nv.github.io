@@ -41,9 +41,9 @@ barplot(table1, ylab="Frequency", xlab="Cylinders", main="Bar Chart", col="turqu
 </code></pre>
 
 
-<h3 id="34-bar-plots">5.1 Grouped Bar Chart</h3>
+<h3 id="34-bar-plots">5.2 Grouped Bar Chart</h3>
 <p>We first need a contingency table</p>
-<pre><code class="language-{r}"># Creates a contingency table, dnn is the names of the rows and columns
+<pre><code class="language-{r}"># Creates a contingency table, <code>dnn</code> specify the names of the rows and columns
 table1 <- table(mtcars$cyl, mtcars$gear, dnn=c("Cylinders", "Gears")) 
 #Displays the table (Not necessary)
 addmargins(table1) 
@@ -56,7 +56,7 @@ legend("right", title="Cylinders", legend= sort(unique(mtcars$cyl)),
     fill =c("turquoise4", "turquoise2", "turquoise" ), box.lty=0)
 </code></pre>
 
-<h3 id="34-bar-plots">5.2. Stacked Bar Charts </h3>
+<h3 id="34-bar-plots">5.3. Stacked Bar Charts </h3>
 
 
 <p>Then we can plot it using a stacked bar chart. We need to specify <code>beside = FALSE</code></p>
@@ -74,7 +74,7 @@ mtcars$cyl <- factor(mtcars$cyl) # Create categorical variable
 p <- ggplot(data = mtcars, aes(x=gear, fill=cyl) ) + geom_bar() # Creates stacked bar chart
 p <- p + xlab("Gears") + ggtitle("Cylinders by Gears") # Adds title and labels
 p</code></pre>
-<h3 id="34-bar-plots">5.3. Percent stacked barchart</h3>
+<h3 id="34-bar-plots">5.4. Percent stacked barchart</h3>
 
 <p>First we need to create a contingency table with percentages</p>
 <pre><code class="language-{r}">table2 <- addmargins(table1) # Creates a contingency table
@@ -105,7 +105,7 @@ p</code></pre>
 <li><a href="https://r-graph-gallery.com/stacked-barplot.html">Stacked barplot</a></li>
 </ul>
 
-<h3 id="34-bar-plots">5.4. Pie Chart</h3>
+<h3 id="34-bar-plots">5.5. Pie Chart</h3>
 <p>We can use <code>pie</code> to create a pie chart</p>
 
 <pre><code class="language-{r}">df &lt;- data.frame(sport=c('Baseball', 'Baseball', 'Basketball', 'Football', 'Football','Baseball', 'Basketball'),
