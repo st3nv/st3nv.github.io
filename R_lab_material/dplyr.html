@@ -30,6 +30,117 @@
 
 <h2 id="descriptive-data-analysis">6.Advanced data wrangling with dplyr</h2>
 
+<p>Now that you have learned the basics of R and are able to perfrom some simple data analysis. Let's take a look at the dplyr package. </p>
+
+<p>dplyr is a package that makes it easy to manipulate data frames. It is part of the tidyverse, a collection of packages designed to work together to make data science fast and fun. </p>
+
+<p>Let's start by loading the dplyr package.</p>
+
+<pre><code class="r">library(dplyr)
+</code></pre>
+
+<p>Let's load the iris dataset as an example.</p>
+
+<pre><code class="r">data(iris)
+</code></pre>
+
+<p>Let's take a look at the first 6 rows of the dataset.</p>
+
+<pre><code class="r">head(iris)
+</code></pre>
+
+<h3>6.1 How to summarize data by group</h3>
+
+<p>Let's say we want to know the average sepal length for each species. We can use the <code>group_by()</code> function to group the data by species and then use the <code>summarize()</code>function to calculate the average sepal length.</p>
+
+<pre><code class="r">iris %&gt;% group_by(Species) %&gt;% summarize(mean(Sepal.Length))
+</code></pre>
+
+<p>Here you can see a little <code>%>%</code> between different commands. Interesting... So how does this work?</p>
+
+<p>To explain how <code>%>%</code> works in a simple way, it is called the forward pipe operator. It provides a mechanism for chaining commands together. <code>%>%</code> will forward a value, or the result of an expression, into the next function.</p>
+
+<p>In our case, we first perfrom <code>group_by()</code> on the dataframe <code>iris</code>, then pass the result of <code>group_by()</code> to <code>summarize()</code>. </p>
+
+<p>In <code>summarize()</code>, we can change <code>mean()</code> to other functions like we used in <a href="basicsummary.html">Basic Summary</a>. We can also calculate multiple summary statistics at once. For example,</p>
+
+<pre><code class="r">iris %&gt;% 
+group_by(Species) %&gt;% 
+summarize(mean(Sepal.Length), median(Sepal.Length), sd(Sepal.Length))
+</code></pre>
+
+<p>Here we calculate the mean, median and standard deviation of sepal length for each species.</p>
+
+<h3>6.2 How to filter data</h3>
+
+<p>Let's say we want to filter the data to only include the observations where the sepal length is greater than 5. We can use the <code>filter()</code> function to do this.</p>
+
+<h3>6.3 How to sort our data.</h3>
+
+<p>Let's say we want to sort the data by sepal length. We can use the <code>arrange()</code> function to do this.</p>
+
+<pre><code class="r">iris %&gt;% arrange(Sepal.Length) 
+</code></pre>
+
+<p>By default, <code>arrange()</code> will sort the data in ascending order. If we want to sort the data in descending order, we can use the <code>desc()</code> function.</p>
+
+<pre><code class="r">iris %&gt;% arrange(desc(Sepal.Length))
+</code></pre>
+
+<h3>6.4 How to select columns</h3>
+
+<p>Let's say we want to select only the sepal length and sepal width columns. We can use the <code>select()</code> function to do this.</p>
+
+<pre><code class="r">iris %&gt;% select(Sepal.Length, Sepal.Width)
+</code></pre>
+
+<p>By default, <code>select()</code> will return all the columns that are not specified. If we want to select all the columns except the sepal length and sepal width, we can use the <code>everything()</code> function.</p>
+
+<pre><code class="r">iris %&gt;% select(everything(), -Sepal.Length, -Sepal.Width)
+</code></pre>
+
+<h3>6.5 How to rename columns</h3>
+
+<p>Let's say we want to rename the sepal length column to sepal_length. We can use the <code>rename()</code> function to do this.</p>
+
+<pre><code class="r">iris %&gt;% rename(sepal_length = Sepal.Length)
+</code></pre>
+
+<h3>6.6 How to mutate columns / create new columns</h3>
+
+<p>Let's say we want to create a new column called sepal_ratio which is the ratio of sepal length to sepal width. We can use the <code>mutate()</code> function to do this.</p>
+
+<pre><code class="r">iris %&gt;% mutate(sepal_ratio = Sepal.Length/Sepal.Width)
+</code></pre>
+
+<h3>6.7 How to join data frames</h3>
+
+<p>Let's say we want to join two data frames. We can use the <code>left_join()</code> function to do this.</p>
+
+<pre><code class="r">data(iris)
+data(iris2)
+iris %&gt;% left_join(iris2, by = "Species")
+</code></pre>
+
+<p>Here we use the <code>by</code> argument to specify the column to join on. There are also other join functions like <code>right_join()</code>, <code>inner_join()</code> and <code>full_join()</code>. </p>
+
+<ul>
+    <li>Left join will keep all the rows in the left data frame and only keep the rows in the right data frame that match the left data frame. 
+    </li>
+    <li>Right join will keep all the rows in the right data frame and only keep the rows in the left data frame that match the right data frame.</li>
+    <li>Inner join will keep only the rows that match in both data frames.</li>
+    <li>Full join will keep all the rows in both data frames.</li>
+
+</ul>
+
+
+
+<p>For more information about join functions, please refer to <a href="https://r-coder.com/merge-r/">How to merge tables in R?</a></p>
+
+
+
+
+
 <h2>Now try it yourself! </h2>
 
 <p>You can use Rstudio on your own computer or the online compiler below.</p>
