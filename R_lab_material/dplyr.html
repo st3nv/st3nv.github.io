@@ -75,6 +75,35 @@ summarize(mean(Sepal.Length), median(Sepal.Length), sd(Sepal.Length))
 
 <p>Let's say we want to filter the data to only include the observations where the sepal length is greater than 5. We can use the <code>filter()</code> function to do this.</p>
 
+<pre><code class="r">iris %&gt;% filter(Sepal.Length > 5)
+</code></pre>
+
+<p>If we have multiple filter rules, we can use the <code>&amp;</code> operator to combine them.</p>
+
+<pre><code class="r">iris %&gt;% filter(Sepal.Length > 5 &amp; Sepal.Width > 3)
+</code></pre>
+
+<p>Similarly, we can use the <code>|</code> operator to combine multiple filter rules with <code>or</code> logic.</p>
+
+<pre><code class="r">iris %&gt;% filter(Sepal.Length > 5 | Sepal.Width > 3)
+</code></pre>
+
+<p>Finally, we can use the <code>!()</code> operator to negate a filter rule.</p>
+
+<pre><code class="r">iris %&gt;% filter(!Sepal.Length > 5)
+</code></pre>
+
+<p>Here we filter the data to only include the observations where the sepal length is not greater than 5.</p>
+
+<p>Another way to filter the data is to use the <code>subset()</code> function.</p>
+
+<pre><code class="r">subset(iris, Sepal.Length > 5)
+
+subset(iris, Sepal.Length > 5 &amp; Sepal.Width > 3)
+</code></pre>
+
+<p>However, <code>subset()</code> is not as flexible as <code>filter()</code>. For example, we cannot use <code>!()</code> to negate a filter rule.</p>
+
 <h3>6.3 How to sort our data.</h3>
 
 <p>Let's say we want to sort the data by sepal length. We can use the <code>arrange()</code> function to do this.</p>
