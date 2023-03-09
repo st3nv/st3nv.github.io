@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../github-markdown-light.css">
+  <style>
+      .markdown-body {
+          box-sizing: border-box;
+          min-width: 200px;
+          max-width: 980px;
+          margin: 0 auto;
+          padding: 45px;
+      }
+  
+      @media (max-width: 767px) {
+          .markdown-body {
+              padding: 15px;
+          }
+      }
+  </style>
+  
+  <title>R lab</title>
+</head>
+
+<article class="markdown-body">
+<h1 id="this-is-the-r-playground-for-the-r_lab"><a href="../R_lab.html" style="color: black;text-decoration:none">This is the R playground for the R_lab</a></h1>
+
+<h2 id="descriptive-data-analysis">7. Statistical analysis in R</h2>
+
+<p>R is especially handy when it comes to statistical analysis of data</p>
+
+<h3 id="11-summary-statistics">7.1. t test</h3>
+
+<p>As you have learnt in class, here we show how to perform t-test in R.</p>
+
+<pre><code class="language-{r}">data(iris)
+t.test(iris$Sepal.Length, iris$Sepal.Width)
+</code></pre>
+
+<h3>7.2 Simple linear regression</h3>
+
+<p>Doing linear regression in R is very easy. We just need to use <code>lm</code> and specify the dependent and independent variables.</p>
+
+<p>Here is an example of simple linear regression, where we are trying to predict Sepal Length using Sepal Width. We saw the operator <code>~</code> before in creating plots. It's called formula method.</p>
+
+<pre><code class="language-{r}">data(iris)
+lm1 <- lm(iris$Sepal.Length ~ iris$Sepal.Width)
+</code></pre>
+
+<p>Then we can use <code>summary</code> to get the summary of the model.</p>
+
+<pre><code class="language-{r}">summary(lm1)
+</code></pre>
+
+<p>And we can use <code>predict</code> to predict the values of Sepal Length using Sepal Width. For example, if we want to predict the Sepal Length when Sepal Width is 3.5, we can do the following.</p>
+
+<pre><code class="language-{r}">predict(lm1, 3.5)
+</code></pre>
+
+<h3>7.3 Multiple linear regression</h3>
+
+<p>To perform multiple linear regression in R, we need to include all the variables in the model.</p>
+
+<pre><code class="language-{r}">data(iris)
+lm(iris$Sepal.Length ~ iris$Sepal.Width + iris$Petal.Length + iris$Petal.Width)
+</code></pre>
+
+<h3>7.4 ANOVA</h3>
+
+<p>As you have learnt in class, here we show how to perform ANOVA in R.</p>
+
+<pre><code class="language-{r}">data(iris)
+aov(iris$Sepal.Length ~ iris$Species)
+</code></pre>
+
+
+
+
+
+
+
+<h2>Now try it yourself! </h2>
+
+<p>You can use Rstudio on your own computer or the online compiler below.</p>
+
+<div align="center">
+<iframe width="100%" height="500" src="https://rdrr.io/snippets/embed/?code=" frameborder="0"></iframe>
+</div>
+
+</article>
+
+</html>
