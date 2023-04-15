@@ -30,19 +30,11 @@
 
 <h2 id="Factor Variable">1. Factor variables</h2>
 
-<p> R prefers to store categorical variables as factor variables. <br>
-    To do this, convert categorical variables into factors using the function <code>factor()</code>
-
-<pre>
-<code class="language-{r}">data(iris)
-</pre>
-
+<p>R prefers to store categorical variables as factor variables. To do this, convert categorical variables into factors using the function <code>factor()</code>
 
 <h2 id="Contingency Table">2. Contingency Table</h2>
 
-<p> A contingency table is a table that shows the relationship between two categorical variables. <br>
-    To do this, use the function <code>table()</code>
-</p> 
+<p> A contingency table is a table that shows the relationship between two categorical variables. We can use the function <code>table()</code> to create one.</p> 
 
 <p>Make sure you convert your categorical variables into factor before calling it.</p>
 
@@ -50,24 +42,28 @@
 <pre>
 <code class="language-{r}">table(cereals.mfr)
 </pre>
+
 <p>Use it to calculate proportions</p>
+
 <pre>
 <code class="language-{r}">round(table(cereals.mfr)/length(cereals.mfr),2)
 </pre>
-Note <code>round()</code> function is used to round the numbers to 2 decimal places.
-<br>
-We can also use <code>prop.table()</code> function to calculate proportions.
+
+<p> Note <code>round()</code> function is used to round the numbers to 2 decimal places. </p>
+
+<p>We can also use <code>prop.table()</code> function to calculate proportions.</p>
+
 <pre>
 <code class="language-{r}">round(prop.table(table(cereals.mfr)),2)
 </pre>
-Notice that we get the same result as above.
+
+<p>Notice that we get the same result as above.</p>
 
 <h3>2.2 Two variables</h3>
 
 <p>In statistical analysis, investigating the association between two categorical variables is a common task.  Recall from the lecture notes that contingency tables are used to summarize two categorical variables. </p>
 
 <pre><code class="language-{r}">table(iris$Species)
-
 # Convert categorical variables into factors
 cereals.shelf = factor(cereals_data$shelf)
 
@@ -100,6 +96,16 @@ prop.table(CT1, 1)
 
 <h2 id="">Scatter plot and linear regression</h2>
 
+<p>Scatter plots are used to visualize the relationship between two quantitative variables. </p>
+
+<p>Linear regression is a statistical method that is used to model the relationship between a quantitative response variable and one or more explanatory variables. </p>
+
+<pre>
+<code class="language-{r}">cereals.calories &lt;- cereals_data$calories
+cereals.sugars &lt;- cereals_data$sugars
+plot(cereals.sugars, cereals.calories, xlab="Sugars", ylab="Calories", main="Calories vs Sugars")
+</code>
+</pre>
 
 <h2>Now try it yourself! </h2>
 
