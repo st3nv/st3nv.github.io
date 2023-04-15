@@ -41,12 +41,14 @@
 <h3>2.1 One variable</h3>
 <pre>
 <code class="language-{r}">table(cereals.mfr)
+</code>
 </pre>
 
 <p>Use it to calculate proportions</p>
 
 <pre>
 <code class="language-{r}">round(table(cereals.mfr)/length(cereals.mfr),2)
+</code>
 </pre>
 
 <p> Note <code>round()</code> function is used to round the numbers to 2 decimal places. </p>
@@ -55,6 +57,7 @@
 
 <pre>
 <code class="language-{r}">round(prop.table(table(cereals.mfr)),2)
+</code>
 </pre>
 
 <p>Notice that we get the same result as above.</p>
@@ -91,6 +94,7 @@ prop.table(CT1, 1)
 
 <pre>
 <code class="language-{r}">barplot(prop.table(CT1, 2), main="Shelf Distribution by Manufacturer", xlab="Shelf", ylab="Proportion", col=c("red","green","blue"))
+</code>
 </pre>
 
 
