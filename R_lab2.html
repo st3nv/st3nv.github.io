@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../github-markdown-light.css">
+  <style>
+      .markdown-body {
+          box-sizing: border-box;
+          min-width: 200px;
+          max-width: 980px;
+          margin: 0 auto;
+          padding: 45px;
+      }
+  
+      @media (max-width: 767px) {
+          .markdown-body {
+              padding: 15px;
+          }
+      }
+  </style>
+  
+  <title>R lab Session 2</title>
+</head>
+
+<article class="markdown-body">
+<h1 id="R Lab 2, Sat Apr 15"><a href="../R_lab.html" style="color: black;text-decoration:none">R Lab 2, Sat Apr 15</a></h1>
+
+<h2 id="Factor Variable">1. Factor variables</h2>
+
+<p> R prefers to store categorical variables as factor variables. <br>
+    To do this, convert categorical variables into factors using the function <code>factor()</code>
+
+<pre>
+<code class="language-{r}">data(iris)
+</pre>
+
+
+<h2 id="Contingency Table">2. Contingency Table</h2>
+
+<p> A contingency table is a table that shows the relationship between two categorical variables. <br>
+    To do this, use the function <code>table()</code>
+</p> 
+
+<p>Make sure you convert your categorical variables into factor before calling it.</p>
+
+<h3>2.1 One variable</h3>
+<pre>
+<code class="language-{r}">table(cereals.mfr)
+</pre>
+<p>Use it to calculate proportions</p>
+<pre>
+<code class="language-{r}">round(table(cereals.mfr)/length(cereals.mfr),2)
+</pre>
+Note <code>round()</code> function is used to round the numbers to 2 decimal places.
+<br>
+We can also use <code>prop.table()</code> function to calculate proportions.
+<pre>
+<code class="language-{r}">round(prop.table(table(cereals.mfr)),2)
+</pre>
+Notice that we get the same result as above.
+
+<h3>2.2 Two variables</h3>
+
+<p>In statistical analysis, investigating the association between two categorical variables is a common task.  Recall from the lecture notes that contingency tables are used to summarize two categorical variables. </p>
+
+<pre><code class="language-{r}">table(iris$Species)
+
+# Convert categorical variables into factors
+cereals.shelf = factor(cereals_data$shelf)
+
+# Two-way Frequency Tables
+CT1 &lt;-table(cereals.mfr,cereals.shelf)
+CT1
+
+# Add Sums
+addmargins(CT1)
+
+# Two-way Tables with Relative Frequency
+prop.table(CT1)
+
+# Marginal distribution
+# 1 = row, 2 = column, make sure to specify 
+margin.table(CT1, 2)
+margin.table(CT1, 1)
+
+# Conditional distribution
+prop.table(CT1, 2)
+prop.table(CT1, 1)
+</code></pre>
+
+<p>We can use Conditional distribution to create a barplot.</p>
+
+<pre>
+<code class="language-{r}">barplot(prop.table(CT1, 2), main="Shelf Distribution by Manufacturer", xlab="Shelf", ylab="Proportion", col=c("red","green","blue"))
+</pre>
+
+
+<h2 id="">Scatter plot and linear regression</h2>
+
+
+<h2>Now try it yourself! </h2>
+
+<p>You can use Rstudio on your own computer or the online compiler below.</p>
+
+<div align="center">
+<iframe width="100%" height="500" src="https://rdrr.io/snippets/embed/?code=" frameborder="0"></iframe>
+</div>
+
+</article>
+
+</html>
