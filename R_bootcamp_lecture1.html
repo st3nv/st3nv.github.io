@@ -375,6 +375,7 @@ matrix(data, nrow = row_count, ncol = column_count) -->
 x -->
 
 <pre><code class="language-{r}">x &lt;- matrix(c(1, 2, 3, 4, 5, 6), nrow = 2, ncol = 3)
+x</code></pre>
 
 <!-- Note that the data will fill up the columns by default. If you want to fill up by row, modify the code as: 
 matrix(data, nrow = row_count, ncol = column_count, byrow=TRUE) -->
@@ -386,6 +387,7 @@ matrix(data, nrow = row_count, ncol = column_count, byrow=TRUE) -->
 x -->
 
 <pre><code class="language-{r}">x &lt;- matrix(c(1, 2, 3, 4, 5, 6), nrow = 2, ncol = 3, byrow=TRUE)
+x</code></pre>
 
 <!-- Also The dimension of the data must match the nrow and ncol you assign.
 You can just specify one of the nrow and ncol.
@@ -407,7 +409,8 @@ To access values in a matrix, use the same syntax as accessing such in vectors, 
 x[1,2] 
 t(x)-->
 
-<pre><code class="language-{r}">x%*%y
+<pre><code class="language-{r}">y &lt;- matrix(c(1, 2, 3, 4, 5, 6), nrow = 3, ncol = 2)
+x%*%y
 x[1,2]
 t(x)</code></pre>
 
