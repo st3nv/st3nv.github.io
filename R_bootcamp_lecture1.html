@@ -23,7 +23,7 @@
             display: block;
             margin-left: auto;
             margin-right: auto;
-            width: 50%;
+            width: 60%;
         }
         @media (max-width: 767px) {
             .markdown-body {
@@ -544,9 +544,14 @@ head(x)</code>
 <pre>
 <code class="language-{r}"># You can control how many rows you want to show by changing the n argument
 head(df, n = 10)
-tail(df, n = 10)
-</code>
+tail(df, n = 10)</code>
 </pre>
+<p>You can also use <code>summary</code> to get a summary of your data and <code>dim</code> to get the dimension of your data.</p>
+<pre>
+<code class="language-{r}">summary(df)
+dim(df)</code>
+</pre>
+
 <h3 id="table-of-contents-20">If you want...</h3>
 <p>You can use <code>file.choose()</code> instead of path to file to select your file with a GUI. But you have to do it everytime you run the code.</p>
 <pre>
@@ -557,6 +562,40 @@ tail(df, n = 10)
 <pre>
 <code class="language-{r}">setwd("C:/Users/username/Documents/R_lab_material")</code>
 </pre>
+<h3 id="table-of-contents-22">Basic Graphing</h3>
+
+<!-- Use hist() to graph a histogram of your data.
+Use boxplot() to graph a box plot of your data.
+Use plot(x,y) to plot a scatter plot between x and y.
+Use abline() to add a line in your plot. -->
+
+<p>Here we show you how to make some basic plots</p>
+<ul>
+<li>Use <code>hist()</code> to graph a histogram of your data.</li>
+<li>Use <code>boxplot()</code> to graph a box plot of your data.</li>
+<li>Use <code>plot(x,y)</code> to plot a scatter plot between x and y.</li>
+<li>Use <code>abline()</code> to add a line in your plot.</li>
+</ul>
+
+<!-- par(mfrow=c(1,3))
+hist(x$sepal.length)
+boxplot(x$sepal.length)
+plot(x$sepal.length,x$sepal.width)
+abline(v=6,col='red')
+abline(h=3.25,col='blue') -->
+
+<pre>
+<code class="language-{r}">par(mfrow=c(1,3))
+hist(x$sepal.length)
+boxplot(x$sepal.length)
+plot(x$sepal.length,x$sepal.width)
+abline(v=6,col='red')
+abline(h=3.25,col='blue')</code>
+</pre>
+
+<p>
+    <img src="https://i.ibb.co/5nLmSPJ/plot.png" alt="basic graph" width="800" class="center">
+</p>
 </div>
 </div>
 </article>
