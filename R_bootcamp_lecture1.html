@@ -469,7 +469,63 @@ x -->
 x
 levels(x)</code></pre>
 
+<h2 id="2-reading-data-">Reading Data <a name="readdata"></a></h2>
 
+<p>There are many ways to read data in R. Here we show how to read data from a CSV file, an Excel file.</p>
+<p>You will need to use the path to the file on your computer, or on the Internet.</p>
+<p>If you don't know how to get the path to the file...</p>
+<ol>
+    <li>For windows users, just click the top bar of your file explorer and copy it.</li>
+    <li>For Mac users, right click on the file, hold <code>Option</code> and select &quot;Copy ... as pathname&quot;. Or you can press <code>Option</code>+<code>Command</code>+<code>P</code> to show the path bar, then right click and select &quot;Copy ... as pathname&quot;</li>
+</ol>
+
+<h3 id="21-csv-files">CSV files</h3>
+<pre><code class="language-{r}">URL = &quot;https://gist.githubusercontent.com/netj/8836201/raw/6f9306ad21398ea43cba4f7d537619d0e07d5ae3/iris.csv&quot;
+x &lt;- read.csv(URL)
+
+# or
+
+x &lt;- read.table(URL, sep = &quot;,&quot;, header = TRUE)
+head(x)
+</code></pre>
+<h3 id="22-excel-files">Excel files</h3>
+<pre><code class="language-{r}">install.packages(&quot;readxl&quot;)
+library(readxl)
+xlsx_example &lt;- readxl_example(&quot;datasets.xlsx&quot;)
+x &lt;- read_excel(xlsx_example)
+head(x)
+</code></pre>
+
+<h3 id="22-inspect">Inspect your data</h3>
+<p>There are many ways to take look at your data. The easiest way is to click on the dataframe in Environment. It will show a table in a new tab.</p>
+<p>Another way is to use <code>head()</code> and <code>tail()</code> to show the first and last 6 rows of the data, as we did in the last two examples</p>
+<pre><code class="language-{r}"># You can control how many rows you want to show by changing the n argument
+head(df, n = 10)
+tail(df, n = 10)
+</code></pre>
+
+<h3>If you want...</h3>
+<p>You can use <code>file.choose()</code> instead of path to file to select your file with a GUI. But you have to do it everytime you run the code.</p> 
+
+<pre><code class="language-{r}">x &lt;- read.csv(file.choose())
+</code></pre>
+
+<h3>A little tip</h3>
+
+<p>You can set the work directory to a folder to avoid typing long pathnames</p>
+<pre><code class="language-{r}">setwd(&quot;C:/Users/username/Documents/R_lab_material&quot;)
+</code></pre>
+
+<p>You can also read data from a database, a web page, or a text file. <a href="https://www.rdocumentation.org/packages/utils/versions/3.6.2/topics/read.table">Read more here</a>.
+</p>
+
+<h2>Now try it yourself! </h2>
+
+<p>You can use Rstudio on your own computer or the online compiler below.</p>
+
+<div align="center">
+<iframe width="100%" height="500" src="https://rdrr.io/snippets/embed/?code=" frameborder="0"></iframe>
+</div>
 
 </article>
 
