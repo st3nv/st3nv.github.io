@@ -29,16 +29,24 @@
               .markdown-body {
                   padding: 15px;
               }
-              
           }
-          .fixedElement {
+
+        #TOC_container {
             background-color: #ffffff;
-            position:fixed;
+            padding-left: 4em;
+            padding-top: 2em;
+            position: fixed;
             top:0;
             left:0;
-            width:20%;
+            width:25%;
             height:100%;
             z-index:100;
+            overflow-y:none;
+            box-sizing: border-box;
+        }
+        #main-content{
+            margin-left: 20%;
+            width: 100%;
         }
       </style>
     <title>R Bootcamp Lecture 1</title>
@@ -46,7 +54,7 @@
     <body>
     <article class="markdown-body">
     <div id="container">
-    <div id="TOC_container" style="border-style:none;border-right-style:solid;padding-top:35px;padding-bottom:35px;padding-left:35px;padding-right:35px;margin-top:15px;margin-bottom:15px;margin-left:15px;margin-right:15px;background-color:#FFFFFF;">
+    <div id="TOC_container">
         <h2 class="title">In today's lecture:</h2>
         <ul style="list-style-type:disc;margin-left:15px;">
         <li>
@@ -127,6 +135,7 @@
         </ul>
         </ul>
     </div>
+    <div id="main-content">
     <h1 id="title">R Bootcamp - Lecture 1</h1>
     <h2 id="table-of-contents-0">Installing R</h2>
     <!-- Go to 
@@ -557,7 +566,7 @@
     <code class="language-{r}">setwd("C:/Users/username/Documents/R_lab_material")
     </code>
     </pre>
-
+</div>
 </div>
 </article>
     
