@@ -30,8 +30,10 @@
                 padding: 15px;
             }
         }
-
-    #TOC_container {
+    #sidebar.hidden{
+        display:none;
+    }
+    #sidebar{
         background-color: #ffffff;
         padding-left: 4em;
         padding-top: 2em;
@@ -40,20 +42,40 @@
         left:0;
         width:25%;
         height:100%;
-        z-index:100;
-        overflow-y:none;
+        z-index:1;
+        overflow-y:auto;
         box-sizing: border-box;
     }
     #main-content{
         margin-left: 20%;
         width: 100%;
+        margin-right: 0%;
+    }
+    #main-content.full-width{
+        margin-left: 0;
+    }
+    #toggle-button{
+        position: fixed;
+        top:1.5em;
+        left:3em;
+        z-index:2;
     }
     </style>
+<script>
+function openNav() {
+  document.getElementById("sidebar").classList.toggle('hidden');
+  document.getElementById("main-content").classList.toggle('full-width');
+}
+</script>
 <title>R Bootcamp Lecture 1</title>
 </head>
 <body>
 <article class="markdown-body">
+<div id = 'toggle-button'>
+    <button class="openbtn" onclick="openNav()">&#9776;</button>
+</div>
 <div id="container">
+<div id="sidebar" class="hidden">
 <div id="TOC_container">
     <h2 class="title">In today's lecture:</h2>
     <ul style="list-style-type:disc;margin-left:15px;">
@@ -138,7 +160,8 @@
     </li>
     </ul>
 </div>
-<div id="main-content">
+</div>
+<div id="main-content" class = 'full-width'>
 <h1 id="title">R Bootcamp - Lecture 1</h1>
 <h2 id="table-of-contents-0">Installing R</h2>
 <!-- Go to 
