@@ -36,7 +36,7 @@
     #sidebar{
         background-color: #ffffff;
         padding-left: 4em;
-        padding-top: 2em;
+        padding-top: 2.5em;
         position: fixed;
         top:0;
         left:0;
@@ -54,11 +54,17 @@
     #main-content.full-width{
         margin-left: 0;
     }
-    #toggle-button{
+    #button-container{
         position: fixed;
         top:1.5em;
         left:3em;
         z-index:2;
+    }
+    #button{
+        background-color: #ffffff;
+        border: none;
+        cursor: pointer;
+        font-size: 1.75em;
     }
     </style>
 <script>
@@ -71,8 +77,8 @@ function openNav() {
 </head>
 <body>
 <article class="markdown-body">
-<div id = 'toggle-button'>
-    <button class="openbtn" onclick="openNav()">&#9776;</button>
+<div id = 'button-container'>
+    <button id='button' class="openbtn" onclick="openNav()">&#9776;</button>
 </div>
 <div id="container">
 <div id="sidebar" class="hidden">
