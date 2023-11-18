@@ -10,6 +10,16 @@ const orbitParticlesCount = 100;
 const particle_size = 0.005;
 const orbital_radius = 4;
 
+const orbits = []; // Array to store orbit properties
+
+// Initialize random orbits for each satellite
+for (let i = 0; i < orbitParticlesCount; i++) {
+  const radius = Math.random() * 50 + 50; // Random radius for orbit
+  const speed = Math.random() * 0.02 + 0.01; // Random speed of orbit
+  const angle = Math.random() * Math.PI * 2; // Random starting angle
+  orbits.push({ radius, speed, angle });
+}
+
 const trails = []; // Array to hold trail geometries
 const trailLength = 3; // Number of segments in each trail
 
@@ -231,7 +241,7 @@ function updateParticlesandTrials(deltaTime) {
             y = positionAttribute.getY(i);
             z = positionAttribute.getZ(i);
 
-            // Simple rotation around Y-axis
+            // Simple rotation around the y-axis
             newX = x * Math.cos(0.01) - z * Math.sin(0.01);
             newZ = x * Math.sin(0.01) + z * Math.cos(0.01);
 
