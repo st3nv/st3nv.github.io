@@ -5,13 +5,13 @@ import { ImprovedNoise } from 'three/addons/math/ImprovedNoise.js';
 import { CSS2DRenderer, CSS2DObject } from '//cdn.rawgit.com/mrdoob/three.js/master/examples/jsm/renderers/CSS2DRenderer.js';
 
 let scene, camera, renderer, sphere, particleSystem, controls, particlesData = [];
-const particlesCount = 5000;
-const orbitParticlesCount = 5000;
+const particlesCount = 100;
+const orbitParticlesCount = 100;
 const particle_size = 0.005;
-const orbital_radius = 3;
+const orbital_radius = 4;
 
 const trails = []; // Array to hold trail geometries
-const trailLength = 5; // Number of segments in each trail
+const trailLength = 3; // Number of segments in each trail
 
 let lastTime = Date.now();
 
@@ -173,14 +173,14 @@ function init() {
             positions[j] = 0; // Initialize with 0 to avoid rendering initially
         }
         trailGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-        trailGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
 
         // make the trial beautiful and has a gradient transparent effect and white color
         const trailMaterial = new THREE.LineBasicMaterial({
             color: 0xFFFFFF,
             transparent: true,
-            opacity: 0.2,
-            blending: THREE.AdditiveBlending
+            linewidth: 1,
+            opacity: 0.3,
+            blending: THREE.AdditiveBlending,
         });
 
         const trail = new THREE.Line(trailGeometry, trailMaterial);
