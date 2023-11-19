@@ -3,17 +3,18 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
 let scene, camera, renderer;
 let particles = [];
-const numParticles = 10000;
+const numParticles = 11000;
 const lorenzParams = { sigma: 10, rho: 28, beta: 8 / 3 };
 const dt = 0.01;
 
-const particle_size = 0.005;
-let warmup = 100;
+const particle_size = 0.01;
+let warmup = 0;
 const numGroups = 4;
-const lorenzParamsGroup1 = { sigma: 10, rho: 30, beta: 8 / 3 };
-const lorenzParamsGroup2 = { sigma: 12, rho: 40, beta: 8 / 3 };
-const lorenzParamsGroup3 = { sigma: 9, rho: 50, beta: 8 / 3 };
-const lorenzParamsGroup4 = { sigma: 11, rho: 60, beta: 8 / 3 };
+const lorenzParamsGroup1 = { sigma: 10, rho: 28, beta: 5 / 3,  startX : 0, startY : 0, startZ : 0};
+const lorenzParamsGroup2 = { sigma: 10, rho: 28, beta: 5 / 3 , startX : 0, startY : 0, startZ : 0};
+const lorenzParamsGroup3 = { sigma: 10, rho: 28, beta: 5 / 3 , startX : 0, startY : 0, startZ : 0};
+const lorenzParamsGroup4 = { sigma: 10, rho: 28, beta: 5 / 3 , startX : 0, startY : 0, startZ : 0};
+
 
 init();
 animate();
@@ -32,31 +33,21 @@ function init() {
     // Create particles
     for (let i = 0; i < numParticles; i++) {
         let group = Math.floor(i / (numParticles / numGroups));
-        let groupX, groupY, groupZ;
-
+        let groupParams;
         if (group === 0) {
-            groupX = -10;
-            groupY = 0;
-            groupZ = 10;
+            groupParams = lorenzParamsGroup1;
         } else if (group === 1) {
-            groupX = 0;
-            groupY = 10;
-            groupZ = 0;
-        }
-        else if (group === 2) {
-            groupX = 10;
-            groupY = 0;
-            groupZ = 0;
-        }else {
-            groupX = 0;
-            groupY = 10;
-            groupZ = 10;
+            groupParams = lorenzParamsGroup2;
+        } else if (group === 2) {
+            groupParams = lorenzParamsGroup3;
+        } else {
+            groupParams = lorenzParamsGroup4;
         }
 
         let particle = new THREE.Vector3(
-            (Math.random() - 0.5) * 2 + groupX,
-            (Math.random() - 0.5) * 2 + groupY,
-            (Math.random() - 0.5) * 2 + groupZ
+            (Math.random() - 0.5) * 2 + groupParams.startX,
+            (Math.random() - 0.5) * 2 + groupParams.startY,
+            (Math.random() - 0.5) * 2 + groupParams.startZ
         );
         particles.push(particle);
     }
@@ -136,7 +127,7 @@ function renderParticles() {
     });
     geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
 
-    let material = new THREE.PointsMaterial({ size: particle_size, color: 0xffffff });
+    let material = new THREE.PointsMaterial({ size: particle_size, color: 0x50e0ff, transparent: true, opacity: 0.8});
     let points = new THREE.Points(geometry, material);
     scene.add(points);
 

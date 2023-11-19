@@ -6,13 +6,15 @@ body {
     line-height: 1.42857143;
     margin: 0;
     padding: 0;
-    min-width: 320px;
+    min-width: 500px;
     overflow-x: hidden;
     max-width: 100%;
 }
 a {
     color: #ffffff;
     text-decoration: none;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 200;
 }
 a:hover {
     color: #ffffff;
@@ -20,8 +22,11 @@ a:hover {
 }
 
 .main-content {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 100;
+    font-size: 1.5em;
     display: block;
-    margin: 2em  auto;
+    margin: 2em  auto 1em auto;
     padding: 1em;
     max-width: 800px;
     background-color: #000000;
@@ -43,9 +48,10 @@ a:hover {
 }
 
 .topbar .title {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     flex-grow: 1;
     font-size: 1.5em;
-    font-weight: bold;
+    font-weight: 600;
     margin: 0 0 0 1em;
     text-align: left;
     display: flex;
@@ -66,4 +72,44 @@ a:hover {
 
 canvas {
     box-shadow: white 0px 0px 1px;
+}
+
+.button {
+    width: 80px;
+    margin: 0 auto;
+    background-color: #000000;
+    color: #ffffff;
+    border: 1px solid #ffffff;
+    padding: 0.5em 1em;
+    border-radius: 0.5em;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    text-decoration: none;
+    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button {
+    background-color: #000000;
+    color: #ffffff;
+    border: none;
+    padding: 0.5em 1em;
+    border-radius: 0.5em;
+    cursor: pointer;
+    font-size: 1em;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 600;
+
+}
+
+.end-of-page {
+    margin: 2em 0;
+    text-align: center;
 }
