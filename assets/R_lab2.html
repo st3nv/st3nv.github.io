@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../github-markdown-light.css">
+  <style>
+      .markdown-body {
+          box-sizing: border-box;
+          min-width: 200px;
+          max-width: 980px;
+          margin: 0 auto;
+          padding: 45px;
+      }
+  
+      @media (max-width: 767px) {
+          .markdown-body {
+              padding: 15px;
+          }
+      }
+  </style>
+  
+  <title>R lab Session 2</title>
+</head>
+
+<article class="markdown-body">
+<h1 id="R Lab 2, Sat Apr 15"><a href="../R_lab.html" style="color: black;text-decoration:none">R Lab 2, Sat Apr 15</a></h1>
+
+<h2 id="Factor Variable">1. Factor variables</h2>
+
+<p>R prefers to store categorical variables as factor variables. To do this, convert categorical variables into factors using the function <code>factor()</code>
+
+<h2 id="Contingency Table">2. Contingency Table</h2>
+
+<p> A contingency table is a table that shows the relationship between two categorical variables. We can use the function <code>table()</code> to create one.</p> 
+
+<p>Make sure you convert your categorical variables into factor before calling it.</p>
+
+<h3>2.1 One variable</h3>
+<pre>
+<code class="language-{r}">table(cereals.mfr)</code>
+</pre>
+
+<p>Use it to calculate proportions</p>
+
+<pre>
+<code class="language-{r}">round(table(cereals.mfr)/length(cereals.mfr),2)</code>
+</pre>
+
+<p> Note <code>round()</code> function is used to round the numbers to 2 decimal places. </p>
+
+<p>We can also use <code>prop.table()</code> function to calculate proportions.</p>
+
+<pre>
+<code class="language-{r}">round(prop.table(table(cereals.mfr)),2)</code>
+</pre>
+
+<p>Notice that we get the same result as above.</p>
+
+<h3>2.2 Two variables</h3>
+
+<p>In statistical analysis, investigating the association between two categorical variables is a common task.  Recall from the lecture notes that contingency tables are used to summarize two categorical variables. </p>
+
+<pre><code class="language-{r}"># Convert categorical variables into factors
+cereals.shelf = factor(cereals_data$shelf)
+
+# Two-way Frequency Tables
+CT1 &lt;-table(cereals.mfr,cereals.shelf)
+CT1
+
+# Add Sums
+addmargins(CT1)
+
+# Two-way Tables with Relative Frequency
+prop.table(CT1)
+
+# Marginal distribution
+# 1 = row, 2 = column, make sure to specify 
+margin.table(CT1, 2)
+margin.table(CT1, 1)
+
+# Conditional distribution
+prop.table(CT1, 2)
+prop.table(CT1, 1)
+</code></pre>
+
+<p>We can use Conditional distribution to create a barplot.</p>
+
+<pre>
+<code class="language-{r}">barplot(prop.table(CT1, 2), main="Shelf Distribution by Manufacturer", 
+    xlab="Shelf", ylab="Proportion", col=c("red","green","blue"))</code>
+</pre>
+
+
+<h2 id="">3.Scatter plot and linear regression</h2>
+
+<p>Scatter plots are used to visualize the relationship between two quantitative variables. </p>
+
+<p>Linear regression is a statistical method that is used to model the relationship between a quantitative response variable and one or more explanatory variables. </p>
+
+<h3>3.1 Basic scatter plot</h3>
+
+<pre>
+<code class="language-{r}">cereals.calories &lt;- cereals_data$calories
+cereals.sugars &lt;- cereals_data$sugars
+plot(cereals.sugars, cereals.calories, xlab="Sugars", ylab="Calories", main="Calories vs Sugars")</code>
+</pre>
+
+<h3>3.2 Group points together with color</h3>
+
+<pre>
+<code class="language-{r}">#Color-coded Scatter Plot
+plot(cereals_data$sugar, cereals.calories,
+        col=cereals.shelf,
+        cex=.5,main="Calories vs Sugar Content",xlab="Sugar Content",ylab="Calories")
+legend("topleft",
+        legend=levels(cereals.shelf), 
+        fill=1:3,
+        cex=.5)
+</code>
+</pre>
+
+<h3>3.3 Linear regression model</h3>
+
+<pre>
+<code class="language-{r}"># Linear regression model
+model1 &lt;- lm(cereals.calories ~ cereals.sugars)
+summary(model1)
+
+# Plot the regression line
+plot(cereals.sugars, cereals.calories, xlab="Sugars", ylab="Calories", main="Calories vs Sugars")
+abline(model1, col="red")
+</code>
+</pre>
+
+<h3>3.4 Regression diagnosis</h3>
+
+<p>Residuals are the difference between the observed value of the response variable (y) and the predicted value (ŷ). </p>
+
+<p>Residuals are used to check the assumptions of linear regression. </p>
+
+<p>Residuals should be normally distributed and have a mean of 0. </p>
+
+<p>Residuals should be independent of each other. </p>
+
+<p>Residuals should have constant variance. </p>
+
+
+<pre>
+<code class="language-{r}">## Residuals
+residuals(model1)
+
+## Residuals vs Fitted Values
+plot(model1, which=1)
+# Or
+plot(predict(model1), residualsmodel1, main="Residual Scatter Plot", xlab="Sugar", ylab="Residuals")
+
+## Check normality of residuals
+# Histogram
+hist(residuals(model1), main="Histogram of Residuals", xlab="Residuals")
+
+# Normal Q-Q plot
+plot(model1, which=2)
+</code>
+</pre>
+
+<h2>Now try it yourself! </h2>
+
+<p>You can use Rstudio on your own computer or the online compiler below.</p>
+
+<div align="center">
+<iframe width="100%" height="500" src="https://rdrr.io/snippets/embed/?code=" frameborder="0"></iframe>
+</div>
+
+</article>
+
+</html>
