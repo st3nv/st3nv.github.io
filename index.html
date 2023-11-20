@@ -17,6 +17,12 @@
           }
         }
     </script>
+    <!-- automatically direct user to https://st3nv.github.io/old/ if they are from mobile device -->
+    <script type="text/javascript">
+        if (screen.width <= 699) {
+            document.location = "https://st3nv.github.io/old/";
+        }
+    </script>
     <script type="module" src="js/lorenz.js"></script>
     <div class = 'canvas-container'>
     <canvas id="myCanvas"></canvas>
