@@ -26,7 +26,7 @@ function init() {
     const canvas = document.getElementById('myCanvas');
 
     scene = new THREE.Scene();
-    camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.2, 1000);
     camera.position.z = 50;
 
     // Initialize the WebGLRenderer with the canvas element
@@ -67,6 +67,14 @@ function init() {
     // controls.enableZoom = false;
     // controls.enableDamping = true;
     // controls.dampingFactor = 0.05;
+    // // only allow rotation around x axis
+    // controls.minPolarAngle = Math.PI / 2;
+    // controls.maxPolarAngle = Math.PI / 2;
+    // controls.minAzimuthAngle = -Infinity;
+    // controls.maxAzimuthAngle = Infinity;
+
+    
+
     // controls.autoRotate = true;
     // controls.autoRotateSpeed = 1;
 
