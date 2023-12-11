@@ -3,11 +3,11 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
 let scene, camera, renderer;
 let particles = [];
-const numParticles = 11000;
+const numParticles = 10000;
 const lorenzParams = { sigma: 10, rho: 28, beta: 8 / 3 };
 const dt = 0.01;
 
-const particle_size = 0.01;
+const particle_size = 0.02;
 let warmup = 0;
 const numGroups = 4;
 const lorenzParamsGroup1 = { sigma: 10, rho: 28, beta: 5 / 3,  startX : 0, startY : 0, startZ : 0};
