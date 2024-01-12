@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/css/github-markdown-light.css">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/css/github-markdown-light.css">
+<style>
+        .markdown-body {
+            box-sizing: border-box;
+            min-width: 200px;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 45px;
+        }
+        img {
+            max-height: 60%;
+        }
+        .center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 40%;
+        }
+        @media (max-width: 767px) {
+            .markdown-body {
+                padding: 15px;
+            }
+        }
+    #sidebar.hidden{
+        display:none;
+    }
+    #sidebar{
+        background-color: #ffffff;
+        padding-left: 4em;
+        padding-top: 2.5em;
+        position: fixed;
+        top:0;
+        left:0;
+        width:25%;
+        height:100%;
+        z-index:1;
+        overflow-y:auto;
+        box-sizing: border-box;
+    }
+    #main-content{
+        margin-left: 20%;
+        width: 100%;
+        margin-right: 0%;
+    }
+    #main-content.full-width{
+        margin-left: 0;
+    }
+    #button-container{
+        position: fixed;
+        top:1.5em;
+        left:3em;
+        z-index:2;
+    }
+    #button{
+        background-color: #ffffff;
+        border: none;
+        cursor: pointer;
+        font-size: 1.75em;
+    }
+    </style>
+<script>
+function openNav() {
+  document.getElementById("sidebar").classList.toggle('hidden');
+  document.getElementById("main-content").classList.toggle('full-width');
+}
+</script>
+<title>R Bootcamp Lecture 1</title>
+</head>
+<body>
+<article class="markdown-body">
+<div id = 'button-container'>
+    <button id='button' class="openbtn" onclick="openNav()">&#9776;</button>
+</div>
+<div id="container">
+<div id="sidebar" class="hidden">
+<div id="TOC_container">
+    <h2 class="title">In today's lecture:</h2>
+        <ul style="list-style-type:disc;margin-left:15px;">
+        <li>
+        <a data-list="" href="#table-of-contents-0">Functions</a>
+        </li>
+        <li>
+        <a data-list="" href="#table-of-contents-1">Functions Exercise</a>
+        </li>
+        <li>
+        <a data-list="" href="#table-of-contents-2">For Loop</a>
+        </li>
+        <li>
+        <a data-list="" href="#table-of-contents-3">While Loop</a>
+        </li>
+        <li>
+        <a data-list="" href="#table-of-contents-4">Loop Exercise</a>
+        </li>
+        <li>
+        <a data-list="" href="#table-of-contents-5">If/Else Statement</a>
+        </li>
+        <li>
+        <a data-list="" href="#table-of-contents-6">If/Else Exercise</a>
+        </li>
+        <li>
+        <a data-list="" href="#table-of-contents-7">Factor</a>
+        </li>
+        <li>
+        <a data-list="" href="#table-of-contents-8">Data transformation</a>
+        </li>
+        <ul style="list-style-type:disc;margin-left:15px;">
+        <li>
+        <a data-list="" href="#table-of-contents-9">Splitting a Vector into Groups</a>
+        </li>
+        <li>
+        <a data-list="" href="#table-of-contents-10">Apply a Function to Each List Element</a>
+        </li>
+        <li>
+        <a data-list="" href="#table-of-contents-11">Apply a Function to Each Row</a>
+        </li>
+        <li>
+        <a data-list="" href="#table-of-contents-12">Apply a Function to Each Column</a>
+        </li>
+        <li>
+        <a data-list="" href="#table-of-contents-13">Apply a Function to Groups of Data</a>
+        </li>
+        <li>
+        <a data-list="" href="#table-of-contents-14">Apply a Function to Groups of Rows</a>
+        </li>
+        </ul>
+        </ul>
+</div>
+</div>
+<div id="main-content" class = 'full-width'>
+<h1 id="title">R Bootcamp - Lecture 2 <a href="https://" style="font-size: 12pt;pointer-events: none;"> &nbsp;  by Tengyu, Dash, Taylor, Milton and Bingjie</a></h1>
+<h2 id="table-of-contents-0">Functions</h2>
+<!-- Functions is a block of code that can be called by its name. It can be used to perform a specific task. -->
+<!-- automate computation 
+multiple uses, less code -->
+
+<p>Functions are a block of code that can be called by its name. It can be used to perform a specific task. Functions are used to automate computation and reduce the amount of code.</p>
+
+<p>To define a function in R, we use the keyword <code>function</code>. The syntax is as follows.</p>
+<pre>
+<code class="language-r">function_name &lt;- function(arg_1, arg_2, ...) {
+   # body of the function
+   ...
+   return(value)
+}</code>
+</pre>
+
+<p>Here's an example.</p>
+<pre>
+<code class="language-r">minus &lt;- function(x, y) {
+   z &lt;- x - y
+   return(z)
+}
+</code></pre>
+<p>Here, we define a function called <code>minus</code> that takes two arguments <code>x</code> and <code>y</code>. The function returns the difference between <code>x</code> and <code>y</code>.</p>
+<p>Now, we can call the function <code>minus</code> by passing two arguments.</p>
+<pre>
+<code class="language-r">minus(10, 5)
+</code></pre>
+
+<p>If you run the code above, you will get the result <code>5</code>.</p>
+
+
+<h2 id="table-of-contents-1">Functions Exercise</h3>
+
+<p>Now it's your turn to write a function. Write a function to find the product of the 4th and 5th element of a vector and pass the input <code>Vector = c(2, 4, 6, 8, 10, 12)</code></p>
+
+
+<h2 id="table-of-contents-2">For Loop</h2>
+
+<p>For loop is used to iterate through vector, columns/rows of df, lists, etc. The syntax is as follows.</p>
+
+<pre>
+<code class="language-r">for (val in sequence) {
+   # body of the loop
+   ...
+}</code>
+</pre>
+
+<p>Here is an example to print all the numbers from 1 to 5 using for loop.</p>
+<pre>
+<code class="language-r">for (i in 1:5) {
+   print(i)
+}</code>
+</pre>
+
+<p>We can also use for loop to iterate through a vector.</p>
+<pre>
+<code>letters &lt;- c("a", "b", "c", "d", "e")
+for (letter in letters) {
+   print(letter)
+}</code>
+</pre>
+
+<p>Within a loop, we can also have another loop. This is called nested loop.</p>
+<pre>
+<code class="language-r">for (i in 1:3) {
+   print("Outer loop")
+   for (j in 1:3) {
+      print("Inner loop")
+   }
+}</code>
+</pre>
+
+<h2 id="table-of-contents-3">While Loop</h2>
+
+<p>While loop is used to iterate through a block of code as long as a specific condition is met. The syntax is as follows.</p>
+<pre>
+<code class="language-r">while (condition) {
+   # body of the loop
+   ...
+}</code>
+</pre>
+
+<p>You can define the condition using logical operators. For example using <code>==</code>, <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code>, <code>!=</code>, <code>&amp;&amp;</code>, <code>||</code>, etc.</p>
+
+<p>For example, similar to the for loop example above, we can print all the numbers from 1 to 5 using while loop.</p>
+<pre>
+<code class="language-r">i &lt;- 1
+while (i &lt; 6) {
+   print(i)
+   i &lt;- i + 1
+}</code>
+</pre>
+
+<h2 id="table-of-contents-4">Loop Exercise</h2>
+
+<!-- Create a while loop that prints out the 1st through 4th element in a vector  -->
+
+<p>Now it's your turn to write a while loop. Write a while loop that prints out the 1st through 4th element in a vector <code>Vector = c(2, 4, 6, 8, 10, 12)</code></p>
+
+<h2 id="table-of-contents-5">If/Else Statement</h2>
+
+<p>If/Else statement is used to execute a block of code if a specified condition is true. The following flow chart shows the structure of an if/else statement.</p>
+
+<p><img src="https://i0.wp.com/sparkbyexamples.com/wp-content/uploads/2022/11/r-if-1-1.png?w=512&ssl=1" alt="if/else viz" class="center"></p>
+
+<p>To write an if/else statement in R, we use the keyword <code>if</code> and <code>else</code>. The syntax is as follows.</p>
+<pre>
+<code class="language-r">if (condition) {
+   # body of if statement
+   ...
+} else {
+   # body of else statement
+   ...
+}</code>
+</pre>
+
+<p>Here is an example to use if/else statement to check if a number is even or odd.</p>
+<pre>
+<code class="language-r">num &lt;- 10
+if (num %% 2 == 0) {
+   print("Even")
+} else {
+   print("Odd")
+}</code>
+</pre>
+
+<h2 id="table-of-contents-6">If/Else Exercise</h2>
+
+<p>Use loop and if/else statement to check if elements of a vector are divisible by 4 w/ no remainder. If yes, print the element. If no, print "Not divisible by 4".</p>
+
+
+<h2 id="table-of-contents-7">Factor Review</h2>
+
+<p>In lecture 1, we discussed about factor. Here is a quick review.</p>
+
+<p>In R, we can use <code>factor</code>  represent categorical variables with unique values.</p>
+
+<ul>
+    <li>
+    To transform a vector into factor, we call <code>factor(c(data1, data2, data3, data4, data5))</code>.
+    </li>
+    <li>
+        We can use function levels() to retrieve the levels of the factor.
+    </li>
+</ul>
+
+
+<h2 id="table-of-contents-8">Data transformation</h2>
+
+<p>Here are the functions that are frequently used to transform data.</p>
+
+<!-- apply()
+lapply()
+sapply()
+tapply()
+by()
+split()
+ -->
+
+<ul>
+    <li><code>apply()</code></li>
+    <li><code>lapply()</code></li>
+    <li><code>sapply()</code></li>
+    <li><code>tapply()</code></li>
+    <li><code>by()</code></li>
+    <li><code>split()</code></li>
+</ul>
+
+<h3 id="table-of-contents-9">Splitting a Vector into Groups</h3>
+
+<!-- Suppose you have a vector. Each element belongs to a different group, and the groups are identified by a grouping factor. You want to split the elements into the groups. 
+Split(x, f) function, where x is the vector and f is the factor. The function returns a list of vectors, where each vector contains the elements for one group.  -->
+
+<p>Suppose you have a vector. Each element belongs to a different group, and the groups are identified by a grouping factor. You want to split the elements into the groups.</p>
+
+<p>We can use <code>split(x, f)</code> function, where <code>x</code> is the vector and <code>f</code> is the factor. The function returns a list of vectors, where each vector contains the elements for one group.</p>
+
+<p>Here is an example.</p>
+
+<pre>
+<code class="language-r">x &lt;- c(1, 2, 3, 4, 5, 6)
+f &lt;- c("a", "b", "a", "b", "a", "b")
+group &lt;- split(x, f)</code>
+</pre>
+
+<p>Now we can check the result.</p>
+
+<pre>
+<code class="language-r">group
+group$a
+group$b</code>
+</pre>
+
+<h3 id="table-of-contents-10">Apply a Function to Each List Element</h3>
+
+<!-- Suppose you have a list, and you want to apply a function to each element of the list.
+Use either the lapply function or the sapply function, depending upon the desired form of the result. lapply always returns the results in list, whereas sapply returns the results in a vector if that is possible. -->
+
+<p>Suppose you have a list, and you want to apply a function to each element of the list.</p>
+
+<p>We can use either the <code>lapply</code> function or the <code>sapply</code> function, depending upon the desired form of the result. <code>lapply</code> always returns the results in list, whereas <code>sapply</code> returns the results in a vector if that is possible.</p>
+
+<p>Here is an example.</p>
+
+<pre>
+<code class="language-r">x &lt;- list(a = 1:5, b = rnorm(10))
+lapply(x, mean)
+sapply(x, mean)</code>
+</pre>
+
+<p>The first variable to <code>lapply</code> or <code>sapply</code> is the list. The second variable is the function to be applied to each element of the list.</p>
+
+<h3 id="table-of-contents-11">Apply a Function to Each Row</h3>
+
+<!-- You have a matrix. You want to apply a function to every row, calculating the function result for each row. 
+Use the apply function. Set the second argument to 1 to indicate row-by-row application of a function. -->
+
+
+<p>Now instead of a 1-D list, you have a matrix or dataframe. And you want to apply a function to every row, calculating the function result for each row.</p>
+
+<p>We can use the <code>apply</code> function. Set the second argument to 1 to indicate row-by-row application of a function.</p>
+
+<p>Here is an example.</p>
+
+<pre>
+<code class="language-r">x &lt;- matrix(rnorm(200), 20, 10)
+apply(x, 1, mean)</code>
+</pre>
+
+<p>You can also try to use it on a dataframe and see what happens.</p>
+
+<h3 id="table-of-contents-12">Apply a Function to Each Column</h3>
+
+<p>Similarly we can apply a function to each column of a matrix or dataframe using <code>apply</code> function. But we need to set the second argument to 2 to indicate column-by-column application of a function. The rest is the same.</p>
+
+<pre>
+<code class="language-r">x &lt;- matrix(rnorm(200), 20, 10)
+apply(x, 2, mean)</code>
+
+<code class="language-r">x &lt;- data.frame(x)
+apply(x, 2, mean)</code>
+</pre>
+
+<h3 id="table-of-contents-13">Apply a Function to Groups of Data</h3>
+
+<!-- Create a grouping factor (of the same length as your vector) that identifies the group of each corresponding datum. Then use the tapply function, which will apply a function to each group of data. -->
+
+<p>Now we have a vector and a grouping factor. We want to apply a function to each group of data.</p>
+
+<p>We can use <code>tapply</code> function, which will apply a function to each group of data.</p>
+
+<p>Here is an example.</p>
+
+<pre>
+<code class="language-r">x &lt;- c(1, 2, 3, 4, 5, 6)
+f &lt;- c("a", "b", "a", "b", "a", "b")
+tapply(x, f, mean)</code>
+</pre>
+
+<!-- Here, x is a vector, f is a grouping factor, and fun is a function. The function should expect one argument, which is a vector of elements taken from x according to their group.  -->
+<p>Here, <code>x</code> is a vector, <code>f</code> is a grouping factor, and <code>fun</code> is a function. The function should expect one argument, which is a vector of elements taken from <code>x</code> according to their group.</p>
+
+
+<h3 id="table-of-contents-14">Apply a Function to Groups of Rows</h3>
+
+<p>This is quite common in data analysis. We have a dataframe and a grouping factor. We want to apply a function to each group of rows.</p>
+
+<p>We can use <code>by</code> function, which will apply a function to each group of rows.</p>
+
+<p>Here is an example on the iris dataset.</p>
+
+<pre>
+<code class="language-r">by(iris$Sepal.Length, iris$Species, mean)</code>
+</pre>
+
+<p>This calculates the mean of <code>Sepal.Length</code> for each species. We can also calculate for all the columns at the same time.</p>
+
+<pre>
+<code class="language-r">by(iris[, 1:4], iris$Species, colMeans)</code>
+</pre>
+
+</div>
+</div>
+</article>
+
+
+
+</html>
