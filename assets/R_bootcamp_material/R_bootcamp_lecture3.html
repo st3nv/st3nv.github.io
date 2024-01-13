@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/css/github-markdown-light.css">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/css/github-markdown-light.css">
+<style>
+        .markdown-body {
+            box-sizing: border-box;
+            min-width: 200px;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 45px;
+        }
+        img {
+            max-height: 60%;
+        }
+        .center-img-2 {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 60%;
+        }
+        .center-img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 40%;
+        }
+        @media (max-width: 767px) {
+            .markdown-body {
+                padding: 15px;
+            }
+        }
+    #sidebar.hidden{
+        display:none;
+    }
+    #sidebar{
+        background-color: #ffffff;
+        padding-left: 4em;
+        padding-top: 2.5em;
+        position: fixed;
+        top:0;
+        left:0;
+        width:25%;
+        height:100%;
+        z-index:1;
+        overflow-y:auto;
+        box-sizing: border-box;
+    }
+    #main-content{
+        margin-left: 20%;
+        width: 100%;
+        margin-right: 0%;
+    }
+    #main-content.full-width{
+        margin-left: 0;
+    }
+    #button-container{
+        position: fixed;
+        top:1.5em;
+        left:3em;
+        z-index:2;
+    }
+    #button{
+        background-color: #ffffff;
+        border: none;
+        cursor: pointer;
+        font-size: 1.75em;
+    }
+    .center-table {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    </style>
+<script>
+function openNav() {
+  document.getElementById("sidebar").classList.toggle('hidden');
+  document.getElementById("main-content").classList.toggle('full-width');
+}
+</script>
+<title>R Bootcamp Lecture 3: Data wrangling with dplyr</title>
+</head>
+<body>
+<article class="markdown-body">
+<div id = 'button-container'>
+    <button id='button' class="openbtn" onclick="openNav()">&#9776;</button>
+</div>
+<div id="container">
+<div id="sidebar" class="hidden">
+<div id="TOC_container">
+    <h2 class="title">In today's lecture:</h2>
+        <ul style="list-style-type:disc;margin-left:15px;">
+                <li>
+                <a data-list="" href="#table-of-contents-0">Data Wrangling</a>
+                </li>
+                <li>
+                <a data-list="" href="#table-of-contents-1">dplyr</a>
+                </li>
+                <li>
+                <a data-list="" href="#table-of-contents-2">Pipe Function</a>
+                </li>
+                <li>
+                <a data-list="" href="#table-of-contents-3">Summarize</a>
+                </li>
+                <ul style="list-style-type:disc;margin-left:15px;">
+                <li>
+                <a data-list="" href="#table-of-contents-4">Summarize by group</a>
+                </li>
+                <li>
+                <a data-list="" href="#table-of-contents-5">Summarize functions</a>
+                </li>
+                <li>
+                <a data-list="" href="#table-of-contents-6">Summarize multiple statistics</a>
+                </li>
+                </ul>
+                <li>
+                <a data-list="" href="#table-of-contents-7">Manipulate columns</a>
+                </li>
+                <ul style="list-style-type:disc;margin-left:15px;">
+                <li>
+                <a data-list="" href="#table-of-contents-8">select</a>
+                </li>
+                <li>
+                <a data-list="" href="#table-of-contents-9">mutate</a>
+                </li>
+                <li>
+                <a data-list="" href="#table-of-contents-10">rename</a>
+                </li>
+                </ul>
+                <li>
+                <a data-list="" href="#table-of-contents-11">Manipulate rows</a>
+                </li>
+                <ul style="list-style-type:disc;margin-left:15px;">
+                <li>
+                <a data-list="" href="#table-of-contents-12">filter</a>
+                </li>
+                <li>
+                <a data-list="" href="#table-of-contents-13">arrange</a>
+                </li>
+                <li>
+                <a data-list="" href="#table-of-contents-14">distinct</a>
+                </li>
+                </ul>
+                <li>
+                <a data-list="" href="#table-of-contents-15">Pivot table</a>
+                </li>
+                <li>
+                <a data-list="" href="#table-of-contents-16">Unpivot/melt table</a>
+                </li>
+                <li>
+                <a data-list="" href="#table-of-contents-17">Joining tables</a>
+                </li>
+                <ul style="list-style-type:disc;margin-left:15px;">
+                <li>
+                <a data-list="" href="#table-of-contents-18">Left join</a>
+                </li>
+                <li>
+                <a data-list="" href="#table-of-contents-19">Inner join</a>
+                </li>
+                </ul>
+                <li>
+                <a data-list="" href="#table-of-contents-20">Handling missing value</a>
+                </li>
+                <ul style="list-style-type:disc;margin-left:15px;">
+                <li>
+                <a data-list="" href="#table-of-contents-21">Remove rows with NA</a>
+                </li>
+                <li>
+                <a data-list="" href="#table-of-contents-22">Filling with last value</a>
+                </li>
+                <li>
+                <a data-list="" href="#table-of-contents-23">Replace NA with arbitrary value</a>
+                </li>
+                </ul>
+                <li>
+                <a data-list="" href="#table-of-contents-24">Put it all together</a>
+                </li>
+                <li>
+                <a data-list="" href="#table-of-contents-25">Cheat Sheet Resources</a>
+                </li>
+                <li>
+                <a data-list="" href="#table-of-contents-26">Some comments in the end</a>
+                </li>
+        </ul>
+</div>
+</div>
+<div id="main-content" class = 'full-width'>
+<h1 id="title">R Bootcamp - Lecture 3 <a href="https://" style="font-size: 12pt;pointer-events: none;"> &nbsp;  by Tengyu, Dash, Taylor, Milton and Bingjie</a></h1>
+<h2 id="table-of-contents-0">Data Wrangling</h2>
+
+<p>What is data wrangling? Data wrangling is the process of Data wrangling is the process of transforming and structuring data from one raw form into a desired format.</p>
+
+<h2 id="table-of-contents-1">dplyr</h2>
+
+<p><code>dplyr</code> is a package for data manipulation, written and maintained by Hadley Wickham. <code>dplyr</code> is a grammar of data manipulation, providing a consistent set of verbs that help you solve the most common data manipulation challenges.</p>
+
+<p>To install <code>dplyr</code> package, run the following code in your R console:</p>
+
+<pre><code>install.packages("dplyr")
+</code></pre>
+
+<p>After installing the package, you can load it into your R session by using the following code:</p>
+
+<pre><code>library(dplyr)
+</code></pre>
+
+
+
+<h2 id="table-of-contents-2">Pipe Function</h2>
+
+<p>Pipe function is a very useful function in <code>dplyr</code> package. It looks like this: <code>%&gt;%</code>. It is used to chain multiple functions together. Here is how your code looks like without pipe function:</p>
+
+<pre><code>filter(arrange(select(mtcars, cyl, mpg), cyl), mpg &gt; 20)
+</code></pre>
+
+<p>Here is how your code looks like with pipe function:</p>
+
+<pre><code>mtcars %&gt;% 
+  select(cyl, mpg) %&gt;% 
+  arrange(cyl) %&gt;% 
+  filter(mpg &gt; 20)
+</code></pre>
+
+<p>As you can see, the code with pipe function is much more readable. The pipe function takes the output of the function on the left side and feed it to the function on the right side. </p>
+
+
+<h2 id="table-of-contents-3">Summarize</h2>
+
+<p>Summarize your data is an important step in data wrangling. It helps you to get a quick overview of your data. In <code>dplyr</code> package, you can use <code>summarize</code> function to summarize your data. Here is an example of calculating the mean calories using our cereal dataset(You can find it in the resources folder):</p>
+
+<pre><code># Reading the cereal data:
+df &lt;- read.csv("cereal.csv")
+
+df %>% summarise(avg = mean(calories))
+</code></pre>
+
+<p>Here's how the <code>summarise</code> function works:</p>
+
+<ol>
+<li>First, you need to specify the dataset you want to summarize. In this case, it is <code>df</code>.</li>
+<li>Then, you need to specify the variable you want to summarize. In this case, it is <code>calories</code>.</li>
+<li>Finally, you need to specify the function you want to use to summarize the variable. In this case, it is <code>mean</code>.</li>
+<li>We assign the result to a new variable called <code>avg</code>.</li>
+</ol>
+
+<h3 id="table-of-contents-4">Summarize by group</h3>
+
+<p>Many times we want to compare the summary statistics of different groups. For example, we want to compare the average calories of cereals in different shelves. In this case, we can use <code>group_by</code> function to group the cereals by their shelves and then use <code>summarise</code> function to calculate the average calories of each group:</p>
+
+<pre><code>df %&gt;% 
+  group_by(shelf) %&gt;% 
+  summarise(avg = mean(calories))
+</code></pre>
+
+<p>We can also have multiple grouping variables. For example, we want to compare the average calories of cereals in different shelves and different manufacturers. In this case, we can use <code>group_by</code> function to group the cereals by their shelves and manufacturers and then use <code>summarise</code> function to calculate the average calories of each group:</p>
+
+<pre><code>df %&gt;% 
+  group_by(shelf, mfr) %&gt;% 
+  summarise(avg = mean(calories))
+</code></pre>
+
+<h3 id="table-of-contents-5">Summarize functions</h3>
+
+<p>There are many functions you can use to summarize your data. Here is a table of commonly used functions:</p>
+
+<table class="center-table">
+<thead>
+<tr>
+<th>Function</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mean()</code></td>
+<td>Mean</td>
+</tr>
+<tr>
+<td><code>median()</code></td>
+<td>Median</td>
+</tr>
+</tr>
+<tr>
+<td><code>sd()</code></td>
+<td>Standard deviation</td>
+</tr>
+</tr>
+<tr>
+<td><code>var()</code></td>
+<td>Variance</td>
+</tr>
+</tr>
+<tr>
+<td><code>min()</code></td>
+<td>Minimum</td>
+</tr>
+</tr>
+<tr>
+<td><code>max()</code></td>
+<td>Maximum</td>
+</tr>
+<tr>
+<td><code>sum()</code></td>
+<td>Sum</td>
+</tr>
+</tr>
+<tr>
+<td><code>count()</code></td>
+<td>Count</td>
+</tr>
+</tr>
+<tr>
+<td><code>n()</code></td>
+<td>Number of observations</td>
+</tr>
+</tr>
+<tr>
+<td><code>n_distinct()</code></td>
+<td>Number of unique values</td>
+</tr>
+</tr>
+</tbody>
+</table>
+
+<h3 id="table-of-contents-6">Summarize multiple statistics</h3>
+
+<p> We can also summarize more than one statistics. For example, we want to calculate the mean and standard deviation of calories:</p>
+
+<pre><code>df %&gt;% 
+  summarise(mean = mean(calories), sd = sd(calories))
+</code></pre>
+
+<p>In the code, we use <code>summarise</code> function to calculate the mean and standard deviation of calories. We assign the result to two new variables called <code>mean</code> and <code>sd</code>.</p>
+
+<p>Here's a snippet of code using <code>group_by</code> and <code>summarise</code> function. Try to figure out what it does:</p>
+
+<!-- df %>% 
+    group_by(shelf, mfr) %>% 
+    summarise(avg = mean(calories), cnt = n()) -->
+<pre><code>df %&gt;% 
+  group_by(shelf, mfr) %&gt;% 
+  summarise(avg = mean(calories), cnt = n())
+</code></pre>
+  
+
+<h2 id="table-of-contents-7">Manipulate columns</h2>
+
+<h3 id="table-of-contents-8">select</h3>
+
+<p>To select columns, we can use <code>select</code> function. Here is an example of selecting the first 5 columns of the cereal dataset:</p>
+
+<pre><code>df %&gt;% 
+  select(1:5)
+</code></pre>
+
+<p>We can also select columns by their names. Here is an example of selecting the <code>mfr</code> and <code>calories</code> columns:</p>
+
+<pre><code>df %&gt;% 
+  select(mfr, calories)
+</code></pre>
+
+<h3 id="table-of-contents-9">mutate</h3>
+
+<p>To create new columns, we can use <code>mutate</code> function. It's very important to note that <code>mutate</code> function will not change the original dataset. It will create a new dataset with the new columns. Here is an example of creating a new column called <code>high_calories</code> which is <code>TRUE</code> if the calories is greater than 100 and <code>FALSE</code> otherwise:</p>
+
+<pre><code>df %&gt;% 
+  mutate(high_calories = calories &gt; 100)
+</code></pre>
+
+<p>In more complicated cases, we can define a vectorized function to calculate the new column. Here is an example of creating a new column called <code>calories_3cat</code> which is <code>high</code> if the calories is greater than 100, <code>medium</code> if the calories is between 50 and 100, and <code>low</code> otherwise:</p>
+
+<!-- calories_class <- function(calories){
+    if(calories < 80){
+      return('Low')
+    } else if(calories < 120){
+      return('Med')
+    } else{
+      return('High')
+    }
+  }
+  calories_class_vec <- Vectorize(calories_class)
+  df %>% mutate(c_class = calories_class_vec(calories)) -->
+
+<pre><code>calories_class &lt;- function(calories){
+    if(calories &lt; 80){
+      return('Low')
+    } else if(calories &lt; 120){
+      return('Med')
+    } else{
+      return('High')
+    }
+  }
+  calories_class_vec &lt;- Vectorize(calories_class)
+  df %&gt;% mutate(c_class = calories_class_vec(calories))
+</code></pre>
+
+
+<h3 id="table-of-contents-10">rename</h3>
+
+<p>To rename columns, we can use <code>rename</code> function. It's very straightforward. Here is an example of renaming the <code>mfr</code> column to <code>manufacturer</code>:</p>
+
+<pre><code>df %&gt;% 
+  rename(manufacturer = mfr)
+</code></pre>
+
+<p>Note that on the left side of the <code>=</code> sign is the new name and on the right side is the old name.</p>
+
+<h2 id="table-of-contents-11">Manipulate rows</h2>
+
+<h3 id="table-of-contents-12">filter</h3>
+
+<p>We use function <code>filter</code> to filter rows by certain conditions. Here is an example of filtering cereals with calories greater than 130:</p>
+
+<pre><code>df %&gt;% 
+  filter(calories &gt; 130)
+</code></pre>
+
+<p>We can also have multiple conditions. For example, if you want to filter cereals with calories greater than 130 and sugars greater than 10, just add another condition and separate them with a comma:</p>
+
+<pre><code>df %&gt;% 
+  filter(calories &gt; 130, sugars &gt; 10)
+</code></pre>
+
+<h3 id="table-of-contents-13">arrange</h3>
+
+<p>Function <code>arrange</code> is used to sort rows. It can be used to sort rows by one or multiple columns, in ascending or descending order. By default, it sorts rows in ascending order. Here is an example of sorting cereals by calories</p>
+
+<pre><code>df %&gt;% 
+  arrange(calories)
+</code></pre>
+
+<p>To sort rows in descending order, we can use <code>desc</code> function. </p>
+
+<pre><code>df %&gt;% 
+  arrange(desc(calories))
+</code></pre>
+
+<p>To sort rows by multiple columns, we can just add more columns to the <code>arrange</code> function and separate them with a comma. Here is an example of sorting cereals by calories and sugars:</p>
+
+<pre><code>df %&gt;% 
+  arrange(calories, sugars)
+</code></pre>
+
+<h3 id="table-of-contents-14">distinct</h3>
+
+<p>Function <code>distinct</code> is used to remove duplicate rows or getting the unique values in columns. To remove duplicate rows in the whole dataframe, we can use <code>distinct</code> function without specifying any columns. Here is an example of removing duplicate rows in the whole dataframe:</p>
+
+<!-- df_dup <- data.frame(
+Name = c("Alice", "Bob", "Charlie", "Alice", "David", "Bob", "Eve"),
+Age = c(25, 30, 35, 25, 40, 30, 45),
+Gender = c("F", "M", "M", "F", "M", "M", "F")
+) -->
+
+<pre><code># Data
+df_dup &lt;- data.frame(
+Name = c("Alice", "Bob", "Charlie", "Alice", "David", "Bob", "Eve"),
+Age = c(25, 30, 35, 25, 40, 30, 45),
+Gender = c("F", "M", "M", "F", "M", "M", "F")
+)
+
+# Remove duplicate rows
+df_dup %&gt;% 
+  distinct()
+</code></pre>
+
+<p>It can also be used to get the unique values in a column. For example:</p>
+
+<pre><code>df_dup %&gt;% 
+  distinct(Gender)
+</code></pre>
+
+<!-- If we want to remove duplicate using a subset of columns -->
+<p>If we want to remove duplicate using a subset of columns, we can specify the columns in the <code>distinct</code> function and set <code>.keep_all = TRUE</code>. Here is an example of removing duplicate rows using a subset of columns:</p>
+
+<pre><code>df_dup %&gt;% 
+  distinct(Name, Age, .keep_all = TRUE)
+</code></pre>
+
+
+<h2 id="table-of-contents-15">Pivot table</h2>
+
+<p>For those who are familiar with Excel, you may know what a pivot table is. A pivot table is a table of statistics that summarizes the data of a more extensive table. In R, we can use <code>tidyr</code> package to create pivot tables. Here is an example of creating a pivot table using our cereal dataset:</p>
+
+<pre><code>library(tidyr)
+df %&gt;% 
+  pivot_wider(names_from = mfr, values_from = calories)
+</code></pre>
+
+<h2 id="table-of-contents-16">Unpivot/melt table</h2>
+
+<p>Unpivot table is the opposite of pivot table. It is used to transform a pivot table back to the original form. In R, we can use the <code>pivot_longer</code> function in <code>tidyr</code> package to unpivot a table. Here is an example of unpivoting the pivot table we created in the previous section:</p>
+
+<pre><code>df %&gt;% 
+  pivot_wider(names_from = mfr, values_from = calories) %&gt;% 
+  pivot_longer(cols = c("A", "G", "K", "N", "P", "Q", "R"), names_to = "mfr", values_to = "calories")
+</code></pre>
+
+
+<h2 id="table-of-contents-17">Joining tables</h2>
+
+<p>Many times, the data we want to analyze is stored in multiple tables. In this case, we need to join the tables together. In this case the two or more tables share a common column. For example, we have a table containing student information and another table containing student grades. Joining the two tables together will give us a table containing both student information and student grades. </p>
+
+<p>There are six types of joins in total: inner join, left join, right join, full join, semi join, and anti join. Here we will only talk about left join and inner join since they are the most commonly used ones. </p>
+
+<h3 id="table-of-contents-18">Left join</h3>
+
+<p>A left join will keep all the rows in the left table and join the rows in the right table that match the key. As shown in the figure below.</p>
+
+<img src="https://lh6.googleusercontent.com/I7BWNmU-rtwMozqKzbWBRgnk2sIv1a1FGElwOheS4ybu8o8erqvNR8Z57CsHndxMpdKlUq8jqaDqyUt7pR775-lSupnm_Cqe5nyncxH3eh0MTf3IA2cWz_8rnMWyDXFIrf-z_MM18zMVs_rQuiIigOw" alt="left-join" class="center-img-2">
+
+<p>To show how to do a left join in R, let's first define the two table we are going to join:</p>
+
+<!-- df_stu <- data.frame(
+  ID = c(1, 2, 3, 4),
+  Name = c("Alice", "Bob", "Charlie", "David")
+)
+df_score <- data.frame(
+  ID = c(3, 4, 5, 6),
+  Score = c(85, 90, 80, 88)
+) -->
+
+<pre><code># Data
+df_stu &lt;- data.frame(
+  ID = c(1, 2, 3, 4),
+  Name = c("Alice", "Bob", "Charlie", "David")
+)
+
+df_score &lt;- data.frame(
+  ID = c(3, 4, 5, 6),
+  Score = c(85, 90, 80, 88)
+)
+</code></pre>
+
+<p>Then we can use <code>left_join</code> function to join the two tables together:</p>
+
+<pre><code>df_stu %&gt;% 
+  left_join(df_score, by = "ID")
+</code></pre>
+
+<h3 id="table-of-contents-19">Inner join</h3>
+
+<p>Compared to left join, an inner join will only keep the rows that match the key in both tables. As shown in the figure below.</p>
+
+<img src="https://lh4.googleusercontent.com/ZaF77tpvsDLgQgWHqOdbzJVPDJ2EAmp4OSSmbk0sSFe4TcsS3jtxY7EmyfMQ3ta6WIs7bg_ZvKsUZOHkXETHRltRXC5YNi4brzpchn4HBzq4dThms2jAyU9E2KohfEL7j0fOevT5PeMdOdKEJj24C1Y" alt="inner-join" class="center-img">
+
+<p>To do an inner join in R, we can use <code>inner_join</code> function:</p>
+
+<pre><code>df_stu %&gt;% 
+  inner_join(df_score, by = "ID")
+</code></pre>
+
+<p>As we can see, the result of inner join is different from the result of left join.</p>
+
+<h2 id="table-of-contents-20">Handling missing value</h2>
+
+<p>Missing value is a common problem in data analysis. In R, missing value is represented by <code>NA</code>. In this section, we will talk about how to handle missing value in R.</p>
+
+<h3 id="table-of-contents-21">Remove rows with NA</h3>
+
+<p>The first idea is to just remove the rows with missing value. In R, we can use <code>drop_na</code> function in <code>tidyr</code> package to remove rows with missing value.</p>
+
+<p>We first define a dataframe with missing value:</p>
+
+<!-- df_missing <- data.frame(
+  ID = 1:6,
+  Value = c(10, NA, 15, NA, 20, 25)
+) -->
+
+<pre><code># Data
+df_missing &lt;- data.frame(
+  ID = 1:6,
+  Value = c(10, NA, 15, NA, 20, 25)
+)
+</code></pre>
+
+<p>Then we can use <code>drop_na</code> function to remove rows with missing value:</p>
+
+<pre><code>df_missing %&gt;% 
+  drop_na()
+</code></pre>
+
+<h3 id="table-of-contents-22">Filling with last value</h3>
+
+<p>Another way to deal with missing value is to fill it with the last value. For example in the table shown below.</p>
+
+<table class="center-table">
+    <tr>
+      <th>Question</th>
+      <th>Category</th>
+      <th>Answer</th>
+    </tr>
+    <tr>
+      <td>Favorite movie</td>
+      <td>horror</td>
+      <td>Silent Hill</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>comedy</td>
+      <td>American Pie</td>
+    </tr>
+    <tr>
+      <td>Favorite song</td>
+      <td>pop</td>
+      <td>Blank Space</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>rock</td>
+      <td>Bohemian Rhapsody</td>
+  </table>
+
+<p>In this example the first column has missing value. We can fill the missing value with the last value above it. The result will look like this:</p>
+
+<table class="center-table">
+    <tr>
+      <th>Question</th>
+      <th>Category</th>
+      <th>Answer</th>
+    </tr>
+    <tr>
+      <td>Favorite movie</td>
+      <td>horror</td>
+      <td>Silent Hill</td>
+    </tr>
+    <tr>
+      <td>Favorite movie</td>
+      <td>comedy</td>
+      <td>American Pie</td>
+    </tr>
+    <tr>
+      <td>Favorite song</td>
+      <td>pop</td>
+      <td>Blank Space</td>
+    </tr>
+    <tr>
+      <td>Favorite song</td>
+      <td>rock</td>
+      <td>Bohemian Rhapsody</td>
+  </table>
+
+<p>To perform it in R, we can use <code>fill</code> function in <code>tidyr</code> package. We continue to use the dataframe we defined in the previous section:</p>
+
+<pre><code>df_missing %>%
+    fill(Value, .direction = "down")
+</code></pre>
+
+<h3 id="table-of-contents-23">Replace NA with arbitrary value</h3>
+
+<p>Another way to deal with missing value is to replace it with an arbitrary value. For example, we can replace the missing value with 0. The <code>replace_na</code> function in <code>tidyr</code> package can help us to do that.</p>
+
+<pre><code>df_missing %&gt;% 
+  replace_na(list(Value = 0))
+</code></pre>
+
+<h2 id="table-of-contents-24">Put it all together</h2>
+
+<p>Now let's put everything we learned together to build a data wrangling pipeline. Here is an example code. Can you tell what each line of coding is doing?</p>
+
+<p>P.S. We are using the cereal dataset in this example.</p>
+
+<!-- df %>%
+  filter(!mfr %in% c('N', 'Q')) %>%
+  group_by(shelf) %>%
+  summarise(Avg_carb = mean(carbo), Num = n()) %>%
+  arrange(desc(Avg_carb)) %>%
+  mutate(Total_carb = Avg_carb * Num) %>%
+  rename(ShelfNo = shelf) -->
+
+<pre><code>df %&gt;%
+    filter(!mfr %in% c('N', 'Q')) %&gt;%
+    group_by(shelf) %&gt;%
+    summarise(Avg_carb = mean(carbo), Num = n()) %&gt;%
+    arrange(desc(Avg_carb)) %&gt;%
+    mutate(Total_carb = Avg_carb * Num) %&gt;%
+    rename(ShelfNo = shelf)
+</code></pre>
+
+
+
+
+<h2 id="table-of-contents-25">Cheat Sheet Resources</h2>
+
+<ul>
+    <li>Tidyr cheatsheet: <a href="https://github.com/rstudio/cheatsheets/blob/main/tidyr.pdf">Link</a></li>
+    <li>Dplyr cheatsheet: <a href="https://nyu-cdsc.github.io/learningr/assets/data-transformation.pdf">Link</a></li>
+</ul>
+
+<h2 id="table-of-contents-26">Some comments in the end</h2>
+
+<!-- The syntax of tidyverse packages are verbose but intuitive. 
+If you are dealing with very large datasets and want faster speed, datatable will be a good choice. -->
+<p>The syntax of tidyverse packages are verbose but intuitive. Sometimes when you are dealing with very large datasets and want faster speed, <code>datatable</code> will be a good choice. </p>
+
+
+
+</div>
+</div>
+</article>
+
+
+
+</html>
