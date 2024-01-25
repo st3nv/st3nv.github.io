@@ -17,6 +17,8 @@
           }
         }
     </script>
+    <script src="https://unpkg.com/tailwindcss-jit-cdn"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/18.6.4/tween.umd.js"></script>
     <!-- automatically direct user to https://st3nv.github.io/old/ if they are from mobile device -->
     <script type="text/javascript">
         if (screen.width <= 699) {
@@ -39,11 +41,108 @@
         </div>
     </div>
     <div class="main-content">
-        My name is Tengyu Song. I'm a Master's student at Columbia University. I'm interested in interpretable machine learning and its applications. If you want to check out my projects, please visit my <a href="https://github.com/st3nv">Github</a> or my <a href="https://st3nv.github.io/archive.html">public archive</a>.
+        My name is Tengyu Song. I'm a Master's student at Columbia University. I'm interested in interpretable machine learning and the applications of ML in psychology, education and neuroscience. Please check out my portfolio below, or visit my <a href="https://github.com/st3nv"><b>Github</b></a> and my <a href="https://st3nv.github.io/archive.html"><b>Public Archive</b></a>. If you want to get in touch, please email me at <a href="mailto:tengyu.song@columbia.edu"><b>tengyu.song@columbia.edu</b></a>.
     </div>
     <div class="button" onclick="window.location.href='pdf/TengyuSong_new_resume.pdf'">
-        <p class="button-text">Resume</p>
+        <p class="button-text">Résumé</p>
     </div>
-    <div class = 'end-of-page'></div>
+    <div class="project-card-wrapper">
+        <!-- title -->
+        <div class="project-title">
+            Selected Projects
+        </div>
+        <div class="card-container">
+            <div class="single-project-card">
+                <article class="group relative aspect-video h-80 w-[26rem] cursor-pointer overflow-hidden rounded-xl shadow-md hover:shadow-2xl m-2">
+                    <img class="absolute inset-0 h-full w-full object-cover opacity-90 transition-opacity duration-300 ease-out group-hover:opacity-100 group-hover:transition-opacity group-hover:duration-300" src="https://upload.wikimedia.org/wikipedia/commons/9/95/R179_C_train_at_West_4th_Street.jpg" alt="">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/0 to-transparent to-90% text-white transition-all duration-300 group-hover:bg-gradient-to-t group-hover:from-black/60 group-hover:transition-all group-hover:duration-500">
+                        <h2 class="absolute bottom-4 left-4 m-0 font-extrabold uppercase text-lg transition-all delay-300 duration-100 ease-out group-hover:bottom-1/2 group-hover:delay-0 group-hover:duration-300">
+                            Dynamic Pricing for NYC Subway
+                        </h2>
+                        <p class="absolute left-4 top-1/2 line-clamp-3 max-w-[80%] pt-2 opacity-0 transition-opacity duration-300 ease-out group-hover:opacity-100 group-hover:delay-500 group-hover:duration-300">
+                            Utilizing the MTA turnstile data, we built a dynamic pricing model based on ridership prediction and demand elasticity.
+                        </p>
+                        <a class="absolute bottom-4 left-4 max-w-[80%] rounded-lg border px-2 py-1 uppercase opacity-0 transition-opacity ease-out group-hover:opacity-100 group-hover:transition-opacity group-hover:delay-500 group-hover:duration-300" href="https://devpost.com/software/dynamic-pricing-for-new-york-subway-fares", target="_blank">Learn more</a>
+                    </div>
+                </article>
+            </div>
+            
+            <div class="single-project-card">
+                <article class="group relative aspect-video h-80 w-[26rem] cursor-pointer overflow-hidden rounded-xl shadow-md hover:shadow-2xl m-2">
+                    <img class="absolute inset-0 h-full w-full object-cover opacity-90 transition-opacity duration-300 ease-out group-hover:opacity-100 group-hover:transition-opacity group-hover:duration-300" src="https://linktr.ee/og/image/EGSC.jpg" alt="">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/0 to-transparent to-90% text-white transition-all duration-300 group-hover:bg-gradient-to-t group-hover:from-black/60 group-hover:transition-all group-hover:duration-500">
+                        <h2 class="absolute bottom-4 left-4 m-0 font-extrabold uppercase text-lg transition-all delay-300 duration-100 ease-out group-hover:bottom-1/2 group-hover:delay-0 group-hover:duration-300">
+                            EGSC Quality of Life Survey 2023
+                        </h2>
+                        <p class="absolute left-4 top-1/2 line-clamp-3 max-w-[80%] pt-2 opacity-0 transition-opacity duration-300 ease-out group-hover:opacity-100 group-hover:delay-500 group-hover:duration-300">
+                            Worked with QoL Survey committee to develop the highest quality presentation of survey data for the annual Town Hall.
+                        </p>
+                        <a class="absolute bottom-4 left-4 max-w-[80%] rounded-lg border px-2 py-1 uppercase opacity-0 transition-opacity ease-out group-hover:opacity-100 group-hover:transition-opacity group-hover:delay-500 group-hover:duration-300" href="pdf/Quality of Life Survey 2023 Town Hall.pptx.pdf", target="_blank">Learn more</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="project-card-wrapper">
+        <!-- title -->
+        <div class="project-title">
+            More Projects / Presentations
+        </div>
+        <div class="card-container">
+            <div class="single-project-card">
+                <article class="group relative aspect-video h-80 w-[26rem] cursor-pointer overflow-hidden rounded-xl shadow-md hover:shadow-2xl m-2">
+                    <img class="absolute inset-0 h-full w-full object-cover opacity-90 transition-opacity duration-300 ease-out group-hover:opacity-100 group-hover:transition-opacity group-hover:duration-300" src="https://ece.engin.umich.edu/wp-content/uploads/sites/2/2021/02/fairness-featured-scaled.jpg" alt="">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/0 to-transparent to-90% text-white transition-all duration-300 group-hover:bg-gradient-to-t group-hover:from-black/60 group-hover:transition-all group-hover:duration-500">
+                        <h2 class="absolute bottom-4 left-4 m-0 font-extrabold uppercase text-lg transition-all delay-300 duration-100 ease-out group-hover:bottom-1/2 group-hover:delay-0 group-hover:duration-300">
+                            Mutual information, Fairness and Robustness in AI
+                        </h2>
+                        <p class="absolute left-4 top-1/2 line-clamp-3 max-w-[80%] pt-2 opacity-0 transition-opacity duration-300 ease-out group-hover:opacity-100 group-hover:delay-500 group-hover:duration-300">
+                            Further study based on the paper "FR-Train" (Y. Roh et al., 2020): A mutal information based approach to train fair and robust models.
+                        </p>
+                        <a class="absolute bottom-4 left-4 max-w-[80%] rounded-lg border px-2 py-1 uppercase opacity-0 transition-opacity ease-out group-hover:opacity-100 group-hover:transition-opacity group-hover:delay-500 group-hover:duration-300" href="https://st3nv.github.io/assets/info_project.html", target="_blank">Learn more</a>
+                    </div>
+                </article>
+            </div>
+            
+            <div class="single-project-card">
+                <article class="group relative aspect-video h-80 w-[26rem] cursor-pointer overflow-hidden rounded-xl shadow-md hover:shadow-2xl m-2">
+                    <img class="absolute inset-0 h-full w-full object-cover opacity-90 transition-opacity duration-300 ease-out group-hover:opacity-100 group-hover:transition-opacity group-hover:duration-300" src="https://prod-discovery.edx-cdn.org/media/course/image/b0016194-add5-43f1-ab61-249f4664e315-e60b0c9d7cf2.small.jpeg" alt="">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/0 to-transparent to-90% text-white transition-all duration-300 group-hover:bg-gradient-to-t group-hover:from-black/60 group-hover:transition-all group-hover:duration-500">
+                        <h2 class="absolute bottom-4 left-4 m-0 font-extrabold uppercase text-lg transition-all delay-300 duration-100 ease-out group-hover:bottom-1/2 group-hover:delay-0 group-hover:duration-300">
+                            R Bootcamp for TLL AT Columbia Psychology
+                        </h2>
+                        <p class="absolute left-4 top-1/2 line-clamp-3 max-w-[80%] pt-2 opacity-0 transition-opacity duration-300 ease-out group-hover:opacity-100 group-hover:delay-500 group-hover:duration-300">
+                            Developed a 6-course R Bootcamp for the TLL at Columbia Psychology. The course covers basic R programming, data wrangling, data visualization, and statistical modeling.
+                        </p>
+                        <a class="absolute bottom-4 left-4 max-w-[80%] rounded-lg border px-2 py-1 uppercase opacity-0 transition-opacity ease-out group-hover:opacity-100 group-hover:transition-opacity group-hover:delay-500 group-hover:duration-300" href="https://st3nv.github.io/assets/R_bootcamp_TLL.html", target="_blank">Learn more</a>
+                    </div>
+                </article>
+            </div>
+
+            <div class="single-project-card">
+                <article class="group relative aspect-video h-80 w-[26rem] cursor-pointer overflow-hidden rounded-xl shadow-md hover:shadow-2xl m-2">
+                    <img class="absolute inset-0 h-full w-full object-cover opacity-90 transition-opacity duration-300 ease-out group-hover:opacity-100 group-hover:transition-opacity group-hover:duration-300" src="https://i.ibb.co/pRnSLMy/Screenshot-2024-01-25-at-10-43-00-AM.png" alt="">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/0 to-transparent to-90% text-white transition-all duration-300 group-hover:bg-gradient-to-t group-hover:from-black/60 group-hover:transition-all group-hover:duration-500">
+                        <h2 class="absolute bottom-4 left-4 m-0 font-extrabold uppercase text-lg transition-all delay-300 duration-100 ease-out group-hover:bottom-1/2 group-hover:delay-0 group-hover:duration-300">
+                            PV Cell Panel Fault Detection
+                        </h2>
+                        <p class="absolute left-4 top-1/2 line-clamp-3 max-w-[80%] pt-2 opacity-0 transition-opacity duration-300 ease-out group-hover:opacity-100 group-hover:delay-500 group-hover:duration-300">
+                            Devised a novel algorithm to detect faults on PV cell panels using image processing and deep learning techniques.
+                        </p>
+                        <a class="absolute bottom-4 left-4 max-w-[80%] rounded-lg border px-2 py-1 uppercase opacity-0 transition-opacity ease-out group-hover:opacity-100 group-hover:transition-opacity group-hover:delay-500 group-hover:duration-300" href="https://github.com/st3nv/crop-bat-image", target="_blank">Learn more</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!-- copywrite -->
+    <div class="copywrite">
+        <div class="copywrite-text">
+            © 2024 Tengyu Song
+        </div>
+    </div>
+    <div class = 'end-of-page-space'></div>
 </body>
 </html>
