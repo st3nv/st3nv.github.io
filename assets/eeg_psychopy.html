@@ -179,15 +179,6 @@ eeg_filename <span class="token operator">=</span> filename<span class="token pu
 
 <span class="token keyword keyword-for">for</span> t <span class="token keyword keyword-in">in</span> recording_threads<span class="token punctuation">:</span>
     t<span class="token punctuation">.</span>join<span class="token punctuation">(</span><span class="token punctuation">)</span>
-
-<span class="token comment"># save shuffled question data</span>
-question_shuffled_filename <span class="token operator">=</span> filename<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'.'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token string">'_question.csv'</span>
-question_shuffled_path <span class="token operator">=</span> question_shuffle_folder_path<span class="token operator">+</span>question_shuffled_filename
-<span class="token keyword keyword-print">print</span><span class="token punctuation">(</span><span class="token string">'Saving question data to {}'</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>question_shuffled_path<span class="token punctuation">)</span><span class="token punctuation">)</span>
-question_shuffled<span class="token punctuation">.</span>to_csv<span class="token punctuation">(</span>question_shuffled_path<span class="token punctuation">,</span> index<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span>
-
-<span class="token keyword keyword-for">for</span> t <span class="token keyword keyword-in">in</span> recording_threads<span class="token punctuation">:</span>
-    t<span class="token punctuation">.</span>join<span class="token punctuation">(</span><span class="token punctuation">)</span>
 </code></pre><p>The output will be saved in subfolders in the <code>data</code> folder of your experiment. The structure of the data folder will look like this:</p>
 <pre data-role="codeBlock" data-info="" class="language-text"><code>data/
     EEG/
