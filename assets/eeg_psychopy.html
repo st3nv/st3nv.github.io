@@ -64,7 +64,7 @@
         time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>  <span class="token comment"># Give some time before restarting</span>
         restart_script<span class="token punctuation">(</span><span class="token punctuation">)</span>
 </code></pre><blockquote>
-<p>If you are using Bluetooth to connect to the Muse headband, you should delete the <code>backend='bgapi'</code> argument from the <code>stream</code> function.</p>
+<p>If you are using Bluetooth to connect to the Muse headband, you should delete the <code>backend='bgapi'</code> argument from the <code>list_muses</code> and <code>stream</code> functions.</p>
 </blockquote>
 <p>The code above can handle disconnections and other errors that might occur during the experiment. It will keep trying to connect to the Muse headband until it succeeds.</p>
 <p>To run the script, open a Powershell window and navigate to the folder where the script is located. To do this, type</p>
