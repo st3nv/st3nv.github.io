@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Blog Title</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #fafafa;
+            color: #333;
+        }
+
+        .blog-header {
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: block;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            padding: 20px 40px;
+        }
+
+        .blog-title {
+            margin: 0;
+            text-align: center;
+            font-size: 32px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 50px;
+        }
+
+        .blog-post {
+            background-color: #fff;
+            margin-bottom: 10px;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .post-title {
+            margin-top: 0;
+            font-size: 28px;
+            color: #333;
+        }
+
+        .post-date {
+            color: #666;
+            font-size: 16px;
+        }
+
+        .post-content {
+            margin-top: 20px;
+            line-height: 1.6;
+        }
+
+        .read-more-button {
+            display: inline-block;
+            background-color: #007BFF;
+            color: white;
+            margin: 20px 0 0;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .read-more-button:hover {
+            background-color: #0056b3;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 100px 0;
+            background-color: #fafafa;
+        }
+
+        .footer p {
+            margin: 0;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <header class="blog-header">
+        <h1 class="blog-title">Nothing to see here.</h1>
+    </header>
+
+    <div class="container">
+        <!-- Start of Blog Post -->
+        <article class="blog-post">
+            <h2 class="post-title">First Post for testing</h2>
+            <p class="post-date">Posted on March 22, 2024</p>
+            <div class="post-content">
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Non, deserunt. Vero, vel quo ea natus obcaecati quod iste facere odit nobis quia quam quae nesciunt amet atque voluptate odio deserunt!
+            </div>
+            <a href="#" class="read-more-button">Read More</a> <!-- Read More button -->
+        </article>
+        <!-- End of Blog Post -->
+
+        <!-- Start of Blog Post -->
+        <article class="blog-post">
+            <h2 class="post-title">Second Post for testing</h2>
+            <p class="post-date">Posted on March 22, 2024</p>
+            <div class="post-content">
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Non, deserunt. Vero, vel quo ea natus obcaecati quod iste facere odit nobis quia quam quae nesciunt amet atque voluptate odio deserunt!
+            </div>
+            <a href="#" class="read-more-button">Read More</a> <!-- Read More button -->
+        </article>
+        <!-- End of Blog Post -->
+
+    </div>
+
+    <footer class="footer">
+        <p>© 2024 Tengyu Song. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

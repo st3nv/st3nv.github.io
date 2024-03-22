@@ -63,7 +63,10 @@
         <span class="token keyword keyword-print">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"</span><span class="token interpolation"><span class="token punctuation">{</span>datetime<span class="token punctuation">.</span>datetime<span class="token punctuation">.</span>now<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">}</span></span><span class="token string"> Error: </span><span class="token interpolation"><span class="token punctuation">{</span>e<span class="token punctuation">}</span></span><span class="token string">."</span></span><span class="token punctuation">)</span>
         time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>  <span class="token comment"># Give some time before restarting</span>
         restart_script<span class="token punctuation">(</span><span class="token punctuation">)</span>
-</code></pre><p>The code above can handle disconnections and other errors that might occur during the experiment. It will keep trying to connect to the Muse headband until it succeeds.</p>
+</code></pre><blockquote>
+<p>If you are using Bluetooth to connect to the Muse headband, you should delete the <code>backend='bgapi'</code> argument from the <code>stream</code> function.</p>
+</blockquote>
+<p>The code above can handle disconnections and other errors that might occur during the experiment. It will keep trying to connect to the Muse headband until it succeeds.</p>
 <p>To run the script, open a Powershell window and navigate to the folder where the script is located. To do this, type</p>
 <pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code><span class="token builtin class-name">cd</span> <span class="token string">'path\to\your\experiment'</span>
 </code></pre><p>You should replace <code>path\to\your\experiment</code> with the actual path to your experiment folder. If you don't know how to find the path, first open the folder in file explorer, then click on the address bar there you will see the path to the folder. Copy and paste it should do the work.</p>
