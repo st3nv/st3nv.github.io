@@ -181,3 +181,9 @@ a:hover {
 .single-project-card {
     position: relative;
 }
+
+.spotify-widget {
+    width: 40%;
+    height: 100%;
+    border: none;
+}
