@@ -3,20 +3,20 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
 let scene, camera, renderer;
 let particles = [];
-const numParticles = 10000;
-const lorenzParams = { sigma: 10, rho: 40, beta: 6 / 3 };
+const numParticles = 15000;
+const lorenzParams = { sigma: 20, rho: 40, beta: 4 / 3 };
 const dt = 0.01;
 
 let controls
 
 
 const particle_size = 0.045;
-let warmup = 138;
+let warmup = 150;
 const numGroups = 1;
-const lorenzParamsGroup1 = { sigma: 20, rho: 18, beta: 5 / 3,  startX : 0, startY : 0, startZ : 0};
-const lorenzParamsGroup2 = { sigma: 20, rho: 18, beta: 5 / 3 , startX : 0, startY : 0, startZ : 0};
-const lorenzParamsGroup3 = { sigma: 20, rho: 18, beta: 5 / 3 , startX : 0, startY : 0, startZ : 0};
-const lorenzParamsGroup4 = { sigma: 20, rho: 18, beta: 5 / 3 , startX : 0, startY : 0, startZ : 0};
+const lorenzParamsGroup1 = { sigma: 10, rho: 28, beta: 5 / 3,  startX : 0, startY : 0, startZ : 0};
+const lorenzParamsGroup2 = { sigma: 10, rho: 28, beta: 5 / 3 , startX : 0, startY : 0, startZ : 0};
+const lorenzParamsGroup3 = { sigma: 10, rho: 28, beta: 5 / 3 , startX : 0, startY : 0, startZ : 0};
+const lorenzParamsGroup4 = { sigma: 10, rho: 28, beta: 5 / 3 , startX : 0, startY : 0, startZ : 0};
 const clock = new THREE.Clock();
 const canvas = document.getElementById('myCanvas');
 
