@@ -1,4 +1,5 @@
 /* Your existing CSS */
+@media only screen and (min-width: 550px) {
 
 @media print {
   *,
@@ -64,19 +65,20 @@ html {
   font-size: 12px;
 }
 
-@media screen and (min-width: 32rem) and (max-width: 48rem) {
+/* @media screen and (min-width: 32rem) and (max-width: 48rem) {
   html {
     font-size: 15px;
   }
-}
+} */
 
-@media screen and (min-width: 48rem) {
+/* @media screen and (min-width: 48rem) {
   html {
     font-size: 16px;
   }
-}
+} */
 
 body {
+  min-width: 550px;
   line-height: 1.85;
   padding: 0 0 10rem 0;
 }
@@ -256,4 +258,6 @@ a:active {
 iframe {
   display: block;
   margin: 1rem auto;
+}
+
 }
