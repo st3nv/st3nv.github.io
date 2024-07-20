@@ -1,6 +1,22 @@
-<link href="css/splendor.css" rel="stylesheet"></link>
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-<script src="https://rawcdn.githack.com/oscarmorrison/md-page/232e97938de9f4d79f4110f6cfd637e186b63317/md-page.js"></script><noscript>
+<link href="css/splendor.css" rel="stylesheet">
+<script src="https://rawcdn.githack.com/oscarmorrison/md-page/232e97938de9f4d79f4110f6cfd637e186b63317/md-page.js"></script>
+<script type="text/javascript">
+    window.MathJax = {
+      tex: {
+        inlineMath: [['\\(','\\)']],
+        displayMath: [['$$','$$']],
+        processEscapes: true
+      },
+      options: {
+          enableMenu: false // Disable the MathJax context menu
+      }
+    };
+  </script>
+  <script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>  
+</script>
+<noscript>
 
 # Easiest way to make a webpage from markdown
 
@@ -78,7 +94,11 @@ Once you are happy with the content and style, you can publish it to your own we
 Of course, md-page is not perfect.
 
 1. It does not support all the markdown syntax. For example, it does not support footnote, like this[^1]. But it is good enough for most of the cases.
-2. It can't render latex formulas like ($2x+1$). It's slight inconvenience because you have use images instead. There do exist a way to work around it utilizing MathJax, but it's a bit more complicated and not beginner-friendly. So maybe I will write about it in another post.
+2. It can't render latex formulas like ($2x+1$). It's slight inconvenience because you have use images instead. There do exist a way to work around it utilizing MathJax, e.g. \\(ax^2 + bx + c = 0\\)
+
+$$x = \frac{-b \pm \sqrt{b^2-4ac}}{2a}.$$
+
+But it's a bit more complicated and not beginner-friendly. So maybe I will write about it in another post.
 
 
 

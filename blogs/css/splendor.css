@@ -165,10 +165,17 @@ body {
 /* === A bit of a gross hack so we can have bleeding divs/blockquotes. */
 
 p,
-*:not(div):not(img):not(body):not(html):not(li):not(blockquote){
+*:not(div):not(img):not(body):not(html):not(li):not(blockquote):not(mjx-container) {
   margin: 1rem auto 1rem;
   max-width: 36rem;
   padding: .25rem;
+}
+
+/* Ensure that mjx-container itself and its child elements don't get unintended margins */
+mjx-container, 
+mjx-container * {
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 .wide-image {
@@ -248,15 +255,4 @@ a:active {
 iframe {
   display: block;
   margin: 1rem auto;
-}
-
-.latex *{
-  margin: 0;
-  max-width: 36rem;
-  padding: 0rem;
-}
-
-/* Override MathJax styles */
-mjx-container{
-  margin: 0 auto !important; 
 }
