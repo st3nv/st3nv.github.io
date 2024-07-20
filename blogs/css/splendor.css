@@ -1,7 +1,48 @@
-/* Your existing CSS */
-@media only screen and (min-width: 550px) {
+img {
+  /* Add your default styles for the image here */
+  width: auto;
+}
 
 @media print {
+  body {
+    font-size: 12pt;
+  }
+  img {
+      max-width: 75%; /* Ensure images do not exceed the width of their container */
+      height: auto;    /* Maintain aspect ratio */
+      display: block;
+      margin: 0 auto;  /* Center images */
+  }
+  figcaption {
+    font-size: 0.8rem;
+    text-align: center;
+    font-style: italic;
+    text-align: center;
+  }
+}
+
+@media (max-width: 300px) {
+  body {
+    overflow-x: auto;
+  }
+}
+
+@media (max-width: 550px) {
+  img {
+      width: 100%;
+  }
+  figcaption {
+    font-size: 0.8rem;
+    text-align: center;
+    font-style: italic;
+    text-align: center;
+  }
+}
+
+@media only screen and (min-width: 550px) {
+/* @media print {
+
+
   *,
   *:before,
   *:after {
@@ -63,18 +104,6 @@
 
 html {
   font-size: 12px;
-}
-
-/* @media screen and (min-width: 32rem) and (max-width: 48rem) {
-  html {
-    font-size: 15px;
-  }
-} */
-
-/* @media screen and (min-width: 48rem) {
-  html {
-    font-size: 16px;
-  }
 } */
 
 body {
@@ -259,5 +288,4 @@ iframe {
   display: block;
   margin: 1rem auto;
 }
-
 }
