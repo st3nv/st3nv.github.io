@@ -5,7 +5,7 @@ bigimg:
   - "/img/big-img/IMG_7440.png"
 ---
 
-I'm currently studying statistics at Columbia University. This page is mainly to share some of my experiences.
+I have earned my MA in statistics degree at Columbia University. Please find my resume [here](/pdf/TengyuSong_Resume.pdf) to learn more about my academic and professional experience.
 
 ![High Walk](img/big-img/highwalk.png)
 <p align = "center">
