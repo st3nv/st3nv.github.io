@@ -24,7 +24,7 @@
 
 <br>
 
-I have been exploring ways to build a webpage from markdown for a while now. From copying the rendered html to Jekyll. But they are either too complicated or a pain to write and maintain.
+I have been exploring ways to build a webpage from markdown for a while now. From copying the rendered html to using Jekyll. But they are either too complicated or a pain to write and maintain.
 
 Until recently, I came across this Github repo called [md-page](https://github.com/oscarmorrison/md-page) by Oscar Morrison. And I am shocked by the simplicity, convenience and the flexibility it offers.
 
@@ -53,7 +53,7 @@ In a code editor, create a new html file named `md-page.html` and add the follow
 
 Then copy paste the markdown content under the line you just added.
 
-That's it! It's that simple. Save and open the the html file in a browser and you can see your markdown content rendered as a webpage. Here is a [demo](https://oscarmorrison.com/md-page/) by the original author and see below for a screenshot of it.
+That's it! It's that simple. Save and open the html file in a browser and you can see your markdown content rendered as a webpage. Here is a [demo](https://oscarmorrison.com/md-page/) by the original author and see below for a screenshot of it.
 
 <div class="narrow-image">
     <img src="img/Jul-20-2024-1.png">
@@ -63,7 +63,7 @@ That's it! It's that simple. Save and open the the html file in a browser and yo
 
 ### Step 3: Add css
 
-Although you are writing in markdown, you can still customize the style of the webpage using css. For those who have little knowledge of it, I would recommend to start with some examples online.
+Although you are writing in markdown, you can still customize the style of the webpage using css. For those who have little knowledge of it, I would recommend starting with some examples.
 
 - [Splendor](https://github.com/st3nv/st3nv.github.io/blob/master/blogs/css/splendor.css) by John Otander, the theme I modified and used for this page.
 
@@ -81,7 +81,7 @@ John also made many other beautiful themes that you can find [here](https://mark
 </div>
 <figcaption>Screenshot of the Github markdown dark theme</figcaption>
 
-The good thing of css is that it is very easy to understand and modify. You can build your own style by changing the color, font, size, margin, padding, etc.
+The good thing about css is that it is very easy to understand and modify. You can build your own style by changing the color, font, size, margin, padding, etc.
 
 To add css to the html file. We first need to create a .css file. For now you can just download the css I used from this [link](https://github.com/st3nv/st3nv.github.io/blob/master/blogs/css/splendor.css) and save it as `splendor.css` in the same directory as the html file. Then add the following line in the beginning of the html file.
 
@@ -91,19 +91,19 @@ Refresh the page and you can see the style is applied to the content.
 
 ### Step 4: Publish
 
-Once you are happy with the content and style, you can publish it to your own website. For casual sharing, I highly recommend [Github Pages](https://docs.github.com/en/pages/quickstart). It is free and have a lot of resources online to help you set up.
+Once you are happy with the content and style, you can publish it to your own website. For casual sharing, I highly recommend [Github Pages](https://docs.github.com/en/pages/quickstart). It is free and there are a lot of resources online to help you set up.
 
 
 ### Conclusion and limitations
 
 Of course, `md-page` is not perfect.
 
-1. It does not support all the markdown syntax. For example, it does not support footnote, like this[^1]. But it is good enough for most of the cases.
-2. It can't render latex formulas like ($2x+1$). It's slight inconvenience because you have use images instead. There do exist a way to work around it utilizing MathJax, e.g. \\(ax^2 + bx + c = 0\\)
+1. It does not support all the markdown syntax. For example, it does not support footnotes, like this[^1]. But it is good enough for most of the cases.
+2. It can't render latex formulas like ($2x+1$) out of the book. You can use images of equations but there do exist a way to work around it utilizing MathJax, e.g. \\(ax^2 + bx + c = 0\\)
 
 $$x = \frac{-b \pm \sqrt{b^2-4ac}}{2a}.$$
 
-But it's a bit more complicated and not beginner-friendly. So maybe I will write about it in another post.
+But it's a bit more complicated (need to tweak css) and not beginner-friendly. So I will maybe write about it in another post.
 
 
 
