@@ -134,7 +134,7 @@ h4,
 h1,
 .splendor-h1 {
   margin-top: 0;
-  font-size: 3.8rem;
+  font-size: 3.9rem;
 }
 
 h2,
@@ -218,12 +218,19 @@ hr{
 
 
 .wide-image {
+  position: relative;
   width: 100%;
 }
 
 .narrow-image {
   margin: 1rem auto 1rem;
   max-width: 30rem;
+  padding: .25rem;
+}
+
+.mid-image {
+  margin: 1rem auto 1rem;
+  max-width: 35rem;
   padding: .25rem;
 }
 
@@ -241,6 +248,19 @@ figcaption {
   font-style: italic;
   padding: 2px;
   text-align: center;
+}
+
+
+.wide-image-caption {
+  display: block !important;
+  position: absolute !important;
+  bottom: 0.2rem !important;
+  right: 0.5rem !important;
+  text-align: right !important;
+  font-family: 'Arial', sans-serif !important;  
+  font-size: 0.8rem !important;
+  font-style: normal !important;
+  color: #fafafa !important;
 }
 
 blockquote {
