@@ -1,5 +1,8 @@
-<!DOCTYPE html><html><head>
-      <title>test</title>
+
+<!DOCTYPE html>
+  <html>
+    <head>
+      <title>Psychopy EEG Tutorial</title>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       
@@ -15,23 +18,23 @@
 /*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
 
       </style>
-      <!-- The content below will be included at the end of the <head> element. --><script type="text/javascript">
+      <!-- The content below will be included at the end of the <head> element. --><html><head><script type="text/javascript">
   document.addEventListener("DOMContentLoaded", function () {
     // your code here
   });
-</script></head><body for="html-export">
-    
-    
-      <div class="crossnote markdown-preview  ">
+</script></head><body></body></html>
+    </head>
+    <body for="html-export" >
+      <div class="crossnote markdown-preview  "  >
       
 <h1 id="add-eeg-recording-to-any-existing-psychopy-experiment-in-builder">Add EEG recording to any existing Psychopy experiment in Builder </h1>
 <p>This is a short guide on how to add <strong>EEG recording</strong> to any existing Psychopy experiment. This guide is based on my experience using <code>muse-lsl</code> and the code component of Psychopy. This method doesn't require to run multiple scripts or use any external software. Also using this method the experiment can still be viewed and modified in <strong>Psychopy Builder</strong>.</p>
 <p>You don't need to be an expert in Python to follow this guide, but you should have set up Python and Psychopy correctly on your computer.</p>
 <p>To test whether you have correctly set up the computer, try open a terminal window (e.g. Powershell) and run commands <code>python</code> and <code>pip</code> to see if your python environment is working. If it is, we can start by installing <code>muse-lsl</code>.</p>
 <h2 id="step-1-install-muse-lsl">Step 1: Install muse-lsl </h2>
-<p>muse-lsl is a Python package that allows you to stream EEG data from the Muse headband. We can install it using pip. In the terminal window run the following command:</p>
-<pre data-role="codeBlock" data-info="" class="language-text"><code>pip install muse-lsl
-</code></pre><p>It should automatically install all the dependencies.</p>
+<p><code>muse-lsl</code> is a Python package that allows you to stream EEG data from the Muse headband. We can install it using pip. In the terminal window type:</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code>pip <span class="token function">install</span> muse-lsl
+</code></pre><p>and press <code>Enter</code>. It should automatically install all the dependencies.</p>
 <h2 id="step-2-write-python-script-to-start-eeg-streaming">Step 2: Write python script to start EEG streaming </h2>
 <p>This is the only python script we need outside of Psychopy. During the experiment we need to run the scirpt to connect to the Muse headband and start streaming the EEG data.</p>
 <p>Use any text editor to create a new file in your experiment folder and name it <code>start_eeg_stream.py</code>. Copy and paste the following code into the file:</p>
@@ -60,15 +63,17 @@
         <span class="token keyword keyword-print">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"</span><span class="token interpolation"><span class="token punctuation">{</span>datetime<span class="token punctuation">.</span>datetime<span class="token punctuation">.</span>now<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">}</span></span><span class="token string"> Error: </span><span class="token interpolation"><span class="token punctuation">{</span>e<span class="token punctuation">}</span></span><span class="token string">."</span></span><span class="token punctuation">)</span>
         time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>  <span class="token comment"># Give some time before restarting</span>
         restart_script<span class="token punctuation">(</span><span class="token punctuation">)</span>
-</code></pre><p>If you are using Bluetooth to connect to the Muse headband, you should delete the <code>backend='bgapi'</code> argument from the list_muses and stream functions.</p>
+</code></pre><blockquote>
+<p>If you are using Bluetooth to connect to the Muse headband, you should delete the <code>backend='bgapi'</code> argument from the <code>list_muses</code> and <code>stream</code> functions.</p>
+</blockquote>
 <p>The code above can handle disconnections and other errors that might occur during the experiment. It will keep trying to connect to the Muse headband until it succeeds.</p>
 <p>To run the script, open a Powershell window and navigate to the folder where the script is located. To do this, type</p>
-<pre data-role="codeBlock" data-info="" class="language-text"><code>cd 'path\to\your\experiment'
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code><span class="token builtin class-name">cd</span> <span class="token string">'path\to\your\experiment'</span>
 </code></pre><p>You should replace <code>path\to\your\experiment</code> with the actual path to your experiment folder. If you don't know how to find the path, first open the folder in file explorer, then click on the address bar there you will see the path to the folder. Copy and paste it should do the work.</p>
 <p>After you are in the correct folder, your Powershell window should look like this:</p>
 <pre data-role="codeBlock" data-info="" class="language-text"><code>PS C:\path\to\your\experiment&gt;
 </code></pre><p>Then, you can run the script by running the following command:</p>
-<pre data-role="codeBlock" data-info="" class="language-text"><code>python start_eeg_stream.py
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code>python start_eeg_stream.py
 </code></pre><h2 id="step-3-add-code-component-to-your-psychopy-experiment">Step 3: Add code component to your Psychopy experiment </h2>
 <p>Now open your experiment in Psychopy Builder and add a code component in any routine (preferably the first one). In the <strong>before experiment</strong> tab, copy and paste the following code:</p>
 <pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token comment">## ! -----------IMPORT  --------------</span>
@@ -164,9 +169,8 @@ marker_queue_list_not_none <span class="token operator">=</span> <span class="to
     t <span class="token operator">=</span> threading<span class="token punctuation">.</span>Thread<span class="token punctuation">(</span>target<span class="token operator">=</span>record_stream_thread<span class="token punctuation">,</span> args<span class="token operator">=</span><span class="token punctuation">(</span>marker_queue<span class="token punctuation">,</span> stream_type<span class="token punctuation">)</span><span class="token punctuation">)</span>
     t<span class="token punctuation">.</span>start<span class="token punctuation">(</span><span class="token punctuation">)</span>
     recording_threads<span class="token punctuation">.</span>append<span class="token punctuation">(</span>t<span class="token punctuation">)</span>
-Then<span class="token punctuation">,</span> <span class="token keyword keyword-in">in</span> the end experiment tab<span class="token punctuation">,</span> copy <span class="token keyword keyword-and">and</span> paste the following code<span class="token punctuation">:</span>
-
-<span class="token comment"># Save eeg data</span>
+</code></pre><p>Then, in the <strong>end experiment</strong> tab, copy and paste the following code:</p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token comment"># Save eeg data</span>
 eeg_filename <span class="token operator">=</span> filename<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'.'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token string">'_muse'</span>
 <span class="token keyword keyword-for">for</span> i <span class="token keyword keyword-in">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>folder_path_list<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     eeg_tmp_path <span class="token operator">=</span> folder_path_list<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> eeg_filename <span class="token operator">+</span> <span class="token string">'_'</span> <span class="token operator">+</span> output_types<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token string">'.csv'</span>
@@ -175,7 +179,7 @@ eeg_filename <span class="token operator">=</span> filename<span class="token pu
 
 <span class="token keyword keyword-for">for</span> t <span class="token keyword keyword-in">in</span> recording_threads<span class="token punctuation">:</span>
     t<span class="token punctuation">.</span>join<span class="token punctuation">(</span><span class="token punctuation">)</span>
-</code></pre><p>The output will be saved in subfolders in the data folder of your experiment. The structure of the data folder will look like this:</p>
+</code></pre><p>The output will be saved in subfolders in the <code>data</code> folder of your experiment. The structure of the data folder will look like this:</p>
 <pre data-role="codeBlock" data-info="" class="language-text"><code>data/
     EEG/
         your_experiment_name_muse_EEG.csv
@@ -186,74 +190,15 @@ eeg_filename <span class="token operator">=</span> filename<span class="token pu
     GYRO/
         your_experiment_name_muse_GYRO.csv
 </code></pre><h2 id="step-4-send-markers-to-the-eeg-recording-threads">Step 4: Send markers to the EEG recording threads </h2>
-<p>At any time of your experiment, you can send markers to the EEG recording threads using the <code>add_queue</code> function. By default, the value of the marker is <code>-1</code>.</p>
-<p>For example, if the routine is called trial and it has a component called <code>stimulus</code> which starts at the beginning of the routine and ends at the end of the routine, you can use the following code to send the marker as soon as the component starts:</p>
-<p>In the <strong>Begin Routine</strong> tab of the code component in the trial routine, copy and paste the following code:</p>
+<p>At any time of your experiment, you can send markers to the EEG recording threads using the <code>add_queue</code> function.</p>
+<p>For example, if the routine is called <code>trial</code> and it has a image component called <code>stimulus</code> which starts at the beginning of the routine and ends at the end of the routine, you can use the following code to send the marker as soon as the image component starts:</p>
+<p>In the <strong>Begin Routine</strong> tab of the code component in the <code>trial</code> routine, copy and paste the following code:</p>
 <pre data-role="codeBlock" data-info="python" class="language-python python"><code>markerSent <span class="token operator">=</span> <span class="token boolean">False</span>
 </code></pre><p>Then, in the <strong>Each Frame</strong> tab of the same code component, copy and paste the following code:</p>
 <pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token keyword keyword-if">if</span> stimulus<span class="token punctuation">.</span>status <span class="token operator">==</span> STARTED <span class="token keyword keyword-and">and</span> <span class="token keyword keyword-not">not</span> markerSent<span class="token punctuation">:</span>
     add_queue<span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">'command'</span><span class="token punctuation">:</span> <span class="token string">'MARKER'</span><span class="token punctuation">,</span> <span class="token string">'content'</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
     markerSent <span class="token operator">=</span> <span class="token boolean">True</span>
-</code></pre><p>The code above will send the marker <code>1</code> as soon as the image component stimulus starts. You can replace <code>1</code> with any value/string you want to send.</p>
-<p>When the routine ends, we may also want to send a marker to indicate the end of the trial. In the <strong>End Routine</strong> tab of the code component in the trial routine, copy and paste the following code:</p>
-<pre data-role="codeBlock" data-info="python" class="language-python python"><code>add_queue<span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">'command'</span><span class="token punctuation">:</span> <span class="token string">'MARKER'</span><span class="token punctuation">,</span> <span class="token string">'content'</span><span class="token punctuation">:</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
-</code></pre><p>The data will look like this:</p>
-<pre data-role="codeBlock" data-info="" class="language-text"><code>Timestamp, EEG Channel 1, EEG Channel 2, ..., Marker
-1612345678123, 0.1, 0.2, ..., -1
-1612345678124, 0.2, 0.3, ..., -1
-1612345678125, 0.3, 0.4, ..., -1
-...
-1612345678226, 0.4, 0.5, ..., 1
-1612345678227, 0.5, 0.6, ..., 1
-1612345678228, 0.6, 0.7, ..., 1
-...
-1612345678329, 0.7, 0.8, ..., -1
-1612345678330, 0.8, 0.9, ..., -1
-</code></pre><p>So you can easily find the start and end of each trial in the EEG data.</p>
-<h2 id="step-5-assign-a-marker-for-each-trial-in-a-loop">Step 5: Assign a marker for each trial in a loop </h2>
-<p>Most Psychopy experiments use loops to present different stimuli in each trial. In this case, you can easily assign a different marker for every trial in the loop.</p>
-<p>If that's the case, you will already have a csv files that defines the conditions of the loop, which looks like the example below:</p>
-<pre data-role="codeBlock" data-info="" class="language-text"><code>| image |
-|-------|
-| 1.png |
-| 2.png |
-| 3.png |
-|  ...  |
-</code></pre><p>The variable <code>$image</code> is then used to define the image component in the loop. We can do the same thing for the marker.</p>
-<p>First add a new column to the csv file that defines the marker for each trial:</p>
-<pre data-role="codeBlock" data-info="" class="language-text"><code>| image | marker |
-|-------|--------|
-| 1.png | 1      |
-| 2.png | 2      |
-| 3.png | 3      |
-|  ...  | ...    |
-</code></pre><p>Then, in the <strong>Begin Routine</strong> tab of the code component in the trial routine, copy and paste the following code:</p>
-<pre data-role="codeBlock" data-info="python" class="language-python python"><code>markerSent <span class="token operator">=</span> <span class="token boolean">False</span>
-</code></pre><p>Then, in the <strong>Each Frame</strong> tab of the same code component, copy and paste the following code:</p>
-<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token keyword keyword-if">if</span> stimulus<span class="token punctuation">.</span>status <span class="token operator">==</span> STARTED <span class="token keyword keyword-and">and</span> <span class="token keyword keyword-not">not</span> markerSent<span class="token punctuation">:</span>
-    add_queue<span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">'command'</span><span class="token punctuation">:</span> <span class="token string">'MARKER'</span><span class="token punctuation">,</span> <span class="token string">'content'</span><span class="token punctuation">:</span> marker<span class="token punctuation">}</span><span class="token punctuation">)</span>
-    markerSent <span class="token operator">=</span> <span class="token boolean">True</span>
-</code></pre><p>Here <code>stimulus</code> should be replaced with the actual name of the image component in your experiment. And <code>marker</code> should be replaced with the actual name of the column in the csv file that defines the marker for each trial.</p>
-<p>If there are multiple components in the trial routine that you want to track. For instance if you have two images that you show in order, <code>img1</code> and <code>img2</code>. And your loop conditions will looks something like this:</p>
-<pre data-role="codeBlock" data-info="" class="language-text"><code>| image1 | image2 | marker |
-|--------|--------|--------|
-| 1.png  | 2.png  | 1      |
-| 3.png  | 4.png  | 2      |
-| 5.png  | 6.png  | 3      |
-|  ...   |  ...   | ...    |
-</code></pre><p>Then in the <strong>Begin Routine</strong> tab of the code component in the trial routine, we can have the following code:</p>
-<pre data-role="codeBlock" data-info="python" class="language-python python"><code>img1_markerSent <span class="token operator">=</span> <span class="token boolean">False</span>
-img2_markerSent <span class="token operator">=</span> <span class="token boolean">False</span>
-</code></pre><p>Then in the <strong>Each Frame</strong> tab of the same code component, we can have the following code:</p>
-<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token keyword keyword-if">if</span> img1<span class="token punctuation">.</span>status <span class="token operator">==</span> STARTED <span class="token keyword keyword-and">and</span> <span class="token keyword keyword-not">not</span> img1_markerSent<span class="token punctuation">:</span>
-    add_queue<span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">'command'</span><span class="token punctuation">:</span> <span class="token string">'MARKER'</span><span class="token punctuation">,</span> <span class="token string">'content'</span><span class="token punctuation">:</span> marker <span class="token operator">+</span> <span class="token string">'_img1'</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
-    img1_markerSent <span class="token operator">=</span> <span class="token boolean">True</span>
-<span class="token keyword keyword-if">if</span> img2<span class="token punctuation">.</span>status <span class="token operator">==</span> STARTED <span class="token keyword keyword-and">and</span> <span class="token keyword keyword-not">not</span> img2_markerSent<span class="token punctuation">:</span>
-    add_queue<span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">'command'</span><span class="token punctuation">:</span> <span class="token string">'MARKER'</span><span class="token punctuation">,</span> <span class="token string">'content'</span><span class="token punctuation">:</span> marker <span class="token operator">+</span> <span class="token string">'_img2'</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
-    img2_markerSent <span class="token operator">=</span> <span class="token boolean">True</span>
-</code></pre><p>So that you can tell the two images in the same trial apart in the EEG data.</p>
-<h3 id="more-control-over-the-markers">More control over the markers </h3>
-<p>Or you can define a marker query function to find the marker you want to send based on a pre-defined Excel spreadsheet and the current condition of the experiment. Here is an example of how to do it:</p>
+</code></pre><p>The code above will send the marker <code>1</code> as soon as the image component <code>stimulus</code> starts. You can replace <code>1</code> with any marker you want to send. Or you can define a marker query function to find the marker you want to send based on a pre-defined Excel spreadsheet and the current condition of the experiment. Here is an example of how to do it:</p>
 <p>Suppose you defined your markers in a Excel file with the following structure:</p>
 <pre data-role="codeBlock" data-info="" class="language-text"><code>| image      | condition | marker |
 |------------|-----------|--------|
@@ -267,20 +212,20 @@ img2_markerSent <span class="token operator">=</span> <span class="token boolean
     <span class="token comment"># Find the marker based on the trial number and condition</span>
     marker <span class="token operator">=</span> df<span class="token punctuation">[</span><span class="token punctuation">(</span>df<span class="token punctuation">[</span><span class="token string">'image'</span><span class="token punctuation">]</span> <span class="token operator">==</span> image<span class="token punctuation">)</span> <span class="token operator">&amp;</span> <span class="token punctuation">(</span>df<span class="token punctuation">[</span><span class="token string">'condition'</span><span class="token punctuation">]</span> <span class="token operator">==</span> condition<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">'marker'</span><span class="token punctuation">]</span><span class="token punctuation">.</span>values<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
     <span class="token keyword keyword-return">return</span> marker
-</code></pre><p>Where image and condition are the current image shown and condition of the experiment. You can replace them with the actual variables you are using in your experiment. In most cases it can be the path to the image/video that is shown in the trial.</p>
-<p>Then similarly you can modify the <code>add_queue</code> function in the <strong>Each Frame</strong> tab with the following code:</p>
+</code></pre><p>Where <code>image</code> and <code>condition</code> are the current image shown and condition of the experiment. You can replace them with the actual variables you are using in your experiment. In most cases it can be the path to the image/video that is shown in the trial.</p>
+<p>Then, you can modify the <code>add_queue</code> function in the <strong>Each Frame</strong> tab with the following code:</p>
 <pre data-role="codeBlock" data-info="python" class="language-python python"><code>add_queue<span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">'command'</span><span class="token punctuation">:</span> <span class="token string">'MARKER'</span><span class="token punctuation">,</span> <span class="token string">'content'</span><span class="token punctuation">:</span> marker_query<span class="token punctuation">(</span>image<span class="token punctuation">,</span> <span class="token string">'T1'</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
-</code></pre><h3 id="step-5-start-the-eeg-stream-and-run-the-experiment">Step 5: Start the EEG stream and run the experiment </h3>
-<p>There might be some bugs in the code that you need to fix. But if you follow the guide correctly, you should be able to start the EEG stream and collect the data. If you encounter any problems, feel free to ask for help through my <a href="mailto:ts3464@columbia.edu">email</a>. Good luck!</p>
+</code></pre><p>In this case, you don't have to manually change the marker for each trial. The marker will be automatically selected based on the current trial number and condition of the experiment.</p>
+<h2 id="step-5-start-the-eeg-stream-and-run-the-experiment">Step 5: Start the EEG stream and run the experiment </h2>
+<p>There might be some bugs in the code that you need to fix. And sometimes in order to get the marker query to work you need some extra code. But if you follow the guide correctly, you should be able to start the EEG stream and collect the data. If you encounter any problems, feel free to ask for help through my <a href="mailto:ts3464@columbia.edu">Email</a>. Good Luck!</p>
 
       </div>
       
       
+    </body>
     
     
     
     
     
-    
-  
-    </body></html>
+  </html>
