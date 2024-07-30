@@ -50,11 +50,23 @@
         }
 
         .blog-post {
-            background-color: #fff;
+            position: relative;
+            background-color:  #fff;
             margin-bottom: 10px;
             padding: 40px;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .tutorial-banner {
+            display: block;
+            position: absolute;
+            background-color: #003874;
+            color: white;
+            padding: 0;
+            margin: -40px 0 0 -40px;
+            height: 10px;
+            width: 100%;
         }
 
         .post-title {
@@ -107,6 +119,15 @@
 
     <div class="container">
         <!-- Start of Blog Post -->
+        <article class="blog-post">
+            <h2 class="post-title"> Tutorial: Add muse EEG recording to any Psychopy experiment</h2>
+            <p class="post-date">Posted on July 30, 2024</p>
+            <div class="post-content">
+                <p>This is an old tutorial of mine that show how to add EEG recording to any experiment in Psychopy Builder with marker function.</p>
+            </div>
+            <a href="blogs/Jul-21-2024_Has-left-gone-too-far.html" class="read-more-button" target="_blank">Read More</a> 
+        </article>
+
         <article class="blog-post">
             <h2 class="post-title"> Has left gone too far? A data-driven analysis</h2>
             <p class="post-date">Posted on July 21, 2024</p>
