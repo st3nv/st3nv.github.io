@@ -7,7 +7,6 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-V5ZBBZ6FTG');
     </script>
     <meta charset="UTF-8">
@@ -29,11 +28,11 @@
         .blog-header {
             background-color: #fff;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            position: block;
+            position: sticky;
             top: 0;
             width: 100%;
             z-index: 100;
-            padding: 20px 40px;
+            padding: 20px 0;
         }
 
         .blog-title {
@@ -43,19 +42,24 @@
             color: #333;
         }
 
-        .container {
+        .content-wrapper {
             max-width: 800px;
-            margin: auto;
-            padding: 50px;
+            margin: 50px auto;
+            padding: 0 20px;
         }
 
         .blog-post {
-            position: relative;
-            background-color:  #fff;
-            margin-bottom: 10px;
+            background-color: #fff;
+            margin-bottom: 20px;
             padding: 40px;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .blog-post:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
 
         .tutorial-banner {
@@ -110,14 +114,27 @@
             margin: 0;
             color: #666;
         }
+
+        .data-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.1;
+        }
     </style>
 </head>
 <body>
     <header class="blog-header">
-        <h1 class="blog-title">Nothing to see here.</h1>
+        <h1 class="blog-title">Blogs to explore</h1>
     </header>
 
-    <div class="container">
+    <canvas id="dataAnimation" class="data-animation"></canvas>
+
+    <div class="content-wrapper">
         <!-- Start of Blog Post -->
         <article class="blog-post">
             <h2 class="post-title"> Tutorial: Add muse EEG recording to any PsychoPy experiment in builder</h2>
@@ -151,5 +168,56 @@
     <footer class="footer">
         <p>© 2024 Tengyu Song. All Rights Reserved.</p>
     </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js"></script>
+    <script>
+        // Subtle data-inspired background animation
+        new p5(function(p) {
+            let particles = [];
+
+            p.setup = function() {
+                let canvas = p.createCanvas(p.windowWidth, p.windowHeight);
+                canvas.parent('dataAnimation');
+                for (let i = 0; i < 50; i++) {
+                    particles.push(new Particle());
+                }
+            };
+
+            p.draw = function() {
+                p.clear();
+                particles.forEach(particle => {
+                    particle.update();
+                    particle.display();
+                });
+            };
+
+            class Particle {
+                constructor() {
+                    this.x = p.random(p.width);
+                    this.y = p.random(p.height);
+                    this.size = p.random(1, 3);
+                    this.speedX = p.random(-0.5, 0.5);
+                    this.speedY = p.random(-0.5, 0.5);
+                }
+
+                update() {
+                    this.x += this.speedX;
+                    this.y += this.speedY;
+                    if (this.x < 0 || this.x > p.width) this.speedX *= -1;
+                    if (this.y < 0 || this.y > p.height) this.speedY *= -1;
+                }
+
+                display() {
+                    p.noStroke();
+                    p.fill(0, 100, 200, 30);
+                    p.ellipse(this.x, this.y, this.size);
+                }
+            }
+
+            p.windowResized = function() {
+                p.resizeCanvas(p.windowWidth, p.windowHeight);
+            };
+        });
+    </script>
 </body>
 </html>
