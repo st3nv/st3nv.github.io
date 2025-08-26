@@ -32,7 +32,12 @@
     <!-- automatically direct user to https://st3nv.github.io/old/ if they are from mobile device -->
     <script type="text/javascript">
         if (screen.width <= 699) {
-            document.location = "https://st3nv.github.io/old/";
+            // remove the canvas-container div to avoid rendering the canvas on mobile
+            var canvasContainer = document.querySelector('.canvas-container');
+            canvasContainer.parentNode.removeChild(canvasContainer);
+            // remove arrow-conrainer div to avoid rendering the arrows on mobile
+            var arrowContainer = document.querySelector('.arrow-conrainer');
+            arrowContainer.parentNode.removeChild(arrowContainer);
         }
     </script>
     <script type="module" src="js/lorenz.js"></script>
@@ -102,7 +107,6 @@
                 </article>
             </div>
 
-            <div class="card-container">
                 <div class="single-project-card">
                     <article class="group relative aspect-video h-80 w-[26rem] cursor-pointer overflow-hidden rounded-xl shadow-md hover:shadow-2xl m-2">
                         <img class="absolute inset-0 h-full w-full object-cover opacity-90 transition-opacity duration-300 ease-out group-hover:opacity-100 group-hover:transition-opacity group-hover:duration-300" src="https://www.hoover.org/sites/default/files/styles/facebook/public/research/images/politicalparties_shutterstock_94499062.jpg?h=31441530&itok=UrcQy9_P" alt="">
@@ -116,8 +120,7 @@
                             <a class="absolute bottom-4 left-4 max-w-[80%] rounded-lg border px-2 py-1 uppercase opacity-0 transition-opacity ease-out group-hover:opacity-100 group-hover:transition-opacity group-hover:delay-500 group-hover:duration-300" href="blogs/Jul-21-2024_Has-left-gone-too-far.html", target="_blank">Learn more</a>
                         </div>
                     </article>
-                </div>
-        </div>
+            </div>
     </div>
     </div>
     <div class="project-card-wrapper">
