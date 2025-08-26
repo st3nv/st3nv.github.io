@@ -29,12 +29,12 @@
     </script>
     <script src="https://unpkg.com/tailwindcss-jit-cdn"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/18.6.4/tween.umd.js"></script>
-    <!-- automatically direct user to https://st3nv.github.io/old/ if they are from mobile device
+    <!-- automatically direct user to https://st3nv.github.io/old/ if they are from mobile device -->
     <script type="text/javascript">
         if (screen.width <= 699) {
             document.location = "https://st3nv.github.io/old/";
         }
-    </script> -->
+    </script>
     <script type="module" src="js/lorenz.js"></script>
     <div class = 'canvas-container'>
     <canvas id="myCanvas"></canvas>
@@ -65,15 +65,7 @@
         <p class="button-text">Résumé</p>
     </div>
 
-    <div class="project-card-wrapper">
-        <!-- title -->
-        <div class="project-title">
-            Monthly Song Recommendation
-        </div>
-        <div class="spotify-widget">
-            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/3RqRQI4qqu3ctCl9M07lH0?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-        </div> 
-    </div>
+
     <div class="project-card-wrapper">
         <!-- title -->
         <div class="project-title">
@@ -109,13 +101,29 @@
                     </div>
                 </article>
             </div>
+
+            <div class="card-container">
+                <div class="single-project-card">
+                    <article class="group relative aspect-video h-80 w-[26rem] cursor-pointer overflow-hidden rounded-xl shadow-md hover:shadow-2xl m-2">
+                        <img class="absolute inset-0 h-full w-full object-cover opacity-90 transition-opacity duration-300 ease-out group-hover:opacity-100 group-hover:transition-opacity group-hover:duration-300" src="https://www.hoover.org/sites/default/files/styles/facebook/public/research/images/politicalparties_shutterstock_94499062.jpg?h=31441530&itok=UrcQy9_P" alt="">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/0 to-transparent to-90% text-white transition-all duration-300 group-hover:bg-gradient-to-t group-hover:from-black/60 group-hover:transition-all group-hover:duration-500">
+                            <h2 class="absolute bottom-4 left-4 m-0 font-extrabold uppercase text-lg transition-all delay-300 duration-100 ease-out group-hover:bottom-1/2 group-hover:delay-0 group-hover:duration-300">
+                                Has the Left Gone Too Far? LLM-driven Insights into Think Tank Rhetoric
+                            </h2>
+                            <p class="absolute left-4 top-1/2 line-clamp-3 max-w-[80%] pt-2 opacity-0 transition-opacity duration-300 ease-out group-hover:opacity-100 group-hover:delay-500 group-hover:duration-300">
+                                Utilizing the MTA turnstile data, we built a dynamic pricing model based on ridership prediction and demand elasticity.
+                            </p>
+                            <a class="absolute bottom-4 left-4 max-w-[80%] rounded-lg border px-2 py-1 uppercase opacity-0 transition-opacity ease-out group-hover:opacity-100 group-hover:transition-opacity group-hover:delay-500 group-hover:duration-300" href="pdf/CDSS Hackathon HRT.pdf", target="_blank">Learn more</a>
+                        </div>
+                    </article>
+                </div>
         </div>
     </div>
     </div>
     <div class="project-card-wrapper">
         <!-- title -->
         <div class="project-title">
-            More Projects / Presentations
+            More Projects / Presentations to Explore
         </div>
         <div class="card-container">
             <div class="single-project-card">
@@ -168,7 +176,7 @@
     <!-- copyright -->
     <div class="copyright">
         <div class="copyright-text">
-            © 2024 Tengyu Song
+            © 2025 Tengyu Song
         </div>
     </div>
     <div class = 'end-of-page-space'></div>
