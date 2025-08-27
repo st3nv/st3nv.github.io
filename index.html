@@ -31,15 +31,22 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/18.6.4/tween.umd.js"></script>
     <!-- automatically direct user to https://st3nv.github.io/old/ if they are from mobile device -->
     <script type="text/javascript">
-        if (screen.width <= 699) {
-            // remove the canvas-container div to avoid rendering the canvas on mobile
-            var canvasContainer = document.querySelector('.canvas-container');
-            canvasContainer.parentNode.removeChild(canvasContainer);
-            // remove arrow-conrainer div to avoid rendering the arrows on mobile
-            var arrowContainer = document.querySelector('.arrow-conrainer');
-            arrowContainer.parentNode.removeChild(arrowContainer);
-            // redirect to the old website
-        }
+        document.addEventListener("DOMContentLoaded", function () {
+            if (screen.width <= 699) {
+                // remove the canvas-container div to avoid rendering the canvas on mobile
+                var canvasContainer = document.querySelector('.canvas-container');
+                if (canvasContainer) {
+                    canvasContainer.remove();
+                }
+                // remove arrow-container div to avoid rendering the arrows on mobile
+                var arrowContainer = document.querySelector('.arrow-conrainer');
+                if (arrowContainer) {
+                    arrowContainer.remove();
+                }
+                // optional: redirect if needed
+                // window.location.href = "old-website.html";
+            }
+        });
     </script>
     <script type="module" src="js/lorenz.js"></script>
     <div class = 'canvas-container'>
