@@ -1,228 +1,262 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
-let scene, camera, renderer;
-let particles = [];
-const numParticles = 15000;
-const lorenzParams = { sigma: 20, rho: 40, beta: 4 / 3 };
-const dt = 0.01;
+// Lorenz attractor particle background for the home page.
+//
+// Design notes
+// - With fixed parameters every particle ends up on the same butterfly-shaped
+//   attractor and the picture stops changing. Two things keep it alive:
+//   1. Particles are (re)born in coherent bursts: a tight blob that stretches
+//      into thin sweeping filaments, then slowly mixes into the attractor and
+//      fades out. Several generations are on screen at once.
+//   2. sigma / rho / beta drift along sums of sines with unrelated periods, so
+//      the attractor itself keeps morphing and never repeats.
+// - Colour comes from each particle's speed (computed on the GPU straight from
+//   the Lorenz equations), and points are blended additively so dense
+//   filaments glow.
 
-let controls
+const NUM_PARTICLES = 70000;
+const NUM_BURSTS = 8;          // particle generations alive at once
+const BURST_INTERVAL = 3;      // seconds between bursts
+const LIFETIME = NUM_BURSTS * BURST_INTERVAL;
+const BURST_SIZE = Math.floor(NUM_PARTICLES / NUM_BURSTS);
+const FADE_IN = 2.5;           // seconds; fresh bursts are dense, so let them appear gently
+const FADE_OUT = 3.0;          // seconds
 
+const POINT_SIZE = 0.13;       // world units
+const OPACITY = 0.6;
+const COLOR_SLOW = new THREE.Color(0x1b3fd8);
+const COLOR_MID = new THREE.Color(0x50e0ff);
+const COLOR_FAST = new THREE.Color(0xa8eeff);
 
-const particle_size = 0.045;
-let warmup = 150;
-const numGroups = 1;
-const lorenzParamsGroup1 = { sigma: 10, rho: 28, beta: 5 / 3,  startX : 0, startY : 0, startZ : 0};
-const lorenzParamsGroup2 = { sigma: 10, rho: 28, beta: 5 / 3 , startX : 0, startY : 0, startZ : 0};
-const lorenzParamsGroup3 = { sigma: 10, rho: 28, beta: 5 / 3 , startX : 0, startY : 0, startZ : 0};
-const lorenzParamsGroup4 = { sigma: 10, rho: 28, beta: 5 / 3 , startX : 0, startY : 0, startZ : 0};
-const clock = new THREE.Clock();
+// The page opens like the original: one blob pre-stretched with these parameters.
+const WARMUP_STEPS = 150;
+const WARMUP_DT = 0.01;
+const WARMUP_PARAMS = { sigma: 20, rho: 40, beta: 4 / 3 };
+
+// rho stays above ~24.7 so the system never collapses onto its fixed points.
+function driftParams(t, out) {
+    out.sigma = 10 + 2.0 * Math.sin(0.071 * t + 0.5) + 1.0 * Math.sin(0.0233 * t + 2.0);
+    out.rho = 32 + 4.5 * Math.sin(0.053 * t) + 2.0 * Math.sin(0.0171 * t + 1.3);
+    out.beta = 2.2 + 0.5 * Math.sin(0.0617 * t + 2.1) + 0.25 * Math.sin(0.0197 * t + 0.4);
+    return out;
+}
+
+const SPEED = 0.6;           // simulation time per real second
+const MAX_FRAME_DT = 1 / 30; // a slow or background frame can't blow up the integration
+
+// Camera slowly drifts around the attractor; after a drag it glides back onto this path.
+const CAMERA_DISTANCE = 62;
+const RETURN_RATE = 1.5;
+function homePosition(t, out) {
+    const azimuth = 0.55 * Math.sin(0.043 * t) + 0.2 * Math.sin(0.017 * t + 1.0);
+    const elevation = 0.18 + 0.12 * Math.sin(0.029 * t + 0.7);
+    return out.set(
+        CAMERA_DISTANCE * Math.cos(elevation) * Math.sin(azimuth),
+        CAMERA_DISTANCE * Math.sin(elevation),
+        CAMERA_DISTANCE * Math.cos(elevation) * Math.cos(azimuth),
+    );
+}
+
 const canvas = document.getElementById('myCanvas');
 
-let isUserInteracting = false;
-let originalPosition, originalRotation;
+// index.html removes the canvas on small screens; don't spin up WebGL there.
+if (canvas && screen.width > 699) {
+    start();
+}
 
+function start() {
+    const renderer = new THREE.WebGLRenderer({ canvas, powerPreference: 'high-performance' });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setClearColor(0x000000);
 
-init();
-animate();
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(60, 1, 0.5, 1000);
 
-function init() {
-    const canvas = document.getElementById('myCanvas');
+    // --- particles -------------------------------------------------------
+    const positions = new Float32Array(NUM_PARTICLES * 3);
+    const births = new Float32Array(NUM_PARTICLES);
+    const deaths = new Float32Array(NUM_PARTICLES);
 
-    scene = new THREE.Scene();
-    camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.2, 1000);
-    camera.position.z = 50;
-
-    // Set the original position and rotation
-    originalPosition = camera.position.clone();
-    originalRotation = camera.quaternion.clone();
-
-    // Initialize the WebGLRenderer with the canvas element
-    renderer = new THREE.WebGLRenderer({ canvas: canvas });
-    renderer.setSize(window.innerWidth, window.innerHeight);
-
-    // Other initialization code (like adding objects to the scene, etc.)
-
-    // Ensure the canvas is resized correctly initially
-    onWindowResize();
-
-    // Create particles
-    for (let i = 0; i < numParticles; i++) {
-        let group = Math.floor(i / (numParticles / numGroups));
-        let groupParams;
-        if (group === 0) {
-            groupParams = lorenzParamsGroup1;
-        } else if (group === 1) {
-            groupParams = lorenzParamsGroup2;
-        } else if (group === 2) {
-            groupParams = lorenzParamsGroup3;
-        } else {
-            groupParams = lorenzParamsGroup4;
-        }
-
-        let particle = new THREE.Vector3(
-            (Math.random() - 0.5) * 2 + groupParams.startX,
-            (Math.random() - 0.5) * 2 + groupParams.startY,
-            (Math.random() - 0.5) * 2 + groupParams.startZ
-        );
-        particles.push(particle);
+    seedBlob(positions, 1);
+    for (let s = 0; s < WARMUP_STEPS; s++) step(positions, WARMUP_PARAMS, WARMUP_DT);
+    // First generation is staggered so it thins out gradually as bursts take over.
+    for (let b = 0; b < NUM_BURSTS; b++) {
+        deaths.fill((b + 1) * BURST_INTERVAL, b * BURST_SIZE, (b + 1) * BURST_SIZE);
     }
+    deaths.fill(NUM_BURSTS * BURST_INTERVAL, NUM_BURSTS * BURST_SIZE);
 
-    preCalculatePositions(warmup);
+    const geometry = new THREE.BufferGeometry();
+    const positionAttr = new THREE.BufferAttribute(positions, 3).setUsage(THREE.DynamicDrawUsage);
+    const birthAttr = new THREE.BufferAttribute(births, 1);
+    const deathAttr = new THREE.BufferAttribute(deaths, 1);
+    geometry.setAttribute('position', positionAttr);
+    geometry.setAttribute('aBirth', birthAttr);
+    geometry.setAttribute('aDeath', deathAttr);
 
-    // controls to rotate around the scene
-    controls = new OrbitControls(camera, renderer.domElement);
+    const params = driftParams(0, {});
+    const uniforms = {
+        uTime: { value: 0 },
+        uSigma: { value: params.sigma },
+        uRho: { value: params.rho },
+        uBeta: { value: params.beta },
+        uSize: { value: POINT_SIZE },
+        uScale: { value: 1 },
+        uOpacity: { value: OPACITY },
+        uSlow: { value: COLOR_SLOW },
+        uMid: { value: COLOR_MID },
+        uFast: { value: COLOR_FAST },
+    };
+    const material = new THREE.ShaderMaterial({
+        uniforms,
+        vertexShader: /* glsl */ `
+            uniform float uTime, uSigma, uRho, uBeta, uSize, uScale;
+            uniform vec3 uSlow, uMid, uFast;
+            attribute float aBirth;
+            attribute float aDeath;
+            varying vec3 vColor;
+            varying float vAlpha;
+            void main() {
+                vec3 p = position;
+                vec3 v = vec3(uSigma * (p.y - p.x), p.x * (uRho - p.z) - p.y, p.x * p.y - uBeta * p.z);
+                float s = clamp(length(v) / 220.0, 0.0, 1.0);
+                vColor = mix(mix(uSlow, uMid, smoothstep(0.0, 0.45, s)), uFast, smoothstep(0.45, 1.0, s));
+                // Slow particles bunch up (density ~ 1/speed), so dim them to keep
+                // the wing centres from piling up into white blobs.
+                vAlpha = smoothstep(0.0, ${FADE_IN.toFixed(2)}, uTime - aBirth)
+                       * smoothstep(0.0, ${FADE_OUT.toFixed(2)}, aDeath - uTime)
+                       * mix(0.55, 1.0, smoothstep(0.0, 0.5, s));
+                vec4 mv = modelViewMatrix * vec4(p, 1.0);
+                gl_PointSize = clamp(uSize * uScale / -mv.z, 1.0, 10.0);
+                gl_Position = projectionMatrix * mv;
+            }`,
+        fragmentShader: /* glsl */ `
+            uniform float uOpacity;
+            varying vec3 vColor;
+            varying float vAlpha;
+            void main() {
+                vec2 c = gl_PointCoord - 0.5;
+                float d = dot(c, c) * 4.0;
+                if (d > 1.0) discard;
+                gl_FragColor = vec4(vColor, (1.0 - d) * vAlpha * uOpacity);
+            }`,
+        transparent: true,
+        depthWrite: false,
+        blending: THREE.AdditiveBlending,
+    });
+
+    const points = new THREE.Points(geometry, material);
+    points.frustumCulled = false; // particles move every frame; bounding sphere would go stale
+    // Stand the butterfly upright (Lorenz z → screen up) and centre it at the origin.
+    const attractor = new THREE.Group();
+    attractor.rotation.x = -Math.PI / 2;
+    attractor.add(points);
+    scene.add(attractor);
+
+    // --- camera & controls ----------------------------------------------
+    let elapsed = Math.random() * 600; // start somewhere different on each visit
+    const home = homePosition(elapsed, new THREE.Vector3());
+    camera.position.copy(home);
+
+    const controls = new OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
-    controls.dampingFactor = 0.05;
-    controls.rotateSpeed = 0.05;
+    controls.dampingFactor = 0.06;
+    controls.rotateSpeed = 0.4;
     controls.enableZoom = false;
-    controls.zoomSpeed = 0.5;
-    controls.enablePan = true;
-    controls.panSpeed = 0.5;
-    controls.screenSpacePanning = true;
-    controls.minDistance = 0;
-    controls.maxDistance = 1000;
-    controls.maxPolarAngle = Math.PI / 2;
-    controls.maxAzimuthAngle = Math.PI / 2;
-    controls.autoRotate = true;
-    controls.autoRotateSpeed = 1;
+    controls.enablePan = false;
 
-    controls.addEventListener('start', function() {
-        isUserInteracting = true;
-    });
+    let isUserInteracting = false;
+    controls.addEventListener('start', () => { isUserInteracting = true; });
+    controls.addEventListener('end', () => { isUserInteracting = false; });
 
-    controls.addEventListener('end', function() {
-        isUserInteracting = false;
-    });
-
-
-    // Window resize handling
-    window.addEventListener('resize', onWindowResize, false);
-}
-
-
-function preCalculatePositions(iterations) {
-    for (let i = 0; i < iterations; i++) {
-        particles.forEach(particle => {
-            const dx = lorenzParams.sigma * (particle.y - particle.x) * dt;
-            const dy = (particle.x * (lorenzParams.rho - particle.z) - particle.y) * dt;
-            const dz = (particle.x * particle.y - lorenzParams.beta * particle.z) * dt;
-
-            particle.x += dx;
-            particle.y += dy;
-            particle.z += dz;
-        });
+    function resize() {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        uniforms.uScale.value = renderer.getPixelRatio() * window.innerHeight
+            / (2 * Math.tan(THREE.MathUtils.degToRad(camera.fov) / 2));
     }
-}
+    resize();
+    window.addEventListener('resize', resize);
 
-function animate() {
-    let timeDelta = clock.getDelta();
-    timeDelta = timeDelta * 0.6;
-    requestAnimationFrame(animate);
-    
-    TWEEN.update(); // Make sure to update TWEEN
+    // --- animation loop --------------------------------------------------
+    const clock = new THREE.Clock();
+    let now = 0;
+    let sinceBurst = 0;
+    let nextBurst = 0;
 
-    if (!isUserInteracting) {
-        returnCameraToOrigin();
-    }
+    function frame() {
+        const dt = Math.min(clock.getDelta(), MAX_FRAME_DT);
+        now += dt;
+        elapsed += dt;
 
-    // Update each particle's position based on Lorenz attractor equations
-    particles.forEach(particle => {
-        let group = Math.floor(particles.indexOf(particle) / (numParticles / numGroups));
-        let groupParams;
-        if (group === 0) {
-            groupParams = lorenzParamsGroup1;
-        } else if (group === 1) {
-            groupParams = lorenzParamsGroup2;
-        } else if (group === 2) {
-            groupParams = lorenzParamsGroup3;
-        } else {
-            groupParams = lorenzParamsGroup4;
+        driftParams(elapsed, params);
+        uniforms.uTime.value = now;
+        uniforms.uSigma.value = params.sigma;
+        uniforms.uRho.value = params.rho;
+        uniforms.uBeta.value = params.beta;
+        points.position.z = 1 - params.rho; // attractor centre sits at z ≈ rho - 1
+
+        sinceBurst += dt;
+        if (sinceBurst >= BURST_INTERVAL) {
+            sinceBurst -= BURST_INTERVAL;
+            const from = nextBurst * BURST_SIZE;
+            seedBlob(positions.subarray(from * 3, (from + BURST_SIZE) * 3), 0.8 + Math.random() * 1.2);
+            births.fill(now, from, from + BURST_SIZE);
+            deaths.fill(now + LIFETIME, from, from + BURST_SIZE);
+            birthAttr.needsUpdate = true;
+            deathAttr.needsUpdate = true;
+            nextBurst = (nextBurst + 1) % NUM_BURSTS;
         }
 
-        const dx = groupParams.sigma * (particle.y - particle.x) * timeDelta;
-        const dy = (particle.x * (groupParams.rho - particle.z) - particle.y) * timeDelta;
-        const dz = (particle.x * particle.y - groupParams.beta * particle.z) * timeDelta;
+        step(positions, params, dt * SPEED);
+        positionAttr.needsUpdate = true;
 
-        particle.x += dx;
-        particle.y += dy;
-        particle.z += dz;
-    });
+        homePosition(elapsed, home);
+        if (!isUserInteracting) {
+            camera.position.lerp(home, 1 - Math.exp(-RETURN_RATE * dt));
+        }
+        controls.update();
 
-    renderParticles();
-}
-
-function renderParticles() {
-    // Clear the previous frame
-    while (scene.children.length > 0) { 
-        scene.remove(scene.children[0]); 
+        renderer.render(scene, camera);
     }
 
-    // Prepare BufferGeometry for updated particles
-    let geometry = new THREE.BufferGeometry();
-    let positions = new Float32Array(particles.length * 3);
-    particles.forEach((particle, i) => {
-        positions[i * 3] = particle.x;
-        positions[i * 3 + 1] = particle.y;
-        positions[i * 3 + 2] = particle.z;
-    });
-    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-
-    let material = new THREE.PointsMaterial({ size: particle_size, color: 0x50e0ff, transparent: true, opacity: 0.8});
-    let points = new THREE.Points(geometry, material);
-    scene.add(points);
-
-    renderer.render(scene, camera);
+    // Only animate while the canvas is on screen.
+    let running = false;
+    function setRunning(on) {
+        if (on === running) return;
+        running = on;
+        if (on) clock.getDelta(); // drop the time spent paused
+        renderer.setAnimationLoop(on ? frame : null);
+    }
+    new IntersectionObserver(([entry]) => setRunning(entry.isIntersecting)).observe(canvas);
+    setRunning(true);
 }
 
-function onWindowResize() {
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
+// Fill `p` with a tight random blob near the origin (slightly off-centre, so
+// successive bursts favour different wings and trace different filaments).
+function seedBlob(p, spread) {
+    const cx = (Math.random() - 0.5) * 3;
+    const cy = (Math.random() - 0.5) * 3;
+    const cz = (Math.random() - 0.5) * 3;
+    for (let i = 0; i < p.length; i += 3) {
+        p[i] = cx + (Math.random() - 0.5) * 2 * spread;
+        p[i + 1] = cy + (Math.random() - 0.5) * 2 * spread;
+        p[i + 2] = cz + (Math.random() - 0.5) * 2 * spread;
+    }
 }
 
-
-function returnCameraToOrigin() {
-    const threshold = 0.5; // A threshold to prevent small discrepancies from triggering the transition
-
-    // Check if the camera is significantly far from the original position and rotation
-    if (camera.position.distanceTo(originalPosition) > threshold || 
-        camera.quaternion.angleTo(originalRotation) > threshold) {
-
-        controls.enabled = false; // Disable OrbitControls to prevent interference during transition
-
-        // Smooth transition to the original position
-        new TWEEN.Tween(camera.position)
-            .to({
-                x: originalPosition.x, 
-                y: originalPosition.y, 
-                z: originalPosition.z
-            }, 2000) // Duration of the transition in milliseconds
-            .easing(TWEEN.Easing.Quadratic.Out) // Easing function for smoothness
-            .onUpdate(() => {
-                camera.updateProjectionMatrix(); // Update projection matrix during transition
-            })
-            .onComplete(() => {
-                controls.enabled = true; // Re-enable OrbitControls after transition
-            })
-            .start();
-
-        // Smooth transition to the original rotation
-        new TWEEN.Tween(camera.quaternion)
-            .to({
-                x: originalRotation.x, 
-                y: originalRotation.y, 
-                z: originalRotation.z, 
-                w: originalRotation.w
-            }, 2000) // Matching duration for rotation transition
-            .easing(TWEEN.Easing.Quadratic.Out)
-            .onComplete(() => {
-                originalPosition = camera.position.clone(); // Update original position
-                originalRotation = camera.quaternion.clone(); // Update original rotation
-                controls.enabled = true; // Ensure controls are re-enabled after rotation transition
-                // The position and rotation are already updated in the position tween's onComplete
-            })
-            .start();
+// One explicit-Euler step of the Lorenz system for every particle.
+function step(p, { sigma, rho, beta }, dt) {
+    for (let i = 0; i < p.length; i += 3) {
+        const x = p[i], y = p[i + 1], z = p[i + 2];
+        const nx = x + sigma * (y - x) * dt;
+        if (!(Math.abs(nx) < 1e3)) { // diverged (or NaN): drop it back near the origin
+            p[i] = Math.random() - 0.5; p[i + 1] = Math.random() - 0.5; p[i + 2] = Math.random() - 0.5;
+            continue;
+        }
+        p[i] = nx;
+        p[i + 1] = y + (x * (rho - z) - y) * dt;
+        p[i + 2] = z + (x * y - beta * z) * dt;
     }
 }

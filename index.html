@@ -13,22 +13,27 @@
     <title>Tengyu Song</title>
     <link rel="stylesheet" href="css/style_lorenz.css">
     <link rel="icon" href="https://st3nv.github.io/img/icon.png">
+    <!-- The import map must come before anything that loads a module (including modulepreload),
+         otherwise the browser can't resolve "three" and the canvas stays black. -->
+    <script type="importmap">
+        {
+          "imports": {
+            "three": "https://unpkg.com/three@0.149.0/build/three.module.js",
+            "three/addons/": "https://unpkg.com/three@0.149.0/examples/jsm/"
+          }
+        }
+    </script>
+    <!-- start fetching the 3D background's modules right away instead of after lorenz.js is parsed -->
+    <link rel="modulepreload" href="https://unpkg.com/three@0.149.0/build/three.module.js">
+    <link rel="modulepreload" href="https://unpkg.com/three@0.149.0/examples/jsm/controls/OrbitControls.js">
+    <link rel="modulepreload" href="js/lorenz.js">
     <style>
         body { margin: 0; }
         canvas { display: block; }
     </style>
 </head>
 <body>
-    <script type="importmap">
-        {
-          "imports": {
-            "three": "https://unpkg.com/three@v0.149.0/build/three.module.js",
-            "three/addons/": "https://unpkg.com/three@v0.149.0/examples/jsm/"
-          }
-        }
-    </script>
-    <script src="https://unpkg.com/tailwindcss-jit-cdn"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/18.6.4/tween.umd.js"></script>
+    <script src="https://unpkg.com/tailwindcss-jit-cdn@1.3.0/dist/tailwindcss-jit-cdn.umd.min.js"></script>
     <!-- automatically direct user to https://st3nv.github.io/old/ if they are from mobile device -->
     <script type="text/javascript">
         document.addEventListener("DOMContentLoaded", function () {
@@ -87,7 +92,7 @@
         <div class="card-container">
             <div class="single-project-card">
                 <article class="group relative aspect-video h-80 w-[26rem] cursor-pointer overflow-hidden rounded-xl shadow-md hover:shadow-2xl m-2">
-                    <img class="absolute inset-0 h-full w-full object-cover opacity-90 transition-opacity duration-300 ease-out group-hover:opacity-100 group-hover:transition-opacity group-hover:duration-300" src="https://upload.wikimedia.org/wikipedia/commons/9/95/R179_C_train_at_West_4th_Street.jpg" alt="">
+                    <img loading="lazy" class="absolute inset-0 h-full w-full object-cover opacity-90 transition-opacity duration-300 ease-out group-hover:opacity-100 group-hover:transition-opacity group-hover:duration-300" src="https://upload.wikimedia.org/wikipedia/commons/9/95/R179_C_train_at_West_4th_Street.jpg" alt="">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/0 to-transparent to-90% text-white transition-all duration-300 group-hover:bg-gradient-to-t group-hover:from-black/60 group-hover:transition-all group-hover:duration-500">
                         <h2 class="absolute bottom-4 left-4 m-0 font-extrabold uppercase text-lg transition-all delay-300 duration-100 ease-out group-hover:bottom-1/2 group-hover:delay-0 group-hover:duration-300">
                             Dynamic Pricing for NYC Subway
@@ -102,7 +107,7 @@
             
             <div class="single-project-card">
                 <article class="group relative aspect-video h-80 w-[26rem] cursor-pointer overflow-hidden rounded-xl shadow-md hover:shadow-2xl m-2">
-                    <img class="absolute inset-0 h-full w-full object-cover opacity-90 transition-opacity duration-300 ease-out group-hover:opacity-100 group-hover:transition-opacity group-hover:duration-300" src="https://linktr.ee/og/image/EGSC.jpg" alt="">
+                    <img loading="lazy" class="absolute inset-0 h-full w-full object-cover opacity-90 transition-opacity duration-300 ease-out group-hover:opacity-100 group-hover:transition-opacity group-hover:duration-300" src="https://linktr.ee/og/image/EGSC.jpg" alt="">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/0 to-transparent to-90% text-white transition-all duration-300 group-hover:bg-gradient-to-t group-hover:from-black/60 group-hover:transition-all group-hover:duration-500">
                         <h2 class="absolute bottom-4 left-4 m-0 font-extrabold uppercase text-lg transition-all delay-300 duration-100 ease-out group-hover:bottom-1/2 group-hover:delay-0 group-hover:duration-300">
                             EGSC Quality of Life Survey 2023
@@ -117,7 +122,7 @@
 
                 <div class="single-project-card">
                     <article class="group relative aspect-video h-80 w-[26rem] cursor-pointer overflow-hidden rounded-xl shadow-md hover:shadow-2xl m-2">
-                        <img class="absolute inset-0 h-full w-full object-cover opacity-90 transition-opacity duration-300 ease-out group-hover:opacity-100 group-hover:transition-opacity group-hover:duration-300" src="https://www.hoover.org/sites/default/files/styles/facebook/public/research/images/politicalparties_shutterstock_94499062.jpg?h=31441530&itok=UrcQy9_P" alt="">
+                        <img loading="lazy" class="absolute inset-0 h-full w-full object-cover opacity-90 transition-opacity duration-300 ease-out group-hover:opacity-100 group-hover:transition-opacity group-hover:duration-300" src="https://www.hoover.org/sites/default/files/styles/facebook/public/research/images/politicalparties_shutterstock_94499062.jpg?h=31441530&itok=UrcQy9_P" alt="">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/0 to-transparent to-90% text-white transition-all duration-300 group-hover:bg-gradient-to-t group-hover:from-black/60 group-hover:transition-all group-hover:duration-500">
                             <h2 class="absolute bottom-4 left-4 m-0 font-extrabold uppercase text-lg transition-all delay-300 duration-100 ease-out group-hover:bottom-1/2 group-hover:delay-0 group-hover:duration-300">
                                 Has the Left Gone Too Far? LLM-driven Insights into Think Tank Rhetoric
@@ -139,7 +144,7 @@
         <div class="card-container">
             <div class="single-project-card">
                 <article class="group relative aspect-video h-80 w-[26rem] cursor-pointer overflow-hidden rounded-xl shadow-md hover:shadow-2xl m-2">
-                    <img class="absolute inset-0 h-full w-full object-cover opacity-90 transition-opacity duration-300 ease-out group-hover:opacity-100 group-hover:transition-opacity group-hover:duration-300" src="https://www.monikahoyt.com/wp-content/uploads/2014/05/fairness-image.jpg" alt="">
+                    <img loading="lazy" class="absolute inset-0 h-full w-full object-cover opacity-90 transition-opacity duration-300 ease-out group-hover:opacity-100 group-hover:transition-opacity group-hover:duration-300" src="https://www.monikahoyt.com/wp-content/uploads/2014/05/fairness-image.jpg" alt="">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/0 to-transparent to-90% text-white transition-all duration-300 group-hover:bg-gradient-to-t group-hover:from-black/60 group-hover:transition-all group-hover:duration-500">
                         <h2 class="absolute bottom-4 left-4 m-0 font-extrabold uppercase text-lg transition-all delay-300 duration-100 ease-out group-hover:bottom-1/2 group-hover:delay-0 group-hover:duration-300">
                             Mutual information, Fairness and Robustness in AI
@@ -154,7 +159,7 @@
             
             <div class="single-project-card">
                 <article class="group relative aspect-video h-80 w-[26rem] cursor-pointer overflow-hidden rounded-xl shadow-md hover:shadow-2xl m-2">
-                    <img class="absolute inset-0 h-full w-full object-cover opacity-90 transition-opacity duration-300 ease-out group-hover:opacity-100 group-hover:transition-opacity group-hover:duration-300" src="https://prod-discovery.edx-cdn.org/media/course/image/b0016194-add5-43f1-ab61-249f4664e315-e60b0c9d7cf2.small.jpeg" alt="">
+                    <img loading="lazy" class="absolute inset-0 h-full w-full object-cover opacity-90 transition-opacity duration-300 ease-out group-hover:opacity-100 group-hover:transition-opacity group-hover:duration-300" src="https://prod-discovery.edx-cdn.org/media/course/image/b0016194-add5-43f1-ab61-249f4664e315-e60b0c9d7cf2.small.jpeg" alt="">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/0 to-transparent to-90% text-white transition-all duration-300 group-hover:bg-gradient-to-t group-hover:from-black/60 group-hover:transition-all group-hover:duration-500">
                         <h2 class="absolute bottom-4 left-4 m-0 font-extrabold uppercase text-lg transition-all delay-300 duration-100 ease-out group-hover:bottom-1/2 group-hover:delay-0 group-hover:duration-300">
                             R Bootcamp for TLL AT Columbia Psychology
@@ -169,7 +174,7 @@
 
             <div class="single-project-card">
                 <article class="group relative aspect-video h-80 w-[26rem] cursor-pointer overflow-hidden rounded-xl shadow-md hover:shadow-2xl m-2">
-                    <img class="absolute inset-0 h-full w-full object-cover opacity-90 transition-opacity duration-300 ease-out group-hover:opacity-100 group-hover:transition-opacity group-hover:duration-300" src="https://i.ibb.co/RCM7D6y/re-photovoltaics-26962.jpg" alt="">
+                    <img loading="lazy" class="absolute inset-0 h-full w-full object-cover opacity-90 transition-opacity duration-300 ease-out group-hover:opacity-100 group-hover:transition-opacity group-hover:duration-300" src="https://i.ibb.co/RCM7D6y/re-photovoltaics-26962.jpg" alt="">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/0 to-transparent to-90% text-white transition-all duration-300 group-hover:bg-gradient-to-t group-hover:from-black/60 group-hover:transition-all group-hover:duration-500">
                         <h2 class="absolute bottom-4 left-4 m-0 font-extrabold uppercase text-lg transition-all delay-300 duration-100 ease-out group-hover:bottom-1/2 group-hover:delay-0 group-hover:duration-300">
                             PV Cell Panel Defect Detection
